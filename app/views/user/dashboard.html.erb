@@ -1,0 +1,13 @@
+<h1>Welcome, <%= @user.nickname %></h1>
+
+<h2>This is your dashboard, with the stories you created and where you can create new ones</h2>
+
+<table>
+  <% @user.stories.each do |story| %>
+    <tr>
+      <td><%= link_to story.title, '#' %></td>
+      <td><%= link_to "Edit", '#' %></td>
+      <td><%= link_to "Destroy", '#' %></td>
+    </tr>
+  <% end %>
+</table>
