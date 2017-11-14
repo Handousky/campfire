@@ -2,5 +2,6 @@
   <%= f.error_notification %>
   <%= f.input :title, label: "Story's title", placeholder: "Super Creepy Story" %>
   <%= f.input :description, label: "Short summary", placeholder: "It's super creepy" %>
+  <%= f.input :categories, collection: Category.all, as: :check_boxes %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

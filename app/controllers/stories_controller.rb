@@ -28,6 +28,15 @@ class StoriesController < ApplicationController
     @story = Story.new(story_params)
     @story.user = current_user
     if @story.save
+      params[:story][:categories].each do |category_id|
+        unless category_id == "" || Category.find(category_id).nil?
+          @tag = StoryCategory.new
+          @tag.category = Category.find(category_id)
+          @tag.story = @story
+          @tag.save
+        end
+        byebug
+      end
       redirect_to story_path(@story)
     else
       render :new
@@ -46,6 +55,6 @@ class StoriesController < ApplicationController
   end
 
   def story_params
-    params.require(:story).permit(:title, :description)
+    params.require(:story).permit(:title, :description, :categories)
   end
 end
