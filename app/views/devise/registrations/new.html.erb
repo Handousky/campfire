@@ -1,20 +1,25 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :nickname, required: true, autofocus: true %>
-    <%= f.input :bio, required: false %>
-    <%= f.input :email, required: true %>
-    <%= f.input :photo, as: :attachinary %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-login">
+        <h2>Sign up</h2>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :nickname, required: true, autofocus: true, placeholder: "example: Robinthekilla93" %>
+            <%= f.input :bio, required: false, placeholder: "Let us know what kind of camper you are." %>
+            <%= f.input :email, required: true, placeholder: "booaah@gmail.com" %>
+            <%= f.input :photo, as: :attachinary %>
+            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), placeholder: "*******" %>
+            <%= f.input :password_confirmation, required: true, placeholder: "*******" %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
