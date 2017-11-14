@@ -2,9 +2,10 @@
 
 <p><%= link_to "Create new slide", new_story_slide_path(@story) %></p>
 
+
 <% @slides.each do |slide| %>
   <h2><%= slide.x_axis %> / <%= slide.y_axis %></h2>
   <p><%= slide.narration %></p>
-  <%= link_to "Edit", edit_slide_path(slide), class: 'btn btn-warning btn-sm' %>
-  <%= link_to "Delete", slide_path(slide), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure? You won\'t be able to restore it!'} %>
+  <%= link_to "Edit", edit_story_slide_path(@story, slide), class: 'btn btn-warning btn-sm' %>
+  <%= link_to "Delete", story_slide_path(@story, slide), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure? You won\'t be able to restore it!'} %>
 <% end %>
