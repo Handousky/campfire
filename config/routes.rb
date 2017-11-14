@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :stories do
-    resources :slides
+    resources :slides, except: [:show]
+    get '/slides/:x/:y', to: 'slides#show'
   end
 
   root to: 'pages#home'
