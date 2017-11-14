@@ -3,6 +3,6 @@ class Story < ApplicationRecord
   has_many :story_categories, dependent: :destroy
   has_many :categories, trough: :story_category
 
-  validates :title, presence: true, uniqueness: true, length: { min: 3, max: 40 }
-  validates :description, presence: true, length: { min: 40, max: 280 }
+  validates :title, presence: true, uniqueness: true, length: { minimum: 3, maximum: 40 }
+  validates :description, presence: true, length: { minimum: 40, maximum: 280 }
 end
