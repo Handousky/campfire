@@ -1,11 +1,41 @@
-<h1 class="text text-center">CAMPFIRE</h1>
+<div id="overlay" class="cover blur-in">
+  <div class="content">
+    <h1 class="text text-center">CAMPFIRE</h1>
 
-<!-- We need to change the paths once they are created -->
-<%= link_to "Write a Story", new_user_registration_path %>
-  <%= image_tag "arrow-left.png" %>
+    <!-- We need to change the paths once they are created -->
+    <%= link_to "Write a Story", new_user_registration_path %>
+      <%= image_tag "arrow-left.png" %>
 
-<%= link_to "Read a Story", new_user_registration_path %>
-  <%= image_tag "arrow-right.png" %>
+    <%= link_to "Read a Story", new_user_registration_path %>
+      <%= image_tag "arrow-right.png" %>
 
 
-<h2 class="text text-center">Interactive Horror Stories</h2>
+    <h2 class="text text-center">Interactive Horror Stories</h2>
+  </div>
+</div>
+
+<div class="row pop-up">
+  <div class="box small-6 large-centered">
+    <a href="#" class="close-button">&#10006;</a>
+    <h3>WELCOME</h3>
+    <p>Use headphones for a better experience!</p>
+  </div>
+</div>
+
+<% content_for (:afterjs) do %>
+  <script>
+    $(function() {
+      $('.pop-up').hide();
+      $('.pop-up').fadeIn(1000);
+
+          $('.close-button').click(function (e) {
+
+          $('.pop-up').fadeOut(700);
+          $('#overlay').removeClass('blur-in');
+          $('#overlay').addClass('blur-out');
+          e.stopPropagation();
+
+        });
+     });
+  </script>
+<% end %>
