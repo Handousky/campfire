@@ -1,5 +1,5 @@
 class SlidesController < ApplicationController
-  before_action :set_slide, only: [:show, :edit, :update, :destroy]
+  before_action :set_slide, only: [:edit, :update, :destroy]
 
   def index
     @story = Story.find(params[:story_id])
@@ -7,6 +7,8 @@ class SlidesController < ApplicationController
   end
 
   def show
+    @story = Story.find(params[:story_id])
+    @slide = Slide.find_by(x_axis: params[:x], y_axis: params[:y], story: @story)
   end
 
   def new
@@ -18,7 +20,7 @@ class SlidesController < ApplicationController
     @slide = Slide.new(slides_params)
     @slide.story = Story.find(params[:story_id])
     if @slide.save
-      redirect_to slides_path
+      redirect_to story_slides_path(@slide.story)
     else
       render :new
     end
@@ -29,15 +31,15 @@ class SlidesController < ApplicationController
 
   def update
     if @slide.update(slide_params)
-      redirect_to slide_path(@slide)
+      redirect_to story_slide_path(@slide.story, @slide)
     else
-      render :new
+      render :edit
     end
   end
 
   def destroy
-    @story.destroy
-    redirect_to slides_path
+    @slide.destroy
+    redirect_to story_slides_path(@slide.story)
   end
 
   private
@@ -47,6 +49,6 @@ class SlidesController < ApplicationController
   end
 
   def slides_params
-    params.require(:slide).permit(:narration)
+    params.require(:slide).permit(:narration, :x_axis, :y_axis)
   end
 end
