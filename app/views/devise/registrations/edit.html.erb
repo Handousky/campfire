@@ -7,6 +7,7 @@
     <%= f.input :nickname, required: true, autofocus: true %>
     <%= f.input :bio, required: false %>
     <%= f.input :email, required: true %>
+    <%= f.input :photo, as: :attachinary %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
