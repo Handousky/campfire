@@ -1,0 +1,6 @@
+<%= simple_form_for(@story) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :title, label: "Story's title", placeholder: "Super Creepy Story" %>
+  <%= f.input :description, label: "Short summary", placeholder: "It's super creepy" %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

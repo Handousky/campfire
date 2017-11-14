@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :stories
   root to: 'pages#home'
 
   get '/dashboard', to: 'user#dashboard'
