@@ -2,5 +2,12 @@
   <%= f.error_notification %>
   <%= f.input :title, label: "Story's title", placeholder: "Super Creepy Story" %>
   <%= f.input :description, label: "Short summary", placeholder: "It's super creepy" %>
+  <% Category.all.each do |category| %>
+  <span class="checkbox">
+    <label for="story_categories_<%= category.id %>">
+      <input class="check_boxes optional" type="checkbox" value="<%= category.id %>" name="story[categories][]" id="story_categories_<%= category.id %>" <%= 'checked'.html_safe if @categories.include?(category) %>><%= category.name %>
+    </label>
+  </span>
+  <% end %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
