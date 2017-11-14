@@ -1,5 +1,7 @@
 <h2>Hello World</h2>
 
+<p><%= link_to "Create a story", new_story_path %></p>
+
 <% @stories.each do |story| %>
   <h2><%= story.title %></h2>
   <p><%= story.description %></p>
@@ -7,4 +9,5 @@
   <%= link_to "Edit", edit_story_path(story), class: 'btn btn-warning btn-sm' %>
   <%= link_to "Delete", story_path(story), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure? You won\'t be able to restore it!'} %>
 <% end %>
-<p><%= link_to "Create a story", new_story_path %></p>
+
+

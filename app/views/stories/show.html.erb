@@ -1,2 +1,9 @@
-<h2><%= @story.title %> - <%= @story.description %></h2>
+<h2><%= @story.title %></h2>
+<p><%= @story.description %></p>
+<br>
+<p>
+  <% @story.categories.each do |category| %>
+    <%= category.name %> -
+  <% end %>
+</p>
 <%= link_to 'Back', stories_path %>
