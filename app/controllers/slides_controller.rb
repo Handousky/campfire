@@ -2,7 +2,8 @@ class SlidesController < ApplicationController
   before_action :set_slide, only: [:show, :edit, :update, :destroy]
 
   def index
-    @slides = Story.find(params[:story_id]).slides
+    @story = Story.find(params[:story_id])
+    @slides = @story.slides
   end
 
   def show
