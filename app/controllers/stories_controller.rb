@@ -10,6 +10,7 @@ class StoriesController < ApplicationController
   end
 
   def edit
+    @categories = @story.categories
   end
 
   def update
@@ -22,6 +23,7 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
+    @categories = []
   end
 
   def create
@@ -35,7 +37,6 @@ class StoriesController < ApplicationController
           @tag.story = @story
           @tag.save
         end
-        byebug
       end
       redirect_to story_path(@story)
     else
