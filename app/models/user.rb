@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   has_many :stories, dependent: :destroy
 
-  validates :nickname, presence: true, uniqueness: true, length: { max: 20 }
+  validates :nickname, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true
-  validates :bio, length: { max: 512 }
+  validates :bio, length: { maximum: 512 }
 end
