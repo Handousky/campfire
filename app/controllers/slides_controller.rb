@@ -1,5 +1,6 @@
 class SlidesController < ApplicationController
   before_action :set_slide, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:show]
 
   def index
     @story = Story.find(params[:story_id])

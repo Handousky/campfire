@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @stories = Story.all
@@ -33,7 +34,7 @@ class StoriesController < ApplicationController
     if @story.save
       create_tags(@story)
       Slide.create(x_axis: 0, y_axis: 0, story: @story)
-      redirect_to story_path(@story)
+      redirect_to edit_story_slide_path(@story, @slide)
     else
       render :new
     end
