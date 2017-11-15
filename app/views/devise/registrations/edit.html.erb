@@ -11,6 +11,7 @@
             <%= f.input :nickname, required: true, autofocus: true, placeholder: "example: Robinthekilla93" %>
             <%= f.input :bio, required: false, placeholder: "Let us know what kind of camper you are." %>
             <%= f.input :email, required: true, placeholder: "booaah@gmail.com" %>
+            <%= f.input :photo, as: :attachinary %>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>

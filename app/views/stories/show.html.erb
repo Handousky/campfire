@@ -1,5 +1,8 @@
 <h2><%= @story.title %></h2>
 <p><%= @story.description %></p>
+<% if @story.photo? %>
+  <%= cl_image_tag @story.photo.path, width: 200, height: 300, crop: :fill %>
+<% end %>
 <br>
 <p>
   <% @story.categories.each do |category| %>
@@ -9,4 +12,4 @@
 
 <%= link_to "Slides", story_slides_path(@story) %>
 
-<%= link_to 'Back', stories_path %>
+<p><%= link_to 'Back', stories_path %></p>

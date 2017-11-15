@@ -9,6 +9,7 @@
             <%= f.input :nickname, required: true, autofocus: true, placeholder: "example: Robinthekilla93" %>
             <%= f.input :bio, required: false, placeholder: "Let us know what kind of camper you are." %>
             <%= f.input :email, required: true, placeholder: "booaah@gmail.com" %>
+            <%= f.input :photo, as: :attachinary %>
             <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), placeholder: "*******" %>
             <%= f.input :password_confirmation, required: true, placeholder: "*******" %>
           </div>
@@ -17,7 +18,7 @@
           </div>
         <% end %>
         <%= render "devise/shared/links" %>
-        </div>
+      </div>
     </div>
   </div>
 </div>
