@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :render_footers
 
   def index
     @stories = Story.all
@@ -44,6 +45,10 @@ class StoriesController < ApplicationController
   end
 
   private
+
+  def render_footers
+    @footers = true
+  end
 
   def create_tags(story)
     params[:story][:categories].each do |category_id|

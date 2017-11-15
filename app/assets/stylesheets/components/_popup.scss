@@ -13,10 +13,10 @@
 }
 
 .blur-out {
-  -webkit-animation: blur-out 4s forwards;
-  -moz-animation: blur-out 4s forwards;
-  -o-animation: blur-out 4s forwards;
-  animation: blur-out 4s forwards;
+  -webkit-animation: blur-out 3s forwards;
+  -moz-animation: blur-out 3s forwards;
+  -o-animation: blur-out 3s forwards;
+  animation: blur-out 3s forwards;
 }
 
 @-webkit-keyframes blur {
@@ -182,11 +182,11 @@ span {
 }
 
 .box {
-  background-color: whitesmoke;
+  background-color: black;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
+  margin-top: 50%;
   position: relative;
   -webkit-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);
   -moz-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);

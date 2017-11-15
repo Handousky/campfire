@@ -1,28 +1,25 @@
 <div id="page">
   <div id="overlay" class="cover blur-in">
-    <!-- <div class="content"> -->
-      <h1 contenteditable data-heading="Power" class="power">Power</h1>
 
-      <div class="rowmainlinks">
-        <%= link_to new_story_path do %>
-          <%= image_tag "arrow-left.png" %><p id="breakThrough" class="break-through" onclick="shakeThrough()">Write a Story</p>
-        <% end %>
+    <h1 data-heading="Campfire" class="campfire">Campfire</h1>
 
-        <%= link_to stories_path do %>
-          <p id="breakThrough" class="break-through" onclick="shakeThrough()">Read a Story </p><%= image_tag "arrow-right.png" %>
-        <% end %>
-      </div>
+    <%= link_to new_story_path, class: "left-arrow" do %>
+      <%= image_tag "arrow-left.png" %><p id="breakThrough" class="break-through" onclick="shakeThrough()">Write a Story</p>
+    <% end %>
 
+    <%= link_to stories_path, class: "right-arrow" do %>
+      <p id="breakThrough" class="break-through" onclick="shakeThrough()">Read a Story</p><%= image_tag "arrow-right.png" %>
+    <% end %>
+
+    <div class="homefooter">
+      <p class="text-center">You can use your keyboard arrows  <%= image_tag "keyboard-arrows.png" %> to navigate through CAMPFIRE.</p>
       <h2 class="text text-center">Interactive Horror Stories</h2>
-    <!-- </div> -->
-
-
+    </div>
   </div>
 
   <div class="row pop-up">
-    <div class="box small-6 large-centered">
-      <h3>WELCOME</h3>
-      <p>Use headphones and turn up the volume for a better experience! <br> You should use your keyboard arrows <%= image_tag "keyboard-arrows.png" %> to navigate through Campfire. </p>
+    <div class="box small-6 large-centered" id="popupbox">
+      <p>Use headphones and turn up the volume for a better experience!</p>
     </div>
   </div>
 </div>
