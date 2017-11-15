@@ -1,6 +1,7 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
   before_action :render_footers
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @stories = Story.all

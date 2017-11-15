@@ -1,6 +1,6 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <%= link_to stories_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png" %>
   <% end %>
 
@@ -13,9 +13,7 @@
 
       <!-- Links when logged in -->
       <button class="searchTab" tabindex="0" aria-label="Search" data-reactid="16"><span class="icon-search" data-reactid="17"></span><span class="label" data-reactid="18">Search</span></button>
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <!-- to add something in the navbar, add a link_to helper, with class:"navbar-wagon-item navbar-wagon-link" for styling -->
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
