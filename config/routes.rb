@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
   devise_for :users
-  resources :stories
+
+  resources :stories do
+    resources :slides
+  end
+
   root to: 'pages#home'
 
   get '/dashboard', to: 'user#dashboard'
