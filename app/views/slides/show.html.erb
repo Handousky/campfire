@@ -3,9 +3,34 @@
     <p>
       <%= @slide.narration %>
     </p>
-    <%= link_to "Up", story_slide_path(@story, @up_slide)       unless @up_slide.nil?%>
-    <%= link_to "Down", story_slide_path(@story, @down_slide)   unless @down_slide.nil?%>
-    <%= link_to "Left", story_slide_path(@story, @left_slide)   unless @left_slide.nil?%>
-    <%= link_to "Right", story_slide_path(@story, @right_slide) unless @right_slide.nil?%>
+    <% unless @up_slide.nil? %>
+      <%= link_to "Up",   story_slide_path(@story, @up_slide), id: "up"%>
+    <% end %>
+    <% unless @down_slide.nil? %>
+      <%= link_to "Down", story_slide_path(@story, @down_slide), id: "down" %>
+    <% end %>
+    <% unless @left_slide.nil? %>
+      <%= link_to "Left", story_slide_path(@story, @left_slide), id: "left"  %>
+    <% end %>
+    <% unless @right_slide.nil? %>
+      <%= link_to "Right",story_slide_path(@story, @right_slide), id: "right" %>
+    <% end %>
+
   </div>
 </div>
+
+
+<script>
+  document.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 37) {
+      document.getElementById("left").click();
+    } else if (event.keyCode === 38) {
+      document.getElementById("up").click();
+    } else if (event.keyCode === 39) {
+      document.getElementById("right").click();
+    } else if (event.keyCode === 40) {
+      document.getElementById("down").click();
+    }
+  });
+</script>
