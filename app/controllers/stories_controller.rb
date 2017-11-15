@@ -33,7 +33,8 @@ class StoriesController < ApplicationController
     if @story.save
       create_tags(@story)
       Slide.create(x_axis: 0, y_axis: 0, story: @story)
-      redirect_to story_path(@story)
+      @slide = Slide.find_by(x_axis: 0, y_axis: 0, story: @story)
+      redirect_to edit_story_slide_path(@story, @slide)
     else
       render :new
     end
