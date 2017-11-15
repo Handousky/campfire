@@ -1,19 +1,21 @@
-<div class="container">
-  <p>
-    <%= @slide.narration %>
-  </p>
-  <% unless @up_slide.nil? %>
-    <%= link_to "Up",   story_slide_path(@story, @up_slide), id: "up"%>
-  <% end %>
-  <% unless @down_slide.nil? %>
-    <%= link_to "Down", story_slide_path(@story, @down_slide), id: "down" %>
-  <% end %>
-  <% unless @left_slide.nil? %>
-    <%= link_to "Left", story_slide_path(@story, @left_slide), id: "left"  %>
-  <% end %>
-  <% unless @right_slide.nil? %>
-    <%= link_to "Right",story_slide_path(@story, @right_slide), id: "right" %>
-  <% end %>
+<div class="slide-wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @slide.photo.path if @slide.photo? %>')">
+  <div class="container">
+    <p>
+      <%= @slide.narration %>
+    </p>
+    <% unless @up_slide.nil? %>
+      <%= link_to "Up",   story_slide_path(@story, @up_slide), id: "up"%>
+    <% end %>
+    <% unless @down_slide.nil? %>
+      <%= link_to "Down", story_slide_path(@story, @down_slide), id: "down" %>
+    <% end %>
+    <% unless @left_slide.nil? %>
+      <%= link_to "Left", story_slide_path(@story, @left_slide), id: "left"  %>
+    <% end %>
+    <% unless @right_slide.nil? %>
+      <%= link_to "Right",story_slide_path(@story, @right_slide), id: "right" %>
+    <% end %>
+  </div>
 </div>
 
 
