@@ -53,6 +53,6 @@ class SlidesController < ApplicationController
   end
 
   def slides_params
-    params.require(:slide).permit(:narration, :x_axis, :y_axis)
+    params.require(:slide).permit(:narration, :x_axis, :y_axis, :photo)
   end
 end
