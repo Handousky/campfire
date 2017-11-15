@@ -1,5 +1,5 @@
 class SlidesController < ApplicationController
-  before_action :set_slide, only: [:edit, :update, :destroy]
+  before_action :set_slide, only: [:show, :edit, :update, :destroy]
 
   def index
     @story = Story.find(params[:story_id])
@@ -8,7 +8,11 @@ class SlidesController < ApplicationController
 
   def show
     @story = Story.find(params[:story_id])
-    @slide = Slide.find_by(x_axis: params[:x], y_axis: params[:y], story: @story)
+    @up_slide = Slide.find_by(x_axis: @slide.x_axis, y_axis: (@slide.y_axis - 1), story: @story) || nil
+    @down_slide = Slide.find_by(x_axis: @slide.x_axis, y_axis: (@slide.y_axis + 1), story: @story) || nil
+    @left_slide = Slide.find_by(x_axis: (@slide.x_axis - 1), y_axis: @slide.y_axis, story: @story) || nil
+    @right_slide = Slide.find_by(x_axis: (@slide.x_axis + 1), y_axis: @slide.y_axis, story: @story) || nil
+
   end
 
   def new

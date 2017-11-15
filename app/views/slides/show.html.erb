@@ -2,8 +2,8 @@
   <p>
     <%= @slide.narration %>
   </p>
-  <%= link_to "Up", story_slide_path(@story, @slide.x_axis, (@slide.y_axis + 1)) %>
-  <%= link_to "Down", story_slide_path(@story, @slide.x_axis, (@slide.y_axis - 1)) %>
-  <%= link_to "Left", story_slide_path(@story, (@slide.x_axis - 1), @slide.y_axis) %>
-  <%= link_to "Right", story_slide_path(@story, (@slide.x_axis + 1), @slide.y_axis) %>
+  <%= link_to "Up", story_slide_path(@story, @up_slide)       unless @up_slide.nil?%>
+  <%= link_to "Down", story_slide_path(@story, @down_slide)   unless @down_slide.nil?%>
+  <%= link_to "Left", story_slide_path(@story, @left_slide)   unless @left_slide.nil?%>
+  <%= link_to "Right", story_slide_path(@story, @right_slide) unless @right_slide.nil?%>
 </div>
