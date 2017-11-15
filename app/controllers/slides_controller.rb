@@ -34,7 +34,7 @@ class SlidesController < ApplicationController
   end
 
   def update
-    if @slide.update(slide_params)
+    if @slide.update(slides_params)
       redirect_to story_slide_path(@slide.story, @slide)
     else
       render :edit

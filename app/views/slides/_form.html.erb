@@ -1,6 +1,3 @@
-<% @slide = @slide.nil? ? Slide.new : @slide %>
-<% @story = @story.nil? ? Story.find(params[:story_id]) : @story %>
-
 <%= simple_form_for([@story, @slide]) do |f| %>
   <%= f.error_notification %>
   <%= f.input :narration, label: "Narrative", placeholder: "Once upon a time in a creep hospital" %>
