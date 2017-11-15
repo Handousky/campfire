@@ -1,6 +1,7 @@
 <% @story = @story.nil? ? Story.find(params[:story_id]) : @story %>
 
 <h2 class="text-center">Slide <%= @slide.x_axis %>x<%= @slide.y_axis %></h2>
+<p class="text-center"><%= link_to "Test", story_slide_path(@story, @slide) %></p>
 <div class="container">
   <div class="edit">
     <%= render 'edit_form' %>
