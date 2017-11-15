@@ -5,3 +5,8 @@ body {
   min-height: calc(100vh + 60px);
   padding-bottom: 60px;   /* Height of the footer */
 }
+
+.slide-wrapper {
+  height: 100vh;
+  background-size: cover;
+}

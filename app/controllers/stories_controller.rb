@@ -32,6 +32,7 @@ class StoriesController < ApplicationController
     @story.user = current_user
     if @story.save
       create_tags(@story)
+      Slide.create(x_axis: 0, y_axis: 0, story: @story)
       redirect_to story_path(@story)
     else
       render :new
