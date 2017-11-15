@@ -1,11 +1,43 @@
-<h1 class="text text-center">CAMPFIRE</h1>
+<div id="page">
+  <div id="overlay" class="cover blur-in">
 
-<!-- We need to change the paths once they are created -->
-<%= link_to "Write a Story", new_user_registration_path %>
-  <%= image_tag "arrow-left.png" %>
+    <h1 data-heading="Campfire" class="campfire">Campfire</h1>
 
-<%= link_to "Read a Story", new_user_registration_path %>
-  <%= image_tag "arrow-right.png" %>
+    <%= link_to new_story_path, class: "left-arrow" do %>
+      <%= image_tag "arrow-left.png" %><p id="breakThrough" class="break-through" onclick="shakeThrough()">Write a Story</p>
+    <% end %>
 
+    <%= link_to stories_path, class: "right-arrow" do %>
+      <p id="breakThrough" class="break-through" onclick="shakeThrough()">Read a Story</p><%= image_tag "arrow-right.png" %>
+    <% end %>
 
-<h2 class="text text-center">Interactive Horror Stories</h2>
+    <div class="homefooter">
+      <p class="text-center">You can use your keyboard arrows  <%= image_tag "keyboard-arrows.png" %> to navigate through CAMPFIRE.</p>
+      <h2 class="text text-center">Interactive Horror Stories</h2>
+    </div>
+  </div>
+
+  <div class="row pop-up">
+    <div class="box small-6 large-centered" id="popupbox">
+      <p>Use headphones and turn up the volume for a better experience!</p>
+    </div>
+  </div>
+</div>
+
+<% content_for (:afterjs) do %>
+  <script>
+    $(function() {
+      $('.pop-up').hide();
+      $('.pop-up').fadeIn(1000);
+
+          $('#page').click(function (e) {
+
+          $('.pop-up').fadeOut(700);
+          $('#overlay').removeClass('blur-in');
+          $('#overlay').addClass('blur-out');
+          e.stopPropagation();
+
+        });
+     });
+  </script>
+<% end %>
