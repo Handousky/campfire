@@ -9,6 +9,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
+    @first_slide = @story.slides.first
   end
 
   def edit

@@ -10,6 +10,10 @@
   <% end %>
 </p>
 
-<%= link_to "Read the story", story_slides_path(@story) %>
+<%= link_to "Slides Index", story_slides_path(@story) %>
+<% if @first_slide != nil %>
+<%= link_to "first Slide of story", edit_story_slide_path(@story, @first_slide) %>
+<% end %>
+
 
 <p><%= link_to 'Back', stories_path %></p>
