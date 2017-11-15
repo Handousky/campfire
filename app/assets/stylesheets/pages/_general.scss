@@ -5,3 +5,12 @@ body {
   min-height: calc(100vh + 60px);
   padding-bottom: 60px;   /* Height of the footer */
 }
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+}

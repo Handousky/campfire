@@ -3,3 +3,40 @@
   display: flex;
   justify-content: space-between;
 }
+
+.break-through {
+  display: inline-block;
+  font-family: "Shadows Into Light", cursive;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.break-through:hover {
+  cursor: pointer;
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+.shake { //to call javascript
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(3px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-3px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(2px, 0, 0);
+  }
+}

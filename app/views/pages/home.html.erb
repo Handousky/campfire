@@ -5,16 +5,18 @@
 
       <div class="rowmainlinks">
         <%= link_to new_story_path do %>
-          <%= image_tag "arrow-left.png" %> Write a Story
+          <%= image_tag "arrow-left.png" %><p id="breakThrough" class="break-through" onclick="shakeThrough()">Write a Story</p>
         <% end %>
 
         <%= link_to stories_path do %>
-          Read a Story <%= image_tag "arrow-right.png" %>
+          <p id="breakThrough" class="break-through" onclick="shakeThrough()">Read a Story </p><%= image_tag "arrow-right.png" %>
         <% end %>
       </div>
 
       <h2 class="text text-center">Interactive Horror Stories</h2>
     <!-- </div> -->
+
+
   </div>
 
   <div class="row pop-up">
