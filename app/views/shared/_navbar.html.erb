@@ -9,6 +9,8 @@
 
     <% if user_signed_in? %>
 
+    <% current_user.photo? ? avatar_url = current_user.photo.path : avatar_url = "http://placehold.it/30x30" %>
+
       <!-- Links when logged in -->
       <button class="searchTab" tabindex="0" aria-label="Search" data-reactid="16"><span class="icon-search" data-reactid="17"></span><span class="label" data-reactid="18">Search</span></button>
       <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
@@ -18,16 +20,16 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <%= cl_image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <%= link_to dashboard_path do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Dashboard") %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+              <%= link_to edit_user_registration_path do %>
+                <i class="fa fa-cog"></i>  <%= t(".profile", default: "Settings") %>
               <% end %>
             </li>
             <li>

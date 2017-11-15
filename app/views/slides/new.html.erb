@@ -1,0 +1,5 @@
+<% @story = @story.nil? ? Story.find(params[:story_id]) : @story %>
+
+<h2 class="text-center">New Slide</h2>
+<%= render 'form' %>
+<%= link_to 'Back', :back %>
