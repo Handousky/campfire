@@ -1,5 +1,5 @@
 class SlidesController < ApplicationController
-  before_action :set_slide, only: [:show, :edit, :update, :destroy]
+  before_action :set_slide, only:     [:show, :edit, :update, :destroy]
 
   def index
     @story = Story.find(params[:story_id])
@@ -7,38 +7,25 @@ class SlidesController < ApplicationController
   end
 
   def show
-    @story = Story.find(params[:story_id])
-    @up_slide = Slide.find_by(x_axis: @slide.x_axis, y_axis: (@slide.y_axis - 1), story: @story) || nil
-    @down_slide = Slide.find_by(x_axis: @slide.x_axis, y_axis: (@slide.y_axis + 1), story: @story) || nil
-    @left_slide = Slide.find_by(x_axis: (@slide.x_axis - 1), y_axis: @slide.y_axis, story: @story) || nil
-    @right_slide = Slide.find_by(x_axis: (@slide.x_axis + 1), y_axis: @slide.y_axis, story: @story) || nil
-
-  end
-
-  def new
-    @slide = Slide.new
-    @story = Story.find(params[:story_id])
+    set_adjacents(@slide)
   end
 
   def create
-    @slide = Slide.new(slides_params)
+    @slide = Slide.new(slides_coords)
     @slide.story = Story.find(params[:story_id])
-    if @slide.save
-      redirect_to story_slides_path(@slide.story)
-    else
-      render :new
-    end
+    @slide.save
+    set_adjacents(@slide)
+    redirect_to edit_story_slide_path(@slide.story, @slide)
   end
 
   def edit
+    set_adjacents(@slide)
   end
 
   def update
-    if @slide.update(slides_params)
-      redirect_to story_slide_path(@slide.story, @slide)
-    else
-      render :edit
-    end
+    @slide.update(slides_params)
+    set_adjacents(@slide)
+    render :edit
   end
 
   def destroy
@@ -50,9 +37,21 @@ class SlidesController < ApplicationController
 
   def set_slide
     @slide = Slide.find(params[:id])
+    @story = Story.find(params[:story_id])
+  end
+
+  def set_adjacents(slide)
+    @up_slide = Slide.find_by(x_axis: slide.x_axis, y_axis: (slide.y_axis + 1), story: @story) || nil
+    @down_slide = Slide.find_by(x_axis: slide.x_axis, y_axis: (slide.y_axis - 1), story: @story) || nil
+    @left_slide = Slide.find_by(x_axis: (slide.x_axis - 1), y_axis: slide.y_axis, story: @story) || nil
+    @right_slide = Slide.find_by(x_axis: (slide.x_axis + 1), y_axis: slide.y_axis, story: @story) || nil
   end
 
   def slides_params
-    params.require(:slide).permit(:narration, :x_axis, :y_axis)
+    params.require(:slide).permit(:narration, :photo)
+  end
+
+  def slides_coords
+    params.require(:slide).permit(:x_axis, :y_axis)
   end
 end

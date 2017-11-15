@@ -1,5 +1,34 @@
 <% @story = @story.nil? ? Story.find(params[:story_id]) : @story %>
 
-<h2 class="text-center">Update Slide</h2>
-<%= render 'form' %>
-<%= link_to 'Back', :back %>
+<h2 class="text-center">Slide <%= @slide.x_axis %>x<%= @slide.y_axis %></h2>
+<p class="text-center"><%= link_to "Test", story_slide_path(@story, @slide) %></p>
+<div class="container">
+  <div class="edit">
+    <%= render 'edit_form' %>
+  </div>
+
+  <% if @up_slide %>
+    <%= link_to "^", edit_story_slide_path(@story, @up_slide) %> <br>
+  <% else %>
+    Up <%= render 'new_form', x: @slide.x_axis, y: (@slide.y_axis + 1) %>
+  <% end %>
+
+  <% if @down_slide %>
+    <%= link_to "v", edit_story_slide_path(@story, @down_slide) %> <br>
+  <% else %>
+    Down <%= render 'new_form', x: @slide.x_axis, y: (@slide.y_axis - 1) %>
+  <% end %>
+
+  <% if @left_slide %>
+    <%= link_to "<", edit_story_slide_path(@story, @left_slide) %> <br>
+  <% else %>
+    Left <%= render 'new_form', x: (@slide.x_axis - 1), y: @slide.y_axis %>
+  <% end %>
+
+  <% if @right_slide %>
+    <%= link_to ">", edit_story_slide_path(@story, @right_slide) %> <br>
+  <% else %>
+    Right <%= render 'new_form', x: (@slide.x_axis + 1), y: @slide.y_axis %>
+  <% end %>
+</div>
+

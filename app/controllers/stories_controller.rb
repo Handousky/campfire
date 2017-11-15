@@ -33,7 +33,12 @@ class StoriesController < ApplicationController
     @story.user = current_user
     if @story.save
       create_tags(@story)
-      redirect_to story_path(@story)
+      if Slide.create(x_axis: 0, y_axis: 0, story: @story)
+        @slide = Slide.find_by(x_axis: 0, y_axis: 0, story: @story)
+        redirect_to edit_story_slide_path(@story, @slide)
+      else
+        render :new
+      end
     else
       render :new
     end
@@ -51,6 +56,7 @@ class StoriesController < ApplicationController
   end
 
   def create_tags(story)
+    return if params[:story][:categories].nil?
     params[:story][:categories].each do |category_id|
       unless category_id == "" || Category.find(category_id).nil? || StoryCategory.find_by(story: story, category: Category.find(category_id))
         @tag = StoryCategory.new
