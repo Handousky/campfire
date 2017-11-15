@@ -1,2 +1,5 @@
 <h2><%= @story.title %> - <%= @story.description %></h2>
-<%= link_to 'Back', stories_path %>
+<% if @story.photo? %>
+  <%= cl_image_tag @story.photo.path, width: 200, height: 300, crop: :fill %>
+<% end %>
+<p><%= link_to 'Back', stories_path %></p>

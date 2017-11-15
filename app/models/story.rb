@@ -1,4 +1,5 @@
 class Story < ApplicationRecord
+  has_attachment :photo
   belongs_to :user
   has_many :story_categories, dependent: :destroy
   has_many :categories, through: :story_categories

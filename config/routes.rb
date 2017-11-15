@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  mount Attachinary::Engine => "/attachinary"
+
   devise_for :users
   resources :stories
   root to: 'pages#home'

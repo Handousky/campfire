@@ -2,6 +2,7 @@
   <%= f.error_notification %>
   <%= f.input :title, label: "Story's title", placeholder: "Super Creepy Story" %>
   <%= f.input :description, label: "Short summary", placeholder: "It's super creepy" %>
+  <%= f.input :photo, as: :attachinary %>
   <% Category.all.each do |category| %>
   <span class="checkbox">
     <label for="story_categories_<%= category.id %>">
