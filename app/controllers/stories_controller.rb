@@ -1,14 +1,15 @@
 class StoriesController < ApplicationController
-  before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_story, only: [:show, :edit, :update, :destroy, :publish]
   before_action :render_footers
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @stories = Story.all
+    @stories = Story.where(published: true)
   end
 
   def show
     @story = Story.find(params[:id])
+    @first_slide = @story.slides.first
   end
 
   def edit
@@ -38,6 +39,7 @@ class StoriesController < ApplicationController
         @slide = Slide.find_by(x_axis: 0, y_axis: 0, story: @story)
         redirect_to edit_story_slide_path(@story, @slide)
       else
+        flash[:alert] = "Something went wrong while creating the first slide..."
         render :new
       end
     else
@@ -50,11 +52,12 @@ class StoriesController < ApplicationController
     redirect_to stories_path
   end
 
-  private
-
-  def render_footers
-    @footers = true
+  def publish
+    @story.update(published: @story.published ? false : true)
+    redirect_to :back
   end
+
+  private
 
   def create_tags(story)
     return if params[:story][:categories].nil?

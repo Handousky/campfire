@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :slides
   end
 
+  post '/publish/:id', to: 'stories#publish'
+
   root to: 'pages#home'
 
   get '/dashboard', to: 'user#dashboard'

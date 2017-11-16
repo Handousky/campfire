@@ -1,11 +1,35 @@
+.up-arrow {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.down-arrow {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .left-arrow {
   position: absolute;
+  display: flex;
+  align-items: center;
   left: 0;
-  top: 50%;
+  top: 0;
+  bottom: 0;
 }
 
 .right-arrow {
   position: absolute;
+  display: flex;
+  align-items: center;
   right: 0;
-  top: 50%;
+  top: 0;
+  bottom: 0;
 }

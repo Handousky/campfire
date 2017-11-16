@@ -11,12 +11,17 @@
     <%= yield :aftercss %>
   </head>
   <body>
+
     <%= render 'shared/navbar' if @footers %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+    <%= render 'shared/footer' if @footers %>
+
+    <!-- Scripts -->
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
     <%= javascript_include_tag 'application' %>
     <%= yield (:afterjs) %>
     <%= cloudinary_js_config %>
-    <%= render 'shared/footer' if @footers %>
+
   </body>
 </html>

@@ -1,11 +1,12 @@
 class SlidesController < ApplicationController
-
   before_action :set_slide, only: [:show, :edit, :update, :destroy]
+  before_action :render_footers, only: [:index]
   skip_before_action :authenticate_user!, only: [:show]
 
   def index
     @story = Story.find(params[:story_id])
     @slides = @story.slides
+    @first_slide = @story.slides.first
   end
 
   def show
@@ -40,6 +41,7 @@ class SlidesController < ApplicationController
   def set_slide
     @slide = Slide.find(params[:id])
     @story = Story.find(params[:story_id])
+    @first_slide = @story.slides.first
   end
 
   def set_adjacents(slide)

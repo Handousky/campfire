@@ -3,17 +3,23 @@
   <%= link_to stories_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png" %>
   <% end %>
+  <%= @story.title %>
+  <%= link_to "Read the story", story_slide_path(@story, @first_slide), class: 'btn btn-primary' %>
+  <%= link_to "Edit", edit_story_path(@story), class: 'btn btn-primary'%>
+  <%= link_to "Slides Index", story_slides_path(@story), class: 'btn btn-primary' %>
+  <%= link_to "/publish/#{@story.id}", method: :post, class: 'btn btn-warning' do %>
+    <%= @story.published ? "Private" : "Publish" %>
+  <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-  <%= link_to "Create a story", new_story_path, class: 'navbar-wagon-item navbar-wagon-link' %></p>
 
     <% if user_signed_in? %>
 
     <% current_user.photo? ? avatar_url = current_user.photo.path : avatar_url = "http://placehold.it/30x30" %>
 
       <!-- Links when logged in -->
-      <button class="searchTab" tabindex="0" aria-label="Search" data-reactid="16"><span class="icon-search" data-reactid="17"></span><span class="label" data-reactid="18">Search</span></button>
+
       <!-- to add something in the navbar, add a link_to helper, with class:"navbar-wagon-item navbar-wagon-link" for styling -->
 
       <!-- Avatar with dropdown menu -->

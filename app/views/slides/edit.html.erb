@@ -1,34 +1,82 @@
+<%= render 'navbar_slides' %>
+
 <% @story = @story.nil? ? Story.find(params[:story_id]) : @story %>
 
-<h2 class="text-center">Slide <%= @slide.x_axis %>x<%= @slide.y_axis %></h2>
-<p class="text-center"><%= link_to "Test", story_slide_path(@story, @slide) %></p>
-<div class="container">
-  <div class="edit">
-    <%= render 'edit_form' %>
+<div class="wrapper" style="position: relative; height: calc(100vh - 70px)">
+
+  <h2 class="text-center" style="margin-top: 0; padding-top: 80px">
+    Slide <%= @slide.x_axis %>x<%= @slide.y_axis %>
+    <%= link_to "Test", story_slide_path(@story, @slide), class: 'btn btn-danger btn-md' %>
+  </h2>
+
+  <div class="container">
+    <div class="edit text-center">
+      <%= render 'edit_form' %>
+    </div>
+
+    <div class="up-arrow">
+      <% if @up_slide %>
+        <%= link_to edit_story_slide_path(@story, @up_slide) do %>
+          <%= image_tag "arrow-up.png" %>
+        <% end %>
+      <% else %>
+        <%= render 'new_form', x: @slide.x_axis, y: (@slide.y_axis + 1) %>
+      <% end %>
+    </div>
+
+    <div class="left-arrow">
+      <% if @left_slide %>
+        <%= link_to edit_story_slide_path(@story, @left_slide) do %>
+          <%= image_tag "arrow-left.png" %>
+        <% end %>
+      <% else %>
+        <%= render 'new_form', x: (@slide.x_axis - 1), y: @slide.y_axis %>
+      <% end %>
+    </div>
+
+    <div class="right-arrow">
+      <% if @right_slide %>
+        <%= link_to edit_story_slide_path(@story, @right_slide) do %>
+          <%= image_tag "arrow-right.png" %>
+        <% end %>
+      <% else %>
+        <%= render 'new_form', x: (@slide.x_axis + 1), y: @slide.y_axis %>
+      <% end %>
+    </div>
+
+    <div class="down-arrow">
+    <% if @down_slide %>
+      <%= link_to edit_story_slide_path(@story, @down_slide) do %>
+        <%= image_tag "arrow-down.png" %>
+      <% end %>
+    <% else %>
+      <%= render 'new_form', x: @slide.x_axis, y: (@slide.y_axis - 1) %>
+    <% end %>
   </div>
-
-  <% if @up_slide %>
-    <%= link_to "^", edit_story_slide_path(@story, @up_slide) %> <br>
-  <% else %>
-    Up <%= render 'new_form', x: @slide.x_axis, y: (@slide.y_axis + 1) %>
-  <% end %>
-
-  <% if @down_slide %>
-    <%= link_to "v", edit_story_slide_path(@story, @down_slide) %> <br>
-  <% else %>
-    Down <%= render 'new_form', x: @slide.x_axis, y: (@slide.y_axis - 1) %>
-  <% end %>
-
-  <% if @left_slide %>
-    <%= link_to "<", edit_story_slide_path(@story, @left_slide) %> <br>
-  <% else %>
-    Left <%= render 'new_form', x: (@slide.x_axis - 1), y: @slide.y_axis %>
-  <% end %>
-
-  <% if @right_slide %>
-    <%= link_to ">", edit_story_slide_path(@story, @right_slide) %> <br>
-  <% else %>
-    Right <%= render 'new_form', x: (@slide.x_axis + 1), y: @slide.y_axis %>
-  <% end %>
+  </div>
 </div>
+
+<% content_for(:afterjs) do %>
+  <!-- Initialize Quill editor -->
+  <script>
+    let editor = new Quill('#editor-container', {
+      modules: {
+        toolbar: true
+      },
+      theme: 'snow'
+    });
+
+    editor.setContents(<%= @slide.narration.html_safe unless @slide.narration.nil? %>);
+
+    let slideID = "#edit_slide_" + "<%= j @slide.id.to_s %>";
+
+    $(slideID).submit(function() {
+      $('#narration').val(JSON.stringify(editor.getContents()));
+      return true; // return false to cancel form action
+    });
+
+  </script>
+<% end %>
+
+
 
