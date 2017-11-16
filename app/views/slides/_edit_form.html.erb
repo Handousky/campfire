@@ -2,8 +2,19 @@
   <%= f.error_notification %>
   <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
-      <%= f.input :narration, label: false, placeholder: "Write you narrative here" %>
+
+      <!-- toolbar container -->
+      <div id="toolbar">
+      </div>
+
+      <!-- editor container -->
+      <div id="editor"></div>
+      <%= f.input :narration, as: :hidden, input_html: {class: "slide_narration", id: "narration"} %>
+
     </div>
   </div>
-  <%= f.button :submit, class: "btn btn-primary" %>
+  <%= f.button :submit, class: "btn btn-primary", input_html: {id: "slide-edit-submit"} %>
 <% end %>
+
+<!-- Include Quill stylesheet -->
+<link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
