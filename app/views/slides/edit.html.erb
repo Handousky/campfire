@@ -71,7 +71,12 @@
     let slideID = "#edit_slide_" + "<%= j @slide.id.to_s %>";
 
     $(slideID).submit(function() {
+      // this one works for quill rendering
       $('#narration').val(JSON.stringify(editor.getContents()));
+      let container = $('.ql-editor');
+      // this one works for html
+      // $('#narration').val(JSON.stringify(container.html()));
+      // container.firstChild.innerHTML
       return true; // return false to cancel form action
     });
 
