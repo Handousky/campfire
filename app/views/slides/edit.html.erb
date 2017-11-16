@@ -70,12 +70,12 @@
       theme: 'snow'
     });
 
-    editor.setContents("<%= j @slide.narration %>");
+    editor.setText("<%= j @slide.narration %>");
 
     let slideID = "#edit_slide_" + "<%= j @slide.id.to_s %>";
 
     $(slideID).submit(function() {
-      $('#narration').val(JSON.stringify(editor.getContents()));
+      $('#narration').val(editor.getText());
       return true; // return false to cancel form action
     });
 
