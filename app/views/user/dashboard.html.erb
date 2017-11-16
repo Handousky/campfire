@@ -8,6 +8,9 @@
   <% @user.stories.each do |story| %>
     <tr>
       <td><%= link_to story.title, story_path(story) %></td>
+      <td><%= "Private" unless story.published %></td>
+    </tr>
+    <tr>
       <td><%= link_to "Edit", edit_story_path(story), class: 'btn btn-primary'%></td>
       <td><%= link_to "Delete", story_path(story), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure? You won\'t be able to restore it!'} %></td>
     </tr>
