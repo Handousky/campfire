@@ -38,6 +38,7 @@ class StoriesController < ApplicationController
         @slide = Slide.find_by(x_axis: 0, y_axis: 0, story: @story)
         redirect_to edit_story_slide_path(@story, @slide)
       else
+        flash[:alert] = "Something went wrong while creating the first slide..."
         render :new
       end
     else
