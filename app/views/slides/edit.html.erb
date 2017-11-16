@@ -57,15 +57,11 @@
 </div>
 
 <% content_for(:afterjs) do %>
-  <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
   <!-- Initialize Quill editor -->
   <script>
-
-    let toolbarOptions = ['bold', 'italic', 'underline', 'strike'];
-
-    let editor = new Quill('#editor', {
+    let editor = new Quill('#editor-container', {
       modules: {
-        toolbar: toolbarOptions
+        toolbar: true
       },
       theme: 'snow'
     });
