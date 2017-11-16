@@ -10,12 +10,16 @@
     <%= yield :aftercss %>
   </head>
   <body>
+
     <%= render 'shared/navbar' if @footers %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+    <%= render 'shared/footer' if @footers %>
+
+    <!-- Scripts -->
     <%= javascript_include_tag 'application' %>
     <%= yield (:afterjs) %>
     <%= cloudinary_js_config %>
-    <%= render 'shared/footer' if @footers %>
+
   </body>
 </html>
