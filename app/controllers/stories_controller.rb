@@ -9,6 +9,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
+    @first_slide = @story.slides.first
   end
 
   def edit
@@ -57,10 +58,6 @@ class StoriesController < ApplicationController
   end
 
   private
-
-  def render_footers
-    @footers = true
-  end
 
   def create_tags(story)
     return if params[:story][:categories].nil?
