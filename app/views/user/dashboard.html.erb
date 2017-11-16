@@ -8,7 +8,7 @@
   <% @user.stories.each do |story| %>
     <tr>
       <td><%= link_to story.title, story_path(story) %></td>
-      <td><%= "Private" unless story.published %></td>
+      <td><%= story.published ? "Public" : "Private" %></td>
     </tr>
     <tr>
       <td><%= link_to "Edit", edit_story_path(story), class: 'btn btn-primary'%></td>
