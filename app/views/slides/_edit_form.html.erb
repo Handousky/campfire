@@ -1,6 +1,9 @@
 <%= simple_form_for([@story, @slide]) do |f| %>
   <%= f.error_notification %>
-  <%= f.input :narration, label: false, placeholder: "Write you narrative here" %>
-  <%= f.input :photo, as: :attachinary, label: "Background Image" %>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <%= f.input :narration, label: false, placeholder: "Write you narrative here" %>
+    </div>
+  </div>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
