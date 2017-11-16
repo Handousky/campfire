@@ -16,10 +16,7 @@
       </div>
         <%= link_to "Read the story", story_slides_path(story), class: "btn btn-danger" %>
     </div>
-    <div class="banner-img">
-      <% if story.photo? %>
-        <%= cl_image_tag story.photo.path %>
-      <% end %>
+    <div class="banner-img" style="background-image: url('<%= cl_image_path story.photo.path if story.photo? %>')">
     </div>
   </div>
 <% end %>
