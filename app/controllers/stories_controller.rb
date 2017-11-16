@@ -59,10 +59,6 @@ class StoriesController < ApplicationController
 
   private
 
-  def render_footers
-    @footers = true
-  end
-
   def create_tags(story)
     return if params[:story][:categories].nil?
     params[:story][:categories].each do |category_id|

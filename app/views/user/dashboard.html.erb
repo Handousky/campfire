@@ -1,8 +1,6 @@
-<h1>Welcome, <%= @user.nickname %></h1>
+<h2>Welcome, <%= @user.nickname %></h2>
 
 <h2>This is your dashboard, with the stories you created and where you can create new ones</h2>
-
-<p><%= link_to "Create a story", new_story_path, class: 'btn btn-primary' %></p>
 
 <table>
   <% @stories.each do |story| %>

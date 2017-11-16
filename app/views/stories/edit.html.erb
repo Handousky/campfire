@@ -1,3 +1,4 @@
 <h2 class="text-center">Update Story</h2>
 <%= render 'form' %>
+<%= link_to "Delete", story_path(@story), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure? You won\'t be able to restore it!'} %>
 <%= link_to 'Back', :back %>

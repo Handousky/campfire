@@ -1,7 +1,5 @@
 <h2>Hello World</h2>
 
-<p><%= link_to "Create a story", new_story_path, class: 'btn btn-primary' %></p>
-
 <% @stories.each do |story| %>
   <h2><%= story.title %></h2>
   <p><%= story.description %></p>
