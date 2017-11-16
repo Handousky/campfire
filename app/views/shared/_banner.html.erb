@@ -1,0 +1,23 @@
+<% @stories.each do |story| %>
+  <div class="banner-drop">
+    <div id="side-banner">
+      <div class="banner-title">
+        <h2><%= story.title %></h2>
+      </div>
+
+      <div class="banner-category">
+        <% story.categories.each do |category| %>
+          <%= category.name %> -
+        <% end %>
+      </div>
+
+      <div class="banner-description">
+        <p><%= story.description %></p>
+      </div>
+        <%= link_to "Read the story", story_slides_path(story), class: "btn btn-danger" %>
+    </div>
+    <div class="banner-img" style="background-image: url('<%= cl_image_path story.photo.path if story.photo? %>')">
+    </div>
+  </div>
+<% end %>
+

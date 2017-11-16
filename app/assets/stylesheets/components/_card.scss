@@ -1,3 +1,28 @@
-.card-container{
-  width: 60vw;
+.master-container {
+  width: 100vw;
+  overflow-x: scroll;
 }
+.card-container {
+  margin: -19px 0 0 0;
+  min-height: 100vh; min-width: 100vw;
+  display: flex;
+  width: 2000px;
+  justify-content: space-between;
+}
+
+.story-card {
+  width: 300px;
+  background-origin: center;
+  background-size: cover;
+  padding: 1vw;
+  max-height: 400px;
+  position: relative;
+  // margin-left: 30px;
+}
+
+.story-link {
+  position: absolute;
+  bottom: 10px;
+  left: 125px;
+}
+

@@ -1,7 +1,22 @@
-<h2>Hello World</h2>
+<p><%= link_to "Create a story", new_story_path, class: 'btn btn-primary' %></p>
+<div class= "master-container">
+  <div class="card-container">
+      <% @stories.each do |story| %>
+          <div class="story-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path story.photo.path if story.photo? %>')">
+            <div class="story-content">
+                <div class="story-head">
+                  <h2><%= story.title %></h2>
+                  <%= link_to story_path(story), class: 'story-link' do %>
+                    <%= image_tag "arrow-down.png" %>
+                  <% end %>
+                </div>
+            </div>
+          </div>
+      <% end %>
+  </div>
+  <div id="story-details">
+    <!-- render details partial in here -->
+    <%= render "shared/banner" %>
+  </div>
+</div>
 
-<% @stories.each do |story| %>
-  <h2><%= story.title %></h2>
-  <p><%= story.description %></p>
-  <p><%= link_to "see details", story_path(story) %></p>
-<% end %>
