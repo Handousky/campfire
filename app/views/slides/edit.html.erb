@@ -1,3 +1,5 @@
+<%= render 'navbar_slides' %>
+
 <% @story = @story.nil? ? Story.find(params[:story_id]) : @story %>
 
 <h2 class="text-center">Slide <%= @slide.x_axis %>x<%= @slide.y_axis %></h2>

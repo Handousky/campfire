@@ -1,6 +1,6 @@
 <h2>All Slides of <%= @story.title %></h2>
 
-<p><%= link_to "go through the story", story_slide_path(@story, Slide.find_by(x_axis: 0, y_axis: 0, story: @story)) %></p>
+<p><%= link_to "read the story", story_slide_path(@story, @first_slide) %></p>
 <br>
 <p><%= link_to "Create new slide", new_story_slide_path(@story) %></p>
 
