@@ -1,6 +1,8 @@
 <h2>All Slides of <%= @story.title %></h2>
 
-<p><%= link_to "read the story", story_slide_path(@story, @first_slide) %></p>
+<% if @first_slide != nil %>
+  <%= link_to "Read the story", story_slide_path(@story, @first_slide) %>
+<% end %>
 <br>
 <p><%= link_to "Create new slide", new_story_slide_path(@story) %></p>
 
@@ -9,5 +11,7 @@
   <h2><%= slide.x_axis %> / <%= slide.y_axis %></h2>
   <p><%= slide.narration %></p>
   <%= link_to "Edit", edit_story_slide_path(@story, slide), class: 'btn btn-warning btn-sm' %>
+  <% if slide != @first_slide %>
   <%= link_to "Delete", story_slide_path(@story, slide), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure? You won\'t be able to restore it!'} %>
+  <% end %>
 <% end %>
