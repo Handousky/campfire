@@ -1,0 +1,23 @@
+.banner-drop {
+  height: 275px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  position: relative;
+}
+
+.banner-title {
+  padding-left: 10px;
+}
+
+.banner-img {
+  width: 60%;
+}
+
+#side-banner {
+  background-color: black;
+  width: 40%;
+}
+

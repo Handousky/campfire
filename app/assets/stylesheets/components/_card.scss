@@ -6,19 +6,23 @@
   margin: -19px 0 0 0;
   min-height: 100vh; min-width: 100vw;
   display: flex;
-  width: 1500px;
+  width: 2000px;
   justify-content: space-between;
-}
-.row
-{
-    display: table-row;
-}
-.col-sm-4
-{
-    display: table-cell;
-    padding:10px;
 }
 
 .story-card {
-  width: 200px;
+  width: 300px;
+  background-origin: center;
+  background-size: cover;
+  padding: 1vw;
+  max-height: 400px;
+  position: relative;
+  // margin-left: 30px;
 }
+
+.story-link {
+  position: absolute;
+  bottom: 10px;
+  left: 125px;
+}
+
