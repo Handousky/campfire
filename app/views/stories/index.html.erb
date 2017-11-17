@@ -9,9 +9,7 @@
 
                   <div class="rating">
                     <p>Averate rating</p>
-                    <div id="star"></div>
-                    <p>Your rating</p>
-                    <div id="user_star"></div>
+                    <div id="star_<%= story.id %>"></div>
                   </div>
 
                   <%= link_to story_path(story), class: 'story-link' do %>
@@ -27,4 +25,16 @@
     <%= render "shared/banner" %>
   </div>
 </div>
+
+<% content_for(:afterjs) do %>
+  <script>
+    <% @stories.each do |story| %>
+      $('#star_<%= story.id %>').raty({
+        readOnly: true,
+        score: <%= story.avg_rating %>,
+        path: '/assets'
+      });
+    <% end %>
+  </script>
+<% end %>
 

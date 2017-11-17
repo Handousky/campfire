@@ -10,7 +10,6 @@ class Story < ApplicationRecord
   validates :description, presence: true, length: { minimum: 40, maximum: 280 }
 
   def avg_rating
-    return self.ratings.map{ |r| r.score }.reduce(:+) unless self.ratings.empty?
-    return 0
+    self.ratings.empty? ? 0 : self.ratings.map{ |r| r.score }.reduce(:+)
   end
 end

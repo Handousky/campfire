@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   post '/publish/:id', to: 'stories#publish'
 
-  resources :ratings, only: :update
+  resources :ratings, only: [:update]
 
   root to: 'pages#home'
 
