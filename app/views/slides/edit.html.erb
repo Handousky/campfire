@@ -18,6 +18,11 @@
       <% if @up_slide %>
         <%= link_to edit_story_slide_path(@story, @up_slide) do %>
           <%= image_tag "arrow-up.png" %>
+          <% if  %>
+            <%= link_to "/stories/#{@story.id}/block_up/#{@slide_id}", method: :post, class: 'btn btn-danger' do %>
+          <% else %>
+            <%= link_to "/stories/#{@story.id}/block_up/#{@slide_id}", method: :post, class: 'btn btn-success' do %>
+          <% end %>
         <% end %>
       <% else %>
         <%= render 'new_form', x: @slide.x_axis, y: (@slide.y_axis + 1) %>

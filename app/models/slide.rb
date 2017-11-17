@@ -25,27 +25,39 @@ class Slide < ApplicationRecord
     unless slide.block_access_from_down || slide.nil? return slide
   end
 
-  def block_left
+  def toggle_block_left
     slide = self.get_left
-    slide.block_access_from_right = true
+    slide.block_access_from_right = slide.block_access_from_right == true ? false : true
     slide.save!
+
+    self.block_access_from_left = slide.block_access_from_left == true ? false : true
+    self.save!
   end
 
-  def block_right
+  def toggle_block_right
     slide = self.get_right
-    slide.block_access_from_left = true
+    slide.block_access_from_left = slide.block_access_from_left == true ? false : true
     slide.save!
+
+    self.block_access_from_right = slide.block_access_from_right == true ? false : true
+    self.save!
   end
 
-  def block_up
+  def toggle_block_up
     slide = self.get_up
-    slide.block_access_from_down = true
+    slide.block_access_from_down = slide.block_access_from_down == true ? false : true
     slide.save!
+
+    self.block_access_from_up = slide.block_access_from_up == true ? false : true
+    self.save!
   end
 
-  def block_down
+  def toggle_block_down
     slide = self.get_down
-    slide.block_access_from_up = true
+    slide.block_access_from_up = slide.block_access_from_up == true ? false : true
     slide.save!
+
+    self.block_access_from_down = slide.block_access_from_down == true ? false : true
+    self.save!
   end
 end
