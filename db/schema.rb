@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171116154326) do
+ActiveRecord::Schema.define(version: 20171117145929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,12 +37,13 @@ ActiveRecord::Schema.define(version: 20171116154326) do
   end
 
   create_table "slides", force: :cascade do |t|
-    t.text     "narration"
+    t.jsonb    "narration"
     t.integer  "x_axis"
     t.integer  "y_axis"
     t.integer  "story_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "json"
     t.index ["story_id"], name: "index_slides_on_story_id", using: :btree
   end
 

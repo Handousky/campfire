@@ -4,7 +4,7 @@
   <% end %>
   <div class="container">
     <p>
-      <%= @slide.narration %>
+      <%= @slide.narration.html_safe %>
     </p>
     <% unless @up_slide.nil? %>
       <%= link_to "Up",   story_slide_path(@story, @up_slide), id: "up"%>

@@ -66,12 +66,18 @@
       theme: 'snow'
     });
 
-    editor.setContents(<%= @slide.narration.html_safe unless @slide.narration.nil? %>);
+    editor.setContents(<%= @slide.json.html_safe unless @slide.json.nil? %>);
 
-    let slideID = "#edit_slide_" + "<%= j @slide.id.to_s %>";
+    const slideID = "#edit_slide_" + "<%= j @slide.id.to_s %>";
 
     $(slideID).submit(function() {
-      $('#narration').val(JSON.stringify(editor.getContents()));
+      // this one works for quill rendering
+      $('#json').val(JSON.stringify(editor.getContents()));
+
+      // this one works for html
+      let container = $('.ql-editor');
+      $('#narration').val(JSON.stringify(container.html()));
+
       return true; // return false to cancel form action
     });
 
