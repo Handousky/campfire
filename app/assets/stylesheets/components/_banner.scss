@@ -31,15 +31,15 @@
 }
 
 .banner-img {
-  width: 50%;
+  width: 60%;
   height: 550px;
-  background-size: cover;
+  background-size: cover !important;
   background: linear-gradient(to right, blue, pink);
 }
 
 #side-banner {
   background-color: black;
-  width: 50%;
+  width: 40%;
   height: 100%;
   padding-left: 25px;
 
