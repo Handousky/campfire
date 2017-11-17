@@ -5,6 +5,10 @@ class StoriesController < ApplicationController
 
   def index
     @stories = Story.where(published: true)
+    @rating = Rating.find_by(story: @story, user: @current_user)
+    unless @rating
+      @rating = Rating.create(comment_id: @comment.id, user_id: @current_user.id, score: 0)
+    end
   end
 
   def show
