@@ -1,0 +1,14 @@
+<% if @up_slide %>
+  <%= link_to edit_story_slide_path(@story, @up_slide) do %>
+    <%= image_tag "arrow-up.png" %>
+    <%= link_to "/stories/#{@story.id}/block_up/#{@slide.id}", method: :post do %>
+      <% if @slide.block_access_from_up %>
+        <span class="btn btn-success">Unblock</span>
+      <% else %>
+        <span class="btn btn-danger">Block</span>
+      <% end %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= render 'new_form', x: @slide.x_axis, y: (@slide.y_axis + 1) %>
+<% end %>

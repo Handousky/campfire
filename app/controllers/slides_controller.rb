@@ -1,5 +1,5 @@
 class SlidesController < ApplicationController
-  before_action :set_slide, only: [:show, :edit, :update, :destroy]
+  before_action :set_slide, only: [:show, :edit, :update, :destroy, :block_up, :block_down, :block_left, :block_right]
   before_action :render_footers, only: [:index]
   skip_before_action :authenticate_user!, only: [:show]
 
@@ -10,7 +10,10 @@ class SlidesController < ApplicationController
   end
 
   def show
-    set_adjacents(@slide)
+    @up_slide = @slide.get_up
+    @down_slide = @slide.get_down
+    @left_slide = @slide.get_left
+    @right_slide = @slide.get_right
   end
 
   def create
@@ -34,6 +37,26 @@ class SlidesController < ApplicationController
   def destroy
     @slide.destroy
     redirect_to story_slides_path(@slide.story)
+  end
+
+  def block_up
+    @slide.toggle_block_up
+    redirect_to :back
+  end
+
+  def block_down
+    @slide.toggle_block_down
+    redirect_to :back
+  end
+
+  def block_left
+    @slide.toggle_block_left
+    redirect_to :back
+  end
+
+  def block_right
+    @slide.toggle_block_right
+    redirect_to :back
   end
 
   private
