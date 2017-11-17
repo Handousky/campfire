@@ -14,12 +14,6 @@
       <div class="rating">
         <p>Your Rating:
           <div id="user_star_<%= story.id %>">
-            <%
-              @rating = Rating.find_by(story: story, user: @current_user)
-              unless @rating
-                @rating = Rating.create(story: story, user: @current_user, score: 0)
-              end
-            %>
           </div>
         </p>
       </div>
@@ -37,15 +31,16 @@
 <% content_for(:afterjs) do %>
   <script>
     <% @stories.each do |story| %>
+      <% rating = @ratings.find_by(story: story) %>
       $('#user_star_<%= story.id %>').raty({
-          score: <%= @rating.score %>,
+          score: <%= rating.score %>,
           path: '/assets',
           click: function(score, evt) {
             $.ajax({
-              url: '/ratings/' + <%= @rating.id %>,
+              url: '/ratings/' + <%= rating.id %>,
               type: 'PATCH',
               data: { score: score }
-            }).done(function (data){});
+            })
           }
         });
     <% end %>
