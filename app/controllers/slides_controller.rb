@@ -10,7 +10,10 @@ class SlidesController < ApplicationController
   end
 
   def show
-    set_adjacents(@slide)
+    @up_slide = @slide.get_up
+    @down_slide = @slide.get_down
+    @left_slide = @slide.get_left
+    @right_slide = @slide.get_right
   end
 
   def create
