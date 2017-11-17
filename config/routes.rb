@@ -14,11 +14,6 @@ Rails.application.routes.draw do
 
   post '/publish/:id', to: 'stories#publish'
 
-  post '/block_up/:id', to: 'slides#block_up'
-  post '/block_down/:id', to: 'slides#block_down'
-  post '/block_left/:id', to: 'slides#block_left'
-  post '/block_right/:id', to: 'slides#block_right'
-
   root to: 'pages#home'
 
   get '/dashboard', to: 'user#dashboard'

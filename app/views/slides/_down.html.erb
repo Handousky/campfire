@@ -1,7 +1,7 @@
 <% if @down_slide %>
   <%= link_to edit_story_slide_path(@story, @down_slide) do %>
     <%= image_tag "arrow-down.png" %>
-    <%= link_to "/stories/#{@story.id}/block_down/#{@slide_id}", method: :post do %>
+    <%= link_to "/stories/#{@story.id}/block_down/#{@slide.id}", method: :post do %>
         <% if @slide.block_access_from_down %>
           <span class="btn btn-success">Unblock</span>
         <% else %>

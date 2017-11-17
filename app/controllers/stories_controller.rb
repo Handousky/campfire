@@ -49,7 +49,7 @@ class StoriesController < ApplicationController
 
   def destroy
     @story.destroy
-    redirect_to stories_path
+    redirect_to :back
   end
 
   def publish

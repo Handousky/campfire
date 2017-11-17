@@ -1,7 +1,7 @@
 <% if @right_slide %>
   <%= link_to edit_story_slide_path(@story, @right_slide) do %>
     <%= image_tag "arrow-right.png" %>
-    <%= link_to "/stories/#{@story.id}/block_right/#{@slide_id}", method: :post do %>
+    <%= link_to "/stories/#{@story.id}/block_right/#{@slide.id}", method: :post do %>
       <% if @slide.block_access_from_right %>
         <span class="btn btn-success">Unblock</span>
       <% else %>
