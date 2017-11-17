@@ -5,6 +5,7 @@ class StoriesController < ApplicationController
 
   def index
     @stories = Story.where(published: true)
+    
   end
 
   def show
