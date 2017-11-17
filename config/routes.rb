@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   post '/publish/:id', to: 'stories#publish'
 
+  resources :ratings, only: :update
+
   root to: 'pages#home'
 
   get '/dashboard', to: 'user#dashboard'
