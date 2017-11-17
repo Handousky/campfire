@@ -15,46 +15,25 @@
     </div>
 
     <div class="up-arrow">
-      <% if @up_slide %>
-        <%= link_to edit_story_slide_path(@story, @up_slide) do %>
-          <%= image_tag "arrow-up.png" %>
-        <% end %>
-      <% else %>
-        <%= render 'new_form', x: @slide.x_axis, y: (@slide.y_axis + 1) %>
-      <% end %>
+      <%= render 'up' %>
     </div>
 
     <div class="left-arrow">
-      <% if @left_slide %>
-        <%= link_to edit_story_slide_path(@story, @left_slide) do %>
-          <%= image_tag "arrow-left.png" %>
-        <% end %>
-      <% else %>
-        <%= render 'new_form', x: (@slide.x_axis - 1), y: @slide.y_axis %>
-      <% end %>
+      <%= render 'left' %>
     </div>
 
     <div class="right-arrow">
-      <% if @right_slide %>
-        <%= link_to edit_story_slide_path(@story, @right_slide) do %>
-          <%= image_tag "arrow-right.png" %>
-        <% end %>
-      <% else %>
-        <%= render 'new_form', x: (@slide.x_axis + 1), y: @slide.y_axis %>
-      <% end %>
+      <%= render 'right' %>
     </div>
 
     <div class="down-arrow">
-    <% if @down_slide %>
-      <%= link_to edit_story_slide_path(@story, @down_slide) do %>
-        <%= image_tag "arrow-down.png" %>
-      <% end %>
-    <% else %>
-      <%= render 'new_form', x: @slide.x_axis, y: (@slide.y_axis - 1) %>
-    <% end %>
+      <%= render 'down' %>
+    </div>
   </div>
-  </div>
+
 </div>
+
+
 
 <% content_for(:afterjs) do %>
   <!-- Initialize Quill editor -->
