@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20171117145929) do
   end
 
   create_table "slides", force: :cascade do |t|
-    t.jsonb    "narration"
+    t.text     "narration"
     t.integer  "x_axis"
     t.integer  "y_axis"
     t.integer  "story_id"
