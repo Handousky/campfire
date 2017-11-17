@@ -5,15 +5,15 @@ class StoriesController < ApplicationController
 
   def index
     @stories = Story.where(published: true)
+    @stories.each do |story|
+      Rating.create(story: story, user: current_user, score: 0) unless Rating.find_by(story: story, user: current_user)
+    end
+    @ratings = current_user.ratings.where(story: @stories)
   end
 
   def show
     @story = Story.find(params[:id])
     @first_slide = @story.slides.first
-    @rating = Rating.find_by(story: @story, user: @current_user)
-    unless @rating
-      @rating = Rating.create(story: @story, user: @current_user, score: 0)
-    end
   end
 
   def edit
