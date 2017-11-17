@@ -1,6 +1,6 @@
 # Seeding all the Categories in the DB
 categories = [
-  "Based in real facts",
+  "Based on real facts",
   "Fanfiction",
   "Gore",
   "Killer",
