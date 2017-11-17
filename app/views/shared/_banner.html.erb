@@ -14,7 +14,7 @@
       <div class="banner-description">
         <p><%= story.description %></p>
       </div>
-        <%= link_to "Read the story", story_slides_path(story), class: "btn btn-danger" %>
+        <%= link_to "Read the story", story_slides_path(story), class: "banner-read btn btn-danger" %>
     </div>
     <div class="banner-img" style="background-image: url('<%= cl_image_path story.photo.path if story.photo? %>')">
     </div>

@@ -1,17 +1,18 @@
 .master-container {
-  width: 100vw;
-  overflow-x: scroll;
+  width: 100%;
+  display: block;
 }
 .card-container {
   margin: -19px 0 0 0;
   min-height: 100vh; min-width: 100vw;
   display: flex;
-  width: 2000px;
+  overflow-x: scroll;
   justify-content: space-between;
 }
 
 .story-card {
   width: 300px;
+  min-width: 300px;
   background-origin: center;
   background-size: cover;
   padding: 1vw;
