@@ -14,12 +14,6 @@
       <div class="rating">
         <p>Your Rating:
           <div id="user_star_<%= story.id %>">
-            <%
-              @rating = Rating.find_by(story: story, user: @current_user)
-              unless @rating
-                @rating = Rating.create(story: story, user: @current_user, score: 0)
-              end
-            %>
           </div>
         </p>
       </div>
@@ -27,7 +21,7 @@
       <div class="banner-description">
         <p><%= story.description %></p>
       </div>
-        <%= link_to "Read the story", story_slides_path(story), class: "banner-read btn btn-danger" %>
+        <%= link_to "Read the story", story_slide_path(story, story.slides.first), class: "banner-read btn btn-danger" %>
     </div>
     <div class="banner-img" style="background-image: linear-gradient(90deg,rgba(0,0,0,1), rgba(0,0,0,0) 30%), url('<%= cl_image_path story.photo.path if story.photo? %>')">
     </div>
@@ -37,15 +31,16 @@
 <% content_for(:afterjs) do %>
   <script>
     <% @stories.each do |story| %>
+      <% rating = @ratings.find_by(story: story) %>
       $('#user_star_<%= story.id %>').raty({
-          score: <%= @rating.score %>,
+          score: <%= rating.score %>,
           path: '/assets',
           click: function(score, evt) {
             $.ajax({
-              url: '/ratings/' + <%= @rating.id %>,
+              url: '/ratings/' + <%= rating.id %>,
               type: 'PATCH',
               data: { score: score }
-            }).done(function (data){});
+            })
           }
         });
     <% end %>
