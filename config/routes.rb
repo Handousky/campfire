@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   resources :stories do
     resources :slides
+    post '/block_up/:id', to: 'slides#block_up'
+    post '/block_down/:id', to: 'slides#block_down'
+    post '/block_left/:id', to: 'slides#block_left'
+    post '/block_right/:id', to: 'slides#block_right'
   end
 
   post '/publish/:id', to: 'stories#publish'

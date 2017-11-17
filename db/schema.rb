@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117155557) do
+ActiveRecord::Schema.define(version: 20171117160948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,9 +51,13 @@ ActiveRecord::Schema.define(version: 20171117155557) do
     t.integer  "x_axis"
     t.integer  "y_axis"
     t.integer  "story_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.text     "json"
+    t.boolean  "block_access_from_left",  default: false
+    t.boolean  "block_access_from_right", default: false
+    t.boolean  "block_access_from_up",    default: false
+    t.boolean  "block_access_from_down",  default: false
     t.index ["story_id"], name: "index_slides_on_story_id", using: :btree
   end
 

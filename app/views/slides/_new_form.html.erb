@@ -1,5 +1,5 @@
 <%= simple_form_for([@story, Slide.new]) do |f| %>
   <%= f.input :x_axis, as: :hidden, input_html: {value: local_assigns[:x]} %>
   <%= f.input :y_axis, as: :hidden, input_html: {value: local_assigns[:y]} %>
-  <%= f.button :submit, class: "btn btn-create ", value: "+" %>
+  <%= f.button :submit, class: "btn btn-create ", value: "+", data: { 'disable-with': '+'} %>
 <% end %>
