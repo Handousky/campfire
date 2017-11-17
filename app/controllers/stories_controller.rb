@@ -10,6 +10,10 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
     @first_slide = @story.slides.first
+    @rating = Rating.find_by(story: @story, user: @current_user)
+    unless @rating
+      @rating = Rating.create(story: @story, user: @current_user, score: 0)
+    end
   end
 
   def edit
