@@ -1,5 +1,5 @@
 .banner-drop {
-  height: 275px;
+  height: 550px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   display: flex;
   justify-content: space-around;
@@ -9,16 +9,39 @@
 }
 
 .banner-title {
-  padding-left: 10px;
+  // padding-left: 20px;
+  margin-top: -20px;
+
+  h2 {
+    font-size: 50px;
+  }
+}
+
+.banner-category {
+  font-size: 13px;
+  margin-bottom: 30px;
+}
+
+.banner-description {
+  // padding-left: 20px;
+}
+
+.banner-read {
+  // margin-left: 20px;
 }
 
 .banner-img {
   width: 60%;
-  height: 275px;
+  height: 550px;
+  background-size: cover !important;
+  background: linear-gradient(to right, blue, pink);
 }
 
 #side-banner {
   background-color: black;
   width: 40%;
+  height: 100%;
+  padding-left: 25px;
+
 }
 

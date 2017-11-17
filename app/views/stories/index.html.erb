@@ -1,8 +1,8 @@
-<p><%= link_to "Create a story", new_story_path, class: 'btn btn-primary' %></p>
+<h4 class= "index-titles">Most popular stories</h4>
 <div class= "master-container">
   <div class="card-container">
       <% @stories.each do |story| %>
-          <div class="story-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path story.photo.path if story.photo? %>')">
+          <div class="story-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path story.photo.path, width: 375, height: 500, gravity: 'center', crop: 'fill' if story.photo? %>')">
             <div class="story-content">
                 <div class="story-head">
                   <h2><%= story.title %></h2>

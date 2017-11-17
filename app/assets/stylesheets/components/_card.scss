@@ -1,23 +1,27 @@
 .master-container {
-  width: 100vw;
-  overflow-x: scroll;
+  width: 100%;
+  display: block;
 }
 .card-container {
   margin: -19px 0 0 0;
   min-height: 100vh; min-width: 100vw;
   display: flex;
-  width: 2000px;
+  overflow-x: scroll;
   justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .story-card {
   width: 300px;
+  min-width: 300px;
   background-origin: center;
-  background-size: cover;
+  background-size: cover !important;
   padding: 1vw;
   max-height: 400px;
   position: relative;
-  // margin-left: 30px;
+  margin-right: 5px;
+
 }
 
 .story-link {
@@ -26,3 +30,12 @@
   left: 125px;
 }
 
+.story-head {
+  h2 {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
+    text-shadow: 1px 1px black;
+  }
+}
