@@ -12,7 +12,7 @@
                     <div id="star_<%= story.id %>"></div>
                   </div>
 
-                  <%= link_to story_path(story), class: 'story-link' do %>
+                  <%= link_to "#story_#{story.id}", class: 'story-link' do %>
                     <%= image_tag "arrow-down.png" %>
                   <% end %>
                 </div>
