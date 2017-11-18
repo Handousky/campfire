@@ -13,7 +13,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
-    @first_slide = @story.slides.first
+    @first_slide = @story.slides.find_by(x_axis: 0, y_axis: 0)
   end
 
   def edit

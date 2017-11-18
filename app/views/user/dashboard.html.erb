@@ -1,21 +1,33 @@
-<h2>Welcome, <%= @user.nickname %></h2>
+<div class="container">
+  <h2>Welcome, <%= @user.nickname %></h2>
 
-<h2>This is your dashboard, with the stories you created and where you can create new ones</h2>
+  <h2>This is your dashboard, with the stories you created and where you can create new ones</h2>
 
-<table>
-  <% @stories.each do |story| %>
-    <tr>
-      <td><%= link_to story.title, story_path(story) %></td>
-      <td><%= story.published ? "Public" : "Private" %></td>
-    </tr>
-    <tr>
-      <td><%= link_to "Edit", edit_story_path(story), class: 'btn btn-primary'%></td>
-      <td>
-        <%= link_to "/publish/#{story.id}", method: :post, class: 'btn btn-warning' do %>
-          <%= story.published ? "Private" : "Publish" %>
-        <% end %>
-      </td>
-      <td><%= link_to "Delete", story_path(story), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure? You won\'t be able to restore it!'} %></td>
-    </tr>
-  <% end %>
-</table>
+  <div style="margin-bottom: 100px;">
+    <% @stories.each do |story| %>
+    <div class="row" style="margin: 20px 0">
+      <div class="col-xs-6">
+        <h2 style="margin-top: 0;">
+          <%= story.title %>
+          <% if current_user == story.user %>
+            <%= link_to "Edit", edit_story_path(story), class: 'btn btn-primary'%>
+            <%= link_to "Slides Index", story_slides_path(story), class: 'btn btn-warning' %>
+            <%= link_to "Delete", story_path(story), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure? You won\'t be able to restore it!'} %>
+          <% end %>
+        </h2>
+        <p>
+          <% story.categories.each do |category| %>
+            <%= category.name %> <%= '-' unless category == story.categories.last %>
+          <% end %>
+        </p>
+        <p><%= story.description %></p>
+      </div>
+      <% if story.photo? %>
+        <div class="col-xs-6">
+          <%= cl_image_tag story.photo.path, crop: :fill %>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
