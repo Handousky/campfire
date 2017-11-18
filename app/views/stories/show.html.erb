@@ -11,12 +11,12 @@
   </h2>
   <p><%= @story.description %></p>
   <% if @story.photo? %>
-    <%= cl_image_tag @story.photo.path, width: 200, height: 300, crop: :fill %>
+    <%= cl_image_tag @story.photo.path, crop: :fill %>
   <% end %>
   <br>
   <p>
     <% @story.categories.each do |category| %>
-      <%= category.name %> <%= '-' unless category == story.categories.last %>
+      <%= category.name %> <%= '-' unless category == @story.categories.last %>
     <% end %>
   </p>
 

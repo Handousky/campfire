@@ -43,8 +43,7 @@ class StoriesController < ApplicationController
         @slide = Slide.find_by(x_axis: 0, y_axis: 0, story: @story)
         redirect_to edit_story_slide_path(@story, @slide)
       else
-        flash[:alert] = "Something went wrong while creating the first slide..."
-        render :new
+        render :new, alert: "Something went wrong while creating the first slide..."
       end
     else
       render :new
@@ -58,7 +57,7 @@ class StoriesController < ApplicationController
 
   def publish
     @story.update(published: @story.published ? false : true)
-    redirect_to :back
+    redirect_to :back, notice: @story.published ? 'Your Story was published!' : 'Your Story is now private'
   end
 
   private

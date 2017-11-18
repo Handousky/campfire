@@ -1,5 +1,3 @@
-var i = document.getElementById("fullscreen");
-
 function FShandler() {
   if (
     (document.fullscreenElement !== undefined) || (document.webkitFullscreenElement !== null) ||
@@ -11,27 +9,6 @@ function FShandler() {
     document.getElementById("btn-fs").style.display = "inline-flex";
     document.getElementById("btn-edit").style.display = "inline-flex";
   }
-}
-
-if (
-  document.fullscreenEnabled || document.webkitFullscreenEnabled ||
-  document.mozFullScreenEnabled || document.msFullscreenEnabled
-) {
-  document.getElementById("btn-fs").addEventListener("click", function(event) {
-    // go full-screen
-    if (i.requestFullscreen) {
-
-      i.requestFullscreen();
-    } else if (i.webkitRequestFullscreen) {
-      i.webkitRequestFullscreen();
-    } else if (i.mozRequestFullScreen) {
-      i.mozRequestFullScreen();
-    } else if (i.msRequestFullscreen) {
-      i.msRequestFullscreen();
-    }
-  });
-} else {
-  document.getElementById("btn-fs").style.display = "none";
 }
 
 window.addEventListener("fullscreenchange", FShandler);
