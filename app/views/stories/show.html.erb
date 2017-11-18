@@ -1,25 +1,26 @@
-<h2><%= @story.title %></h2>
-<p><%= @story.description %></p>
-<% if @story.photo? %>
-  <%= cl_image_tag @story.photo.path, width: 200, height: 300, crop: :fill %>
-<% end %>
-<br>
-<p>
-  <% @story.categories.each do |category| %>
-    <%= category.name %> -
+<p><%= link_to '< Back', :back %></p>
+
+<div class="container">
+  <h2>
+    <%= @story.title %>
+    <% if current_user == @story.user %>
+      <%= link_to "Edit", edit_story_path(@story), class: 'btn btn-primary'%>
+      <%= link_to "Slides Index", story_slides_path(@story), class: 'btn btn-warning' %>
+      <%= link_to "Delete", story_path(@story), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure? You won\'t be able to restore it!'} %>
+    <% end %>
+  </h2>
+  <p><%= @story.description %></p>
+  <% if @story.photo? %>
+    <%= cl_image_tag @story.photo.path, width: 200, height: 300, crop: :fill %>
   <% end %>
-</p>
+  <br>
+  <p>
+    <% @story.categories.each do |category| %>
+      <%= category.name %> -
+    <% end %>
+  </p>
 
-<%= link_to "Slides Index", story_slides_path(@story) %>
-<% if @first_slide != nil %>
-  <%= link_to "Read the story", story_slide_path(@story, @first_slide) %>
-<% end %>
-
-<% if current_user == @story.user %>
-  <td><%= link_to "Edit", edit_story_path(@story), class: 'btn btn-primary'%></td>
-<% end %>
-
-
-
-
-<p><%= link_to 'Back', stories_path %></p>
+  <% if @first_slide != nil %>
+    <%= link_to "Read the story", story_slide_path(@story, @first_slide), class: 'btn btn-success' %>
+  <% end %>
+</div>
