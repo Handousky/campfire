@@ -176,6 +176,8 @@ span {
 .pop-up {
   position: fixed;
   margin: 5% auto;
+  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
   z-index: 2;
@@ -195,8 +197,8 @@ span {
 
 
 #popupbox {
-  height: 90vh;
-  margin: -60px;
+  height: 115vh;
+  margin: -15vh;
 
   h3 {
     text-align: center;
@@ -213,7 +215,8 @@ span {
 
   h2 {
     color: white;
-    padding-top: 40vh;
+    margin: 0;
+    padding-top: 50vh;
   }
 }
 
