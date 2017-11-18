@@ -1,8 +1,13 @@
-<div class="slide-wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @slide.photo.path if @slide.photo? %>')">
+<% if @slide.photo? %>
+  <div id="fullscreen" class="slide-wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @slide.photo.path %>')">
+<% else %>
+  <div id="fullscreen" class="slide-wrapper">
+<% end %>
   <% if user_signed_in? && @slide.story.user == current_user %>
-    <%= link_to "Edit", edit_story_slide_path(@story, @slide), class: "btn btn-primary" %>
+    <%= link_to "Edit", edit_story_slide_path(@story, @slide), id: 'btn-edit', class: "btn btn-primary" %>
   <% end %>
   <%= link_to "Panic", stories_path, class: "btn btn-warning" %>
+  <%= link_to "Fullscreen", '#', class: "btn btn-success", id: 'btn-fs' %>
   <div class="slides-container">
     <p>
       <%= @slide.narration.html_safe unless @slide.narration.nil? %>
