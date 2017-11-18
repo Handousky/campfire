@@ -42,7 +42,8 @@
       modules: {
         toolbar: true
       },
-      theme: 'snow'
+      theme: 'snow',
+      scrollingContainer: scroll
     });
 
     editor.setContents(<%= @slide.json.html_safe unless @slide.json.nil? %>);
