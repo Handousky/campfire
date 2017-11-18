@@ -11,12 +11,14 @@
         <% end %>
       </div>
 
-      <div class="rating">
-        <p>Your Rating:
-          <div id="user_star_<%= story.id %>">
-          </div>
-        </p>
-      </div>
+      <% if user_signed_in? %>
+        <div class="rating">
+          <p>Your Rating:
+            <div id="user_star_<%= story.id %>">
+            </div>
+          </p>
+        </div>
+      <% end %>
 
       <div class="banner-description">
         <p><%= story.description %></p>
@@ -30,19 +32,21 @@
 
 <% content_for(:afterjs) do %>
   <script>
-    <% @stories.each do |story| %>
-      <% rating = @ratings.find_by(story: story) %>
-      $('#user_star_<%= story.id %>').raty({
-          score: <%= rating.score %>,
-          path: '/assets',
-          click: function(score, evt) {
-            $.ajax({
-              url: '/ratings/' + <%= rating.id %>,
-              type: 'PATCH',
-              data: { score: score }
-            })
-          }
-        });
+    <% if user_signed_in? %>
+      <% @stories.each do |story| %>
+        <% rating = @ratings.find_by(story: story) %>
+        $('#user_star_<%= story.id %>').raty({
+            score: <%= rating.score %>,
+            path: '/assets',
+            click: function(score, evt) {
+              $.ajax({
+                url: '/ratings/' + <%= rating.id %>,
+                type: 'PATCH',
+                data: { score: score }
+              })
+            }
+          });
+      <% end %>
     <% end %>
   </script>
 <% end %>

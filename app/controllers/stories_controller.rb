@@ -5,10 +5,12 @@ class StoriesController < ApplicationController
 
   def index
     @stories = Story.where(published: true)
-    @stories.each do |story|
-      Rating.create(story: story, user: current_user, score: 0) unless Rating.find_by(story: story, user: current_user)
+    if user_signed_in?
+      @stories.each do |story|
+        Rating.create(story: story, user: current_user, score: 0) unless Rating.find_by(story: story, user: current_user)
+      end
+      @ratings = current_user.ratings.where(story: @stories)
     end
-    @ratings = current_user.ratings.where(story: @stories)
   end
 
   def show
