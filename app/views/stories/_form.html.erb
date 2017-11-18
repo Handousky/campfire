@@ -3,12 +3,19 @@
   <%= f.input :title, label: "Story's title", placeholder: "Super Creepy Story" %>
   <%= f.input :description, label: "Short summary", placeholder: "It's super creepy" %>
   <%= f.input :photo, as: :attachinary %>
-  <% Category.all.each do |category| %>
-  <span class="checkbox">
-    <label for="story_categories_<%= category.id %>">
-      <input class="check_boxes optional" type="checkbox" value="<%= category.id %>" name="story[categories][]" id="story_categories_<%= category.id %>" <%= 'checked'.html_safe if @categories.include?(category) %>><%= category.name %>
-    </label>
-  </span>
-  <% end %>
-  <%= f.button :submit, class: "btn btn-primary" %>
+  <label for="categories">Categories</label>
+  <div class="row">
+    <% Category.all.each do |category| %>
+    <div class="col-xs-3">
+      <span class="checkbox">
+        <label for="story_categories_<%= category.id %>">
+          <input class="check_boxes optional" type="checkbox" value="<%= category.id %>" name="story[categories][]" id="story_categories_<%= category.id %>" <%= 'checked'.html_safe if @categories.include?(category) %>><%= category.name %>
+        </label>
+      </span>
+    </div>
+    <% end %>
+  </div>
+  <div class="text-center">
+    <%= f.button :submit, class: "btn btn-primary btn-lg" %>
+  </div>
 <% end %>

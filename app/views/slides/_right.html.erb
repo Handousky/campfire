@@ -1,13 +1,13 @@
 <% if @right_slide %>
+  <%= link_to "/stories/#{@story.id}/block_right/#{@slide.id}", method: :post do %>
+    <% if @slide.block_access_from_right %>
+      <span class="btn btn-success">Unblock</span>
+    <% else %>
+      <span class="btn btn-danger">Block</span>
+    <% end %>
+  <% end %>
   <%= link_to edit_story_slide_path(@story, @right_slide) do %>
     <%= image_tag "arrow-right.png" %>
-    <%= link_to "/stories/#{@story.id}/block_right/#{@slide.id}", method: :post do %>
-      <% if @slide.block_access_from_right %>
-        <span class="btn btn-success">Unblock</span>
-      <% else %>
-        <span class="btn btn-danger">Block</span>
-      <% end %>
-    <% end %>
   <% end %>
 <% else %>
   <%= render 'new_form', x: (@slide.x_axis + 1), y: @slide.y_axis %>
