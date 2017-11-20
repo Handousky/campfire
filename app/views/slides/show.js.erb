@@ -1,0 +1,35 @@
+$('.up-arrow').hide();
+$('.down-arrow').hide();
+$('.left-arrow').hide();
+$('.right-arrow').hide();
+
+document.getElementById("narration").innerHTML = '<%= @slide.narration.html_safe unless @slide.narration.nil? %>';
+
+$("#up").attr('href','<%= @slide.get_up.nil? ? "#" : story_slide_path(@story, @slide.get_up) %>');
+
+$("#down").attr('href','<%= @slide.get_down.nil? ? "#" : story_slide_path(@story, @slide.get_down) %>');
+
+$("#left").attr('href','<%= @slide.get_left.nil? ? "#" : story_slide_path(@story, @slide.get_left) %>');
+
+$("#right").attr('href','<%= @slide.get_right.nil? ? "#" : story_slide_path(@story, @slide.get_right) %>');
+
+
+<% if @slide.get_up %>
+  $('.up-arrow').css("display", "flex");
+  $('#up').on('click',function(event){getslide(event, '<%= @slide.get_up %>')} );
+<% end %>
+
+<% if @slide.get_down %>
+  $('.down-arrow').css("display", "flex");
+  $('#down').on('click',function(event){getslide(event, '<%= @slide.get_down %>')} );
+<% end %>
+
+<% if @slide.get_left %>
+  $('.left-arrow').css("display", "flex");
+  $('#left').on('click',function(event){getslide(event, '<%= @slide.get_left %>')} );
+<% end %>
+
+<% if @slide.get_right %>
+  $('.right-arrow').css("display", "flex");
+  $('#right').on('click',function(event){getslide(event, '<%= @slide.get_right %>')} );
+<% end %>

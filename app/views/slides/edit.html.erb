@@ -14,19 +14,19 @@
       <%= render 'edit_form' %>
     </div>
 
-    <div class="up-arrow">
+    <div class="arrow up-arrow">
       <%= render 'up' %>
     </div>
 
-    <div class="left-arrow">
+    <div class="arrow left-arrow">
       <%= render 'left' %>
     </div>
 
-    <div class="right-arrow">
+    <div class="arrow right-arrow">
       <%= render 'right' %>
     </div>
 
-    <div class="down-arrow">
+    <div class="arrow down-arrow">
       <%= render 'down' %>
     </div>
   </div>
@@ -50,7 +50,10 @@
 
     const slideID = "#edit_slide_" + "<%= j @slide.id.to_s %>";
 
-    $(slideID).submit(function() {
+
+
+    // autosava functionality
+    function autosave() {
       // this one works for quill rendering
       $('#json').val(JSON.stringify(editor.getContents()));
 
@@ -58,8 +61,13 @@
       let container = $('.ql-editor');
       $('#narration').val(container.html());
 
-      return true; // return false to cancel form action
-    });
+      $(slideID).submit();
+
+      console.log("<%= @slide.narration %>");
+    }
+
+    setInterval(autosave, 5*1000);
+    $(window).on('beforeunload', autosave);
 
   </script>
 <% end %>
