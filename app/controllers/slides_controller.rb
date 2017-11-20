@@ -30,9 +30,19 @@ class SlidesController < ApplicationController
   end
 
   def update
-    @slide.update(slides_params)
-    set_adjacents(@slide)
-    render :edit
+    if @slide.update(slides_params)
+      set_adjacents(@slide)
+      respond_to do |format|
+        format.html { render :edit }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
+    else
+      set_adjacents(@slide)
+      respond_to do |format|
+        format.html { render :edit }
+        format.js  # <-- idem
+      end
+    end
   end
 
   def destroy

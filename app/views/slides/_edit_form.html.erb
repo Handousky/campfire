@@ -1,4 +1,4 @@
-<%= simple_form_for([@story, @slide]) do |f| %>
+<%= simple_form_for([@story, @slide], remote: true) do |f| %>
   <%= f.error_notification %>
   <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
@@ -16,7 +16,6 @@
     </div>
   </div>
   <br>
-  <%= f.button :submit, class: "btn btn-primary", input_html: {id: "slide-edit-submit"} %>
 <% end %>
 
 <!-- Include Quill stylesheet -->
