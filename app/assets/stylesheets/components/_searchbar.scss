@@ -1,0 +1,25 @@
+#searchbar {
+  width: 400px;
+  background-color: none;
+  margin-right: 10px;
+}
+
+.stylish-input-group .form-control{
+  border: 0;
+  border-bottom: 1px solid;
+  box-shadow:0 0 0;
+  border-color:#ccc;
+}
+
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+
+.search {
+  border: 0;
+  border-bottom: 1px solid;
+  box-shadow:0 0 0;
+  border-color:#ccc;
+  background-color: $dark-red;
+}

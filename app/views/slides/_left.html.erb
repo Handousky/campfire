@@ -1,12 +1,12 @@
 <% if @left_slide %>
   <%= link_to edit_story_slide_path(@story, @left_slide) do %>
     <%= image_tag "arrow-left.png" %>
-    <%= link_to "/stories/#{@story.id}/block_left/#{@slide.id}", method: :post do %>
-      <% if @slide.block_access_from_left %>
-        <span class="btn btn-success">Unblock</span>
-      <% else %>
-        <span class="btn btn-danger">Block</span>
-      <% end %>
+  <% end %>
+  <%= link_to "/stories/#{@story.id}/block_left/#{@slide.id}", method: :post do %>
+    <% if @slide.block_access_from_left %>
+      <span class="btn btn-success">Unblock</span>
+    <% else %>
+      <span class="btn btn-danger">Block</span>
     <% end %>
   <% end %>
 <% else %>

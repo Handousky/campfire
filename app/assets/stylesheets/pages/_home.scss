@@ -9,7 +9,9 @@
 
 .homepage {
   height: 100vh;
-  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url("campfirebg.jpg"), ;
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url("campfirebg.jpg") ;
+  background-size: cover !important;
+  background-position: center;
 }
 // Shaking effect
 .break-through {
@@ -58,6 +60,7 @@ $color4: #FE6F66;
 
 body {
   width: 100%;
+  min-height: 100vh;
   height: 100%;
 }
 

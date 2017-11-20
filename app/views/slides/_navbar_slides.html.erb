@@ -1,15 +1,16 @@
-<div class="navbar-wagon">
+<div class="navbar-wagon" style="margin-bottom: 0;">
   <!-- Logo -->
   <%= link_to stories_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png" %>
   <% end %>
-  <%= @story.title %>
-  <%= link_to "Read the story", story_slide_path(@story, @first_slide), class: 'btn btn-primary' %>
-  <%= link_to "Edit", edit_story_path(@story), class: 'btn btn-primary'%>
-  <%= link_to "Slides Index", story_slides_path(@story), class: 'btn btn-primary' %>
-  <%= link_to "/publish/#{@story.id}", method: :post, class: 'btn btn-warning' do %>
-    <%= @story.published ? "Private" : "Publish" %>
-  <% end %>
+  <h2> <%= @story.title %> <%= link_to "Edit", edit_story_path(@story), class: 'btn btn-sm' %></h2>
+  <div class="control">
+    <%= link_to "Slides Index", story_slides_path(@story), class: 'btn btn-primary' %>
+    <%= link_to "Read the story", story_slide_path(@story, @first_slide), class: 'btn btn-primary' %>
+    <%= link_to "/publish/#{@story.id}", method: :post, class: 'btn btn-warning' do %>
+      <%= @story.published ? "Private" : "Publish" %>
+    <% end %>
+  </div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">

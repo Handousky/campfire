@@ -1,29 +1,79 @@
-<div class="slide-wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @slide.photo.path if @slide.photo? %>')">
+<% if @slide.photo? %>
+  <div id="fullscreen" class="slide-wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @slide.photo.path %>')">
+<% else %>
+  <div id="fullscreen" class="slide-wrapper">
+<% end %>
   <% if user_signed_in? && @slide.story.user == current_user %>
-    <%= link_to "Edit", edit_story_slide_path(@story, @slide), class: "btn btn-primary" %>
+    <%= link_to "Edit", edit_story_slide_path(@story, @slide), id: 'btn-edit', class: "btn btn-primary" %>
   <% end %>
   <%= link_to "Panic", stories_path, class: "btn btn-warning" %>
+  <%= link_to "Fullscreen", '#', class: "btn btn-success", id: 'btn-fs' %>
   <div class="slides-container">
     <p>
       <%= @slide.narration.html_safe unless @slide.narration.nil? %>
     </p>
-    <% unless @up_slide.nil? %>
-      <%= link_to "Up",   story_slide_path(@story, @up_slide), id: "up"%>
+
+    <% if @up_slide %>
+      <div class="up-arrow">
+        <%= link_to story_slide_path(@story, @up_slide), id: "up" do %>
+          <%= image_tag "arrow-up.png" %>
+        <% end %>
+      </div>
     <% end %>
-    <% unless @down_slide.nil? %>
-      <%= link_to "Down", story_slide_path(@story, @down_slide), id: "down" %>
+
+    <% if @down_slide %>
+      <div class="down-arrow">
+        <%= link_to story_slide_path(@story, @down_slide), id: "down" do %>
+          <%= image_tag "arrow-down.png" %>
+        <% end %>
+      </div>
     <% end %>
-    <% unless @left_slide.nil? %>
-      <%= link_to "Left", story_slide_path(@story, @left_slide), id: "left"  %>
+
+    <% if @left_slide %>
+      <div class="left-arrow">
+        <%= link_to story_slide_path(@story, @left_slide), id: "left" do %>
+          <%= image_tag "arrow-left.png" %>
+        <% end %>
+      </div>
     <% end %>
-    <% unless @right_slide.nil? %>
-      <%= link_to "Right",story_slide_path(@story, @right_slide), id: "right" %>
+
+    <% if @right_slide %>
+      <div class="right-arrow">
+        <%= link_to story_slide_path(@story, @right_slide), id: "right" do %>
+          <%= image_tag "arrow-right.png" %>
+        <% end %>
+      </div>
     <% end %>
+
   </div>
 </div>
 
 
 <script>
+  // Fullscreen function
+  if (
+    document.fullscreenEnabled || document.webkitFullscreenEnabled ||
+    document.mozFullScreenEnabled || document.msFullscreenEnabled
+  ) {
+    document.getElementById("btn-fs").addEventListener("click", function(event) {
+      var i = document.getElementById("fullscreen");
+      // go full-screen
+      if (i.requestFullscreen) {
+
+        i.requestFullscreen();
+      } else if (i.webkitRequestFullscreen) {
+        i.webkitRequestFullscreen();
+      } else if (i.mozRequestFullScreen) {
+        i.mozRequestFullScreen();
+      } else if (i.msRequestFullscreen) {
+        i.msRequestFullscreen();
+      }
+    });
+  } else {
+    document.getElementById("btn-fs").style.display = "none";
+  }
+
+  // moving with arrows
   document.addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 37) {

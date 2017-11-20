@@ -5,15 +5,17 @@ class StoriesController < ApplicationController
 
   def index
     @stories = Story.where(published: true)
-    @stories.each do |story|
-      Rating.create(story: story, user: current_user, score: 0) unless Rating.find_by(story: story, user: current_user)
+    if user_signed_in?
+      @stories.each do |story|
+        Rating.create(story: story, user: current_user, score: 0) unless Rating.find_by(story: story, user: current_user)
+      end
+      @ratings = current_user.ratings.where(story: @stories)
     end
-    @ratings = current_user.ratings.where(story: @stories)
   end
 
   def show
     @story = Story.find(params[:id])
-    @first_slide = @story.slides.first
+    @first_slide = @story.slides.find_by(x_axis: 0, y_axis: 0)
   end
 
   def edit
@@ -43,8 +45,7 @@ class StoriesController < ApplicationController
         @slide = Slide.find_by(x_axis: 0, y_axis: 0, story: @story)
         redirect_to edit_story_slide_path(@story, @slide)
       else
-        flash[:alert] = "Something went wrong while creating the first slide..."
-        render :new
+        render :new, alert: "Something went wrong while creating the first slide..."
       end
     else
       render :new
@@ -58,7 +59,7 @@ class StoriesController < ApplicationController
 
   def publish
     @story.update(published: @story.published ? false : true)
-    redirect_to :back
+    redirect_to :back, notice: @story.published ? 'Your Story was published!' : 'Your Story is now private'
   end
 
   private

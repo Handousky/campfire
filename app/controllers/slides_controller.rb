@@ -6,7 +6,8 @@ class SlidesController < ApplicationController
   def index
     @story = Story.find(params[:story_id])
     @slides = @story.slides
-    @first_slide = @story.slides.first
+    @slides = @slides.sort { |a, b| [a.x_axis, a.y_axis] <=> [b.x_axis, b.y_axis] }
+    @first_slide = @story.slides.find_by(x_axis: 0, y_axis: 0)
   end
 
   def show
@@ -64,7 +65,7 @@ class SlidesController < ApplicationController
   def set_slide
     @slide = Slide.find(params[:id])
     @story = Story.find(params[:story_id])
-    @first_slide = @story.slides.first
+    @first_slide = @story.slides.find_by(x_axis: 0, y_axis: 0)
   end
 
   def set_adjacents(slide)
