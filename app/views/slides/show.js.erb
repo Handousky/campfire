@@ -1,11 +1,27 @@
-console.log("hi");
-
 $('.up-arrow').hide();
 $('.down-arrow').hide();
 $('.left-arrow').hide();
 $('.right-arrow').hide();
 
-$("#narration").html('<%= j @slide.narration.html_safe unless @slide.narration.nil? %>');
+$("#narration").html('<%= j \
+    @slide.narration.html_safe unless @slide.narration.nil? %>\
+    \
+    <% if @slide.get_up %>\
+      <p id="upTitle">[ ^ <%= @slide.get_up.name %> ]</p>\
+    <% end %>\
+    \
+    <% if @slide.get_down %>\
+      <p id="downTitle">[ v <%= @slide.get_down.name %> ]</p>\
+    <% end %>\
+    \
+    <% if @slide.get_left %>\
+      <p id="leftTitle">[ < <%= @slide.get_left.name %> ]</p>\
+    <% end %>\
+    \
+    <% if @slide.get_right %>\
+      <p id="rightTitle">[ > <%= @slide.get_right.name %> ]</p>\
+    <% end %>\
+  ');
 
 $("#up").attr('href','<%= j @slide.get_up.nil? ? "story_slide_path(@story, @slide)" : story_slide_path(@story, @slide.get_up) %>');
 
