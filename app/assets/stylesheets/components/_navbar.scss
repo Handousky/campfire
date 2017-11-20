@@ -19,7 +19,8 @@
 
 /* User Avatar */
 .navbar-wagon .avatar {
-  height: 50px;
+  height: 4vh;
+  width: auto;
   border-radius: 50%;
 }
 
@@ -75,4 +76,47 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.control {
+  display: flex;
+  min-width: 40vw;
+  justify-content: flex-end;
+  .btn {
+      font-weight: 500;
+      background-color: black;
+      text-transform: uppercase;
+      font-size: 0.5em;
+      margin: 0 0.25em;
+  }
+}
+
+
+.navbar-slides h2 {
+    font-size: 1em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-width: 40vw;
+    text-align: left;
+    &::before {
+    content: "NOW EDITING";
+    font-size: 0.5em;
+    position: absolute;
+    top: 2em;
+  }
+}
+
+.container.slides-container {
+    height: 90vh;
+    position: relative;
+}
+
+.navbar.navbar-wagon.navbar-slides-view {
+    margin-bottom: 0;
+    background-color: transparent;
+}
+
+.navbar-slides-view .control {
+    justify-content: center;
 }

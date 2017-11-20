@@ -4,9 +4,9 @@
   <% end %>
   <%= link_to "/stories/#{@story.id}/block_up/#{@slide.id}", method: :post do %>
     <% if @slide.block_access_from_up %>
-      <span class="btn btn-success">Unblock</span>
+      <span class="btn btn-success fa fa-lock"></span>
     <% else %>
-      <span class="btn btn-danger">Block</span>
+      <span class="btn btn-danger fa fa-unlock-alt"></span>
     <% end %>
   <% end %>
 <% else %>

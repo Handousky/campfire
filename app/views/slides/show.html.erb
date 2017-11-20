@@ -3,16 +3,19 @@
 <% else %>
   <div id="fullscreen" class="slide-wrapper">
 <% end %>
+<div class="navbar navbar-wagon navbar-slides-view">
+  <div class="control">
   <% if user_signed_in? && @slide.story.user == current_user %>
     <%= link_to "Edit", edit_story_slide_path(@story, @slide), id: 'btn-edit', class: "btn btn-primary" %>
   <% end %>
   <%= link_to "Panic", stories_path, class: "btn btn-warning" %>
   <%= link_to "Fullscreen", '#', class: "btn btn-success", id: 'btn-fs' %>
-  <div class="slides-container">
+  </div>
+</div>
+<div class="container slides-container">
     <p>
       <%= @slide.narration.html_safe unless @slide.narration.nil? %>
     </p>
-
     <% if @up_slide %>
       <div class="up-arrow">
         <%= link_to story_slide_path(@story, @up_slide), id: "up" do %>
@@ -44,7 +47,6 @@
         <% end %>
       </div>
     <% end %>
-
   </div>
 </div>
 
