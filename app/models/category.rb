@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
   has_many :story_categories, dependent: :destroy
-  has_many :stories, through: :story_category
+  has_many :stories, through: :story_categories
 end
