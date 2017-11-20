@@ -9,7 +9,18 @@ class Story < ApplicationRecord
   validates :title, presence: true, uniqueness: true, length: { minimum: 3, maximum: 40 }
   validates :description, presence: true, length: { minimum: 40, maximum: 280 }
 
+  PLACEHOLDER_IMAGE_PATHS = [
+    "HorrorLogo_1.jpg",
+    "HorrorLogo_2.jpg",
+    "HorrorLogo_3.jpg",
+    "HorrorLogo_4.jpg"
+  ]
+
   def avg_rating
     self.ratings.empty? ? 0 : self.ratings.map{ |r| r.score }.reduce(:+)
+  end
+
+  def self.placeholder
+    return PLACEHOLDER_IMAGE_PATHS.sample(1)[0]
   end
 end
