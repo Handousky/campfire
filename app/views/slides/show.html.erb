@@ -15,6 +15,7 @@
   </div>
 
   <div class="container slides-container">
+    <h3 id="title"><%= @slide.name %></h3>
     <div id="narration">
       <%= @slide.narration.html_safe unless @slide.narration.nil? %>
 
