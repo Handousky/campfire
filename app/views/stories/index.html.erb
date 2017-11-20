@@ -30,6 +30,38 @@
   </div>
 </div>
 
+
+<% @cat_hash.each do |category, stories| %>
+  <h4 class= "index-titles"><%= category %></h4>
+    <div class= "master-container">
+      <div class="card-container">
+      <% stories.each do |story| %>
+        <div class="story-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path story.photo.path, width: 375, height: 500, gravity: 'center', crop: 'fill' if story.photo? %>')">
+          <div class="story-content">
+            <div class="story-head">
+              <h2><%= story.title %></h2>
+
+              <div class="rating">
+                <p>Averate rating</p>
+                <div id="star_<%= story.id %>"></div>
+              </div>
+
+              <%= link_to "#story_#{story.id}", class: 'story-link', onclick: "openTab(event, 'story_#{story.id}')" do %>
+                <%= image_tag "arrow-down.png" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+  <div id="story-details">
+    <!-- render details partial in here -->
+    <%= render "shared/banner" %>
+  </div>
+
 <% content_for(:afterjs) do %>
   <script>
     <% @stories.each do |story| %>

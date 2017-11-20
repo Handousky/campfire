@@ -4,7 +4,17 @@ class StoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @stories = Story.where(published: true)
+    @cat_hash = {}
+    @stories = []
+
+    Category.all.each do | category |
+      tmp_stories = category.stories.where(published: true).to_a
+      @stories << tmp_stories unless tmp_stories.empty?
+      @cat_hash[category.name] = tmp_stories
+    end
+
+    @stories.flatten!
+
     if user_signed_in?
       @stories.each do |story|
         Rating.create(story: story, user: current_user, score: 0) unless Rating.find_by(story: story, user: current_user)
