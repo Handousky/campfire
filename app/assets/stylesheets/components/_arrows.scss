@@ -1,6 +1,13 @@
+.arrow-hidden{
+  display: none;
+}
+
+.arrow{
+  display: flex;
+}
+
 .up-arrow {
   position: absolute;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -11,7 +18,6 @@
 
 .down-arrow {
   position: absolute;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -22,7 +28,6 @@
 
 .left-arrow {
   position: absolute;
-  display: flex;
   align-items: center;
   left: 0;
   top: 0;
@@ -31,7 +36,6 @@
 
 .right-arrow {
   position: absolute;
-  display: flex;
   align-items: center;
   right: 0;
   top: 0;

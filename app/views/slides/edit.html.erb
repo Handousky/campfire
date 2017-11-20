@@ -5,7 +5,7 @@
 <div class="wrapper" style="position: relative; height: calc(100vh - 70px)">
 
   <h2 class="text-center" style="margin-top: 0; padding-top: 120px">
-    Slide <%= @slide.x_axis %>x<%= @slide.y_axis %>
+    Slide <span class="coordinates">(<%= @slide.x_axis %> , <%= @slide.y_axis %>)</span>
     <%= link_to "Test", story_slide_path(@story, @slide), class: 'btn btn-danger btn-md' %>
   </h2>
 
@@ -14,19 +14,19 @@
       <%= render 'edit_form' %>
     </div>
 
-    <div class="up-arrow">
+    <div class="arrow up-arrow">
       <%= render 'up' %>
     </div>
 
-    <div class="left-arrow">
+    <div class="arrow left-arrow">
       <%= render 'left' %>
     </div>
 
-    <div class="right-arrow">
+    <div class="arrow right-arrow">
       <%= render 'right' %>
     </div>
 
-    <div class="down-arrow">
+    <div class="arrow down-arrow">
       <%= render 'down' %>
     </div>
   </div>

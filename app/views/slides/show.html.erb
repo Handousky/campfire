@@ -1,38 +1,45 @@
 <% if @slide.photo? %>
-  <div id="fullscreen" class="slide-wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @slide.photo.path %>')">
+<div id="fullscreen" class="slide-wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @slide.photo.path %>')">
 <% else %>
-  <div id="fullscreen" class="slide-wrapper">
+<div id="fullscreen" class="slide-wrapper">
 <% end %>
-  <% if user_signed_in? && @slide.story.user == current_user %>
-    <%= link_to "Edit", edit_story_slide_path(@story, @slide), id: 'btn-edit', class: "btn btn-primary btn-ctrl" %>
-  <% end %>
-  <%= link_to "Panic", stories_path, class: "btn btn-warning btn-ctrl" %>
-  <%= link_to "Fullscreen", '#', class: "btn btn-success btn-ctrl", id: 'btn-fs' %>
-  <div class="slides-container">
+
+  <div class="navbar navbar-wagon navbar-slides-view">
+    <div class="control">
+    <% if user_signed_in? && @slide.story.user == current_user %>
+      <%= link_to "Edit", edit_story_slide_path(@story, @slide), id: 'btn-edit', class: "btn btn-primary btn-ctrl" %>
+    <% end %>
+    <%= link_to "Panic", stories_path, class: "btn btn-warning btn-ctrl" %>
+    <%= link_to "Fullscreen", '#', class: "btn btn-success btn-ctrl", id: 'btn-fs' %>
+    </div>
+  </div>
+
+  <div class="container slides-container">
     <div id="narration">
       <%= @slide.narration.html_safe unless @slide.narration.nil? %>
     </div>
 
-    <div class="up-arrow">
-      <%= link_to story_slide_path(@story, @up_slide), remote: true, id: "up" do %>
+
+    <div class="arrow-hidden up-arrow">
+      <%= link_to (@slide.get_up.nil? ? '#' : story_slide_path(@story, @slide.get_up)), remote: true, id: "up" do %>
         <%= image_tag "arrow-up.png" %>
       <% end %>
     </div>
 
-    <div class="down-arrow">
-      <%= link_to story_slide_path(@story, @down_slide), id: "down" do %>
+    <div class="arrow-hidden down-arrow">
+      <%= link_to (@slide.get_down.nil? ? '#' : story_slide_path(@story, @slide.get_down)), remote: true, id: "down" do %>
         <%= image_tag "arrow-down.png" %>
       <% end %>
     </div>
 
-    <div class="left-arrow">
-      <%= link_to story_slide_path(@story, @slide.get_left), remote: true, id: "left" do %>
+    <div class="arrow-hidden left-arrow">
+      <%= link_to (@slide.get_left.nil? ? '#' : story_slide_path(@story, @slide.get_left)), remote: true, id: "left" do %>
         <%= image_tag "arrow-left.png" %>
       <% end %>
     </div>
 
-    <div class="right-arrow">
-      <%= link_to story_slide_path(@story, @right_slide), id: "right" do %>
+    <div class="arrow-hidden right-arrow">
+      <%= link_to (@slide.get_right.nil? ? '#' : story_slide_path(@story, @slide.get_right)), remote: true, id: "right" do %>
         <%= image_tag "arrow-right.png" %>
       <% end %>
     </div>
@@ -67,43 +74,33 @@
 
 
     //AJAX moving
-    <% if @slide.get_up %>
-      $('#up').hide();
-    <% end %>
-    <% if @slide.get_down %>
-      $('#down').hide();
-    <% end %>
-    <% if @slide.get_left %>
-      $('#left').hide();
-    <% end %>
-    <% if @slide.get_right %>
-      $('#right').hide();
-    <% end %>
-
 
     function getslide(event, slide){
-      e.preventDefault();
+      event.preventDefault();
       $.get({
         url: '<%= story_slide_path(@story, @slide.get_left) %>'
       });
     }
 
     <% if @slide.get_up %>
-      $('#up').on('click', getslide(event, <%= @slide.get_up %>) );
+      $('.up-arrow').css("display", "flex");
+      $('#up').on('click',function(event){getslide(event, '<%= @slide.get_up %>')} );
     <% end %>
 
     <% if @slide.get_down %>
-      $('#down').on('click', getslide(event, <%= @slide.get_down %>) );
+      $('.down-arrow').css("display", "flex");
+      $('#down').on('click',function(event){getslide(event, '<%= @slide.get_down %>')} );
     <% end %>
 
     <% if @slide.get_left %>
-      $('#left').on('click', getslide(event, <%= @slide.get_left %>) );
+      $('.left-arrow').css("display", "flex");
+      $('#left').on('click',function(event){getslide(event, '<%= @slide.get_left %>')} );
     <% end %>
 
     <% if @slide.get_right %>
-      $('#right').on('click', getslide(event, <%= @slide.get_right %>) );
+      $('.right-arrow').css("display", "flex");
+      $('#right').on('click',function(event){getslide(event, '<%= @slide.get_right %>')} );
     <% end %>
-
 
     // moving with arrows
     document.addEventListener("keyup", function(event) {
