@@ -1,18 +1,22 @@
-<h2>
-  All Paths of <%= @story.title %>
-  <% if @first_slide != nil %>
-    <%= link_to "Read the story", story_slide_path(@story, @first_slide), class: 'btn btn-danger' %>
+<div class="container", style="margin-bottom: 100px">
+  <h2>
+    All Paths of <%= @story.title %>
+    <% if @first_slide != nil %>
+      <%= link_to "Read the story", story_slide_path(@story, @first_slide), class: 'btn btn-danger' %>
+    <% end %>
+  </h2>
+
+
+  <% @slides.each do |slide| %>
+    <h2>
+      <%= link_to edit_story_slide_path(@story, slide) do %>
+        <%= slide.name %> (<%= slide.x_axis %>, <%= slide.y_axis %>)
+      <% end %>
+
+      <% if slide != @first_slide %>
+
+        <%= link_to "Delete", story_slide_path(@story, slide), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure? You won\'t be able to restore it!'} %>
+      <% end %>
+    </h2>
   <% end %>
-</h2>
-
-
-<% @slides.each do |slide| %>
-  <%= link_to edit_story_slide_path(@story, slide) do %>
-    <h2><%= slide.name %> (<%= slide.x_axis %>, <%= slide.y_axis %>)</h2>
-  <% end %>
-
-  <% if slide != @first_slide %>
-
-    <%= link_to "Delete", story_slide_path(@story, slide), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure? You won\'t be able to restore it!'} %>
-  <% end %>
-<% end %>
+</div>

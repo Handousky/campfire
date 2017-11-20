@@ -17,6 +17,21 @@
   <div class="container slides-container">
     <div id="narration">
       <%= @slide.narration.html_safe unless @slide.narration.nil? %>
+      <% if @slide.get_up %>
+        <p>[ ^ <%= @slide.get_up.name %> ]</p>
+      <% end %>
+
+      <% if @slide.get_down %>
+        <p>[ v <%= @slide.get_down.name %> ]</p>
+      <% end %>
+
+      <% if @slide.get_left %>
+        <p>[ < <%= @slide.get_left.name %> ]</p>
+      <% end %>
+
+      <% if @slide.get_right %>
+        <p>[ > <%= @slide.get_right.name %> ]</p>
+      <% end %>
     </div>
 
 
