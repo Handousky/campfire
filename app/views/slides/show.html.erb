@@ -74,32 +74,20 @@
 
 
     //AJAX moving
-
-    function getslide(event, slide){
-      event.preventDefault();
-      $.get({
-        url: '<%= story_slide_path(@story, @slide.get_left) %>'
-      });
-    }
-
     <% if @slide.get_up %>
       $('.up-arrow').css("display", "flex");
-      $('#up').on('click',function(event){getslide(event, '<%= @slide.get_up %>')} );
     <% end %>
 
     <% if @slide.get_down %>
       $('.down-arrow').css("display", "flex");
-      $('#down').on('click',function(event){getslide(event, '<%= @slide.get_down %>')} );
     <% end %>
 
     <% if @slide.get_left %>
       $('.left-arrow').css("display", "flex");
-      $('#left').on('click',function(event){getslide(event, '<%= @slide.get_left %>')} );
     <% end %>
 
     <% if @slide.get_right %>
       $('.right-arrow').css("display", "flex");
-      $('#right').on('click',function(event){getslide(event, '<%= @slide.get_right %>')} );
     <% end %>
 
     // moving with arrows
