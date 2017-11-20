@@ -1,12 +1,15 @@
 <%= simple_form_for([@story, @slide], remote: true) do |f| %>
   <%= f.error_notification %>
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+    <div class="col-xs-7 col-xs-offset-2">
       <%= f.input :name, label: false, placeholder: "Name the Path" %>
+    </div>
+    <div class="col-xs-1" style="padding-left: 0;">
+      <%= link_to "Test", story_slide_path(@story, @slide), class: 'btn btn-danger btn-md' %>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+    <div class="col-xs-8 col-xs-offset-2">
 
       <!-- toolbar container -->
       <div id="toolbar">
