@@ -1,5 +1,5 @@
 <h2>
-  All Slides of <%= @story.title %>
+  All Paths of <%= @story.title %>
   <% if @first_slide != nil %>
     <%= link_to "Read the story", story_slide_path(@story, @first_slide), class: 'btn btn-danger' %>
   <% end %>
@@ -8,7 +8,7 @@
 
 <% @slides.each do |slide| %>
   <%= link_to edit_story_slide_path(@story, slide) do %>
-    <h2><%= slide.x_axis %> / <%= slide.y_axis %></h2>
+    <h2><%= slide.name %> (<%= slide.x_axis %>, <%= slide.y_axis %>)</h2>
   <% end %>
 
   <% if slide != @first_slide %>
