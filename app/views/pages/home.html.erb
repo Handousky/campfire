@@ -3,11 +3,11 @@
 
     <h1 data-heading="Campfire" class="campfire">Campfire</h1>
 
-    <%= link_to new_story_path, class: "left-arrow" do %>
+    <%= link_to new_story_path, class: "arrow left-arrow" do %>
       <%= image_tag "arrow-left.png" %><p id="breakThrough" class="break-through" onclick="shakeThrough()">Write a Story</p>
     <% end %>
 
-    <%= link_to stories_path, class: "right-arrow" do %>
+    <%= link_to stories_path, class: "arrow right-arrow" do %>
       <p id="breakThrough" class="break-through" onclick="shakeThrough()">Read a Story</p><%= image_tag "arrow-right.png" %>
     <% end %>
 
