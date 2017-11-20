@@ -61,12 +61,6 @@
       let container = $('.ql-editor');
       $('#narration').val(container.html());
 
-      // $.ajax({
-      //   url: '<%= story_slide_path(@story, @slide) %>',
-      //   type: 'PATCH',
-      //   data: { json: $('#json').val(), narration: $('#narration').val() }
-      // });
-
       $(slideID).submit();
 
       console.log("<%= @slide.narration %>");

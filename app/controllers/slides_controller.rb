@@ -11,10 +11,10 @@ class SlidesController < ApplicationController
   end
 
   def show
-    @up_slide = @slide.get_up
-    @down_slide = @slide.get_down
-    @left_slide = @slide.get_left
-    @right_slide = @slide.get_right
+    respond_to do |format|
+      format.html {  }
+      format.js  # <-- will render `app/views/reviews/create.js.erb`
+    end
   end
 
   def create

@@ -4,86 +4,119 @@
   <div id="fullscreen" class="slide-wrapper">
 <% end %>
   <% if user_signed_in? && @slide.story.user == current_user %>
-    <%= link_to "Edit", edit_story_slide_path(@story, @slide), id: 'btn-edit', class: "btn btn-primary" %>
+    <%= link_to "Edit", edit_story_slide_path(@story, @slide), id: 'btn-edit', class: "btn btn-primary btn-ctrl" %>
   <% end %>
-  <%= link_to "Panic", stories_path, class: "btn btn-warning" %>
-  <%= link_to "Fullscreen", '#', class: "btn btn-success", id: 'btn-fs' %>
+  <%= link_to "Panic", stories_path, class: "btn btn-warning btn-ctrl" %>
+  <%= link_to "Fullscreen", '#', class: "btn btn-success btn-ctrl", id: 'btn-fs' %>
   <div class="slides-container">
-    <p>
+    <div id="narration">
       <%= @slide.narration.html_safe unless @slide.narration.nil? %>
-    </p>
+    </div>
 
-    <% if @up_slide %>
-      <div class="up-arrow">
-        <%= link_to story_slide_path(@story, @up_slide), id: "up" do %>
-          <%= image_tag "arrow-up.png" %>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="up-arrow">
+      <%= link_to story_slide_path(@story, @up_slide), remote: true, id: "up" do %>
+        <%= image_tag "arrow-up.png" %>
+      <% end %>
+    </div>
 
-    <% if @down_slide %>
-      <div class="down-arrow">
-        <%= link_to story_slide_path(@story, @down_slide), id: "down" do %>
-          <%= image_tag "arrow-down.png" %>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="down-arrow">
+      <%= link_to story_slide_path(@story, @down_slide), id: "down" do %>
+        <%= image_tag "arrow-down.png" %>
+      <% end %>
+    </div>
 
-    <% if @left_slide %>
-      <div class="left-arrow">
-        <%= link_to story_slide_path(@story, @left_slide), id: "left" do %>
-          <%= image_tag "arrow-left.png" %>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="left-arrow">
+      <%= link_to story_slide_path(@story, @slide.get_left), remote: true, id: "left" do %>
+        <%= image_tag "arrow-left.png" %>
+      <% end %>
+    </div>
 
-    <% if @right_slide %>
-      <div class="right-arrow">
-        <%= link_to story_slide_path(@story, @right_slide), id: "right" do %>
-          <%= image_tag "arrow-right.png" %>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="right-arrow">
+      <%= link_to story_slide_path(@story, @right_slide), id: "right" do %>
+        <%= image_tag "arrow-right.png" %>
+      <% end %>
+    </div>
 
   </div>
 </div>
 
+<% content_for(:afterjs) do %>
+  <script>
+    // Fullscreen function
+    if (
+      document.fullscreenEnabled || document.webkitFullscreenEnabled ||
+      document.mozFullScreenEnabled || document.msFullscreenEnabled
+    ) {
+      document.getElementById("btn-fs").addEventListener("click", function(event) {
+        var i = document.getElementById("fullscreen");
+        // go full-screen
+        if (i.requestFullscreen) {
 
-<script>
-  // Fullscreen function
-  if (
-    document.fullscreenEnabled || document.webkitFullscreenEnabled ||
-    document.mozFullScreenEnabled || document.msFullscreenEnabled
-  ) {
-    document.getElementById("btn-fs").addEventListener("click", function(event) {
-      var i = document.getElementById("fullscreen");
-      // go full-screen
-      if (i.requestFullscreen) {
+          i.requestFullscreen();
+        } else if (i.webkitRequestFullscreen) {
+          i.webkitRequestFullscreen();
+        } else if (i.mozRequestFullScreen) {
+          i.mozRequestFullScreen();
+        } else if (i.msRequestFullscreen) {
+          i.msRequestFullscreen();
+        }
+      });
+    } else {
+      document.getElementById("btn-fs").style.display = "none";
+    }
 
-        i.requestFullscreen();
-      } else if (i.webkitRequestFullscreen) {
-        i.webkitRequestFullscreen();
-      } else if (i.mozRequestFullScreen) {
-        i.mozRequestFullScreen();
-      } else if (i.msRequestFullscreen) {
-        i.msRequestFullscreen();
+
+    //AJAX moving
+    <% if @slide.get_up %>
+      $('#up').hide();
+    <% end %>
+    <% if @slide.get_down %>
+      $('#down').hide();
+    <% end %>
+    <% if @slide.get_left %>
+      $('#left').hide();
+    <% end %>
+    <% if @slide.get_right %>
+      $('#right').hide();
+    <% end %>
+
+
+    function getslide(event, slide){
+      e.preventDefault();
+      $.get({
+        url: '<%= story_slide_path(@story, @slide.get_left) %>'
+      });
+    }
+
+    <% if @slide.get_up %>
+      $('#up').on('click', getslide(event, <%= @slide.get_up %>) );
+    <% end %>
+
+    <% if @slide.get_down %>
+      $('#down').on('click', getslide(event, <%= @slide.get_down %>) );
+    <% end %>
+
+    <% if @slide.get_left %>
+      $('#left').on('click', getslide(event, <%= @slide.get_left %>) );
+    <% end %>
+
+    <% if @slide.get_right %>
+      $('#right').on('click', getslide(event, <%= @slide.get_right %>) );
+    <% end %>
+
+
+    // moving with arrows
+    document.addEventListener("keyup", function(event) {
+      event.preventDefault();
+      if (event.keyCode === 37) {
+        document.getElementById("left").click();
+      } else if (event.keyCode === 38) {
+        document.getElementById("up").click();
+      } else if (event.keyCode === 39) {
+        document.getElementById("right").click();
+      } else if (event.keyCode === 40) {
+        document.getElementById("down").click();
       }
     });
-  } else {
-    document.getElementById("btn-fs").style.display = "none";
-  }
-
-  // moving with arrows
-  document.addEventListener("keyup", function(event) {
-    event.preventDefault();
-    if (event.keyCode === 37) {
-      document.getElementById("left").click();
-    } else if (event.keyCode === 38) {
-      document.getElementById("up").click();
-    } else if (event.keyCode === 39) {
-      document.getElementById("right").click();
-    } else if (event.keyCode === 40) {
-      document.getElementById("down").click();
-    }
-  });
-</script>
+  </script>
+<% end %>
