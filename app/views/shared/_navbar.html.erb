@@ -1,9 +1,24 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to stories_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png" %>
-  <% end %>
-
+  <div class="navbar-left">
+    <%= link_to stories_path, class: "navbar-wagon-brand" do %>
+      <%= image_tag "logo.png" %>
+    <% end %>
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
+        <p class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Categories</p>
+        <span class="dropdown-menu dropdown-menu-left dropdown-categories">
+          <div class="row">
+            <% Category.all.each do |category| %>
+            <div class="col-xs-6 col-sm-4 col-md-3 category-opt">
+              <%= link_to category.name, category_path(category) %>
+            </div>
+            <% end %>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
   <%= render 'shared/search' %>

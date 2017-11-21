@@ -1,11 +1,6 @@
 <div>
-  <% if params[:query] %>
-    <h4 class="index-title">Results for <%= params[:query] %></h4>
-    <%= render 'shared/card' %>
-  <% else %>
-    <h4 class="index-title">Most popular</h4>
-    <%= render 'shared/card' %>
-  <% end %>
+  <h4 class="index-title">Popular <%= @category.name %> stories</h4>
+  <%= render 'shared/card' %>
 </div>
 
 <div id="story-details">
@@ -24,4 +19,3 @@
     <% end %>
   </script>
 <% end %>
-
