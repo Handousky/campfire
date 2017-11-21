@@ -1,36 +1,50 @@
 .attachinary {
   display: flex;
-  margin-bottom : 5px;
+  border-radius: 5px;
 
   .control-label {
     padding-right: 10px;
     margin: 0px;
+    color: white;
   }
   .attachinary-input {
-    width: 120px;
+    width: 110px;
     color: black;
   }
 }
 
 .attachinary_container {
-  float: left;
+  display: flex;
   position: relative;
   right: 48px;
+  margin-bottom: 0px;
   a {
     color: #fff;
     padding: 2.9px 10px;
-    background-color: #32B796;
-    border-color: #2da386;
+    background-color: black;
+    text-transform: uppercase;
+    font-size: 0.5em;
     font-weight: 500;
     bottom: 6px;
     left: -3px;
+    border: 1px solid #32B796;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
   }
+
   img {
     width: 30px;
     height: 30px;
     border-radius: 3px;
+    margin-right: 5px;
+    margin-left: 10px;
   }
   ul {
     list-style-type: none;
+    margin-bottom: 0px;
+  }
+  li {
+    display: flex;
   }
 }
