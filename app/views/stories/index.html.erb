@@ -1,4 +1,8 @@
-<h4 class= "index-titles">Most popular stories</h4>
+<% if params[:query] %>
+  <h4 class= "index-titles">Results for <%= params[:query] %></h4>
+<% else %>
+  <h4 class= "index-titles">Most popular stories</h4>
+<% end %>
 <div class= "master-container">
   <div class="card-container">
       <% @stories.each do |story| %>
@@ -30,31 +34,32 @@
   </div>
 </div>
 
+<% if @cat_hash %>
+  <% @cat_hash.each do |category, stories| %>
+    <h4 class= "index-titles"><%= category %></h4>
+      <div class= "master-container">
+        <div class="card-container">
+        <% stories.each do |story| %>
+          <div class="story-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path story.photo.path, width: 375, height: 500, gravity: 'center', crop: 'fill' if story.photo? %>')">
+            <div class="story-content">
+              <div class="story-head">
+                <h2><%= story.title %></h2>
 
-<% @cat_hash.each do |category, stories| %>
-  <h4 class= "index-titles"><%= category %></h4>
-    <div class= "master-container">
-      <div class="card-container">
-      <% stories.each do |story| %>
-        <div class="story-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path story.photo.path, width: 375, height: 500, gravity: 'center', crop: 'fill' if story.photo? %>')">
-          <div class="story-content">
-            <div class="story-head">
-              <h2><%= story.title %></h2>
+                <div class="rating">
+                  <p>Averate rating</p>
+                  <div id="star_<%= story.id %>"></div>
+                </div>
 
-              <div class="rating">
-                <p>Averate rating</p>
-                <div id="star_<%= story.id %>"></div>
+                <%= link_to "#story_#{story.id}", class: 'story-link', onclick: "openTab(event, 'story_#{story.id}')" do %>
+                  <%= image_tag "arrow-down.png" %>
+                <% end %>
               </div>
-
-              <%= link_to "#story_#{story.id}", class: 'story-link', onclick: "openTab(event, 'story_#{story.id}')" do %>
-                <%= image_tag "arrow-down.png" %>
-              <% end %>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
 
   <div id="story-details">
