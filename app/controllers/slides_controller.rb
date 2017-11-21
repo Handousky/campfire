@@ -12,8 +12,8 @@ class SlidesController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html {  }
-      format.js  # <-- will render `app/views/reviews/create.js.erb`
+      format.js
+      format.html
     end
   end
 
@@ -34,7 +34,7 @@ class SlidesController < ApplicationController
       set_adjacents(@slide)
       respond_to do |format|
         format.html { render :edit }
-        format.js  # <-- will render `app/views/reviews/create.js.erb`
+        format.js  # <-- will render `app/views/reviews/update.js.erb`
       end
     else
       set_adjacents(@slide)

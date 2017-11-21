@@ -3,33 +3,48 @@ $('.down-arrow').hide();
 $('.left-arrow').hide();
 $('.right-arrow').hide();
 
-document.getElementById("narration").innerHTML = '<%= @slide.narration.html_safe unless @slide.narration.nil? %>';
+$('#title').html('<%= j @slide.name %>');
+$("#narration").html('<%= j \
+    @slide.narration.html_safe unless @slide.narration.nil? %>\
+    \
+    <% if @slide.get_up %>\
+      <p id="upTitle">[ ^ <%= @slide.get_up.name %> ]</p>\
+    <% end %>\
+    \
+    <% if @slide.get_down %>\
+      <p id="downTitle">[ v <%= @slide.get_down.name %> ]</p>\
+    <% end %>\
+    \
+    <% if @slide.get_left %>\
+      <p id="leftTitle">[ < <%= @slide.get_left.name %> ]</p>\
+    <% end %>\
+    \
+    <% if @slide.get_right %>\
+      <p id="rightTitle">[ > <%= @slide.get_right.name %> ]</p>\
+    <% end %>\
+  ');
 
-$("#up").attr('href','<%= @slide.get_up.nil? ? "#" : story_slide_path(@story, @slide.get_up) %>');
+$("#up").attr('href','<%= j @slide.get_up.nil? ? "story_slide_path(@story, @slide)" : story_slide_path(@story, @slide.get_up) %>');
 
-$("#down").attr('href','<%= @slide.get_down.nil? ? "#" : story_slide_path(@story, @slide.get_down) %>');
+$("#down").attr('href','<%= j @slide.get_down.nil? ? "story_slide_path(@story, @slide)" : story_slide_path(@story, @slide.get_down) %>');
 
-$("#left").attr('href','<%= @slide.get_left.nil? ? "#" : story_slide_path(@story, @slide.get_left) %>');
+$("#left").attr('href','<%= j @slide.get_left.nil? ? "story_slide_path(@story, @slide)" : story_slide_path(@story, @slide.get_left) %>');
 
-$("#right").attr('href','<%= @slide.get_right.nil? ? "#" : story_slide_path(@story, @slide.get_right) %>');
+$("#right").attr('href','<%= j @slide.get_right.nil? ? "story_slide_path(@story, @slide)" : story_slide_path(@story, @slide.get_right) %>');
 
 
 <% if @slide.get_up %>
   $('.up-arrow').css("display", "flex");
-  $('#up').on('click',function(event){getslide(event, '<%= @slide.get_up %>')} );
 <% end %>
 
 <% if @slide.get_down %>
   $('.down-arrow').css("display", "flex");
-  $('#down').on('click',function(event){getslide(event, '<%= @slide.get_down %>')} );
 <% end %>
 
 <% if @slide.get_left %>
   $('.left-arrow').css("display", "flex");
-  $('#left').on('click',function(event){getslide(event, '<%= @slide.get_left %>')} );
 <% end %>
 
 <% if @slide.get_right %>
   $('.right-arrow').css("display", "flex");
-  $('#right').on('click',function(event){getslide(event, '<%= @slide.get_right %>')} );
 <% end %>
