@@ -8,15 +8,8 @@ class StoriesController < ApplicationController
     if params[:query]
       @stories = Story.global_search(params[:query])
     else
-      @cat_hash = {}
-      @stories = []
-      Category.all.each do | category |
-        tmp_stories = category.stories.where(published: true).to_a
-        @stories << tmp_stories unless tmp_stories.empty?
-        @cat_hash[category.name] = tmp_stories
-      end
-
-      @stories.flatten!
+      @stories = Story.all
+      @stories = @stories.sort{ |a, b| b.avg_rating <=> a.avg_rating }
     end
     if user_signed_in?
       @stories.each do |story|

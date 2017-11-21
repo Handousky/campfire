@@ -1,0 +1,26 @@
+<div class= "master-container">
+  <div class="card-container">
+      <% @stories.each do |story| %>
+        <% unless story.photo.nil? %>
+          <div class="story-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path story.photo.path, width: 375, height: 500, gravity: 'center', crop: 'fill' %>')">
+        <% else %>
+          <div class="story-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path Story::placeholder, width: 375, height: 500, gravity: 'center', crop: 'fill' %>')">
+        <% end %>
+            <div class="story-content">
+                <div class="story-head">
+                  <h2><%= story.title %></h2>
+
+                  <div class="rating">
+                    <p>Averate rating</p>
+                    <div id="star_<%= story.id %>"></div>
+                  </div>
+
+                  <%= link_to "#story_#{story.id}", class: 'story-link', onclick: "openTab(event, 'story_#{story.id}')" do %>
+                    <%= image_tag "arrow-down.png" %>
+                  <% end %>
+                </div>
+            </div>
+          </div>
+      <% end %>
+  </div>
+</div>
