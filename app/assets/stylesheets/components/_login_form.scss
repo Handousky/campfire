@@ -2,8 +2,14 @@
   height: 100vh;
   background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url("campfireformbg.jpeg") no-repeat center;
 }
+
+.formlongbg {
+  height: 100%;
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url("campfireformbg.jpeg") no-repeat center;
+}
+
 #login {
-  opacity: 1;
+  opacity: 0.9;
 
   .form-control {
     background-color: #BFBFBF;
@@ -15,42 +21,84 @@
   }
 }
 
-  .form-group {
-    align-items: center;
-    margin-bottom: 40px;
-    label {
-      margin-right: 10px;
-      font-weight: none !important;
-    }
-  }
+#signup {
+  opacity: 0.9;
 
-  .form-login {
-    background: #BFBFBF;
-    padding: 10px 20px;
-    margin-top: 50px;
-    border-radius: 3px;
-    // box-shadow: 1px 1px 2px rgba(255,255,255,0.2);
-    // margin-bottom: 50px;
-    h2 {
-      font-size: 29px;
-      // font-weight: bold;
-      margin-bottom: 30px;
-      text-align: center;
-      margin-right: 10px;
-      color: #333333;
-    }
-    // h2 {
-    //   font-size: 24px;
-    //   font-weight: bold;
-    //   margin-bottom: 25px;
-    //   text-align: center;
-    // }
-    .btn {
-      width: 100%;
-      margin-bottom: 20px;
-      margin-top: 15px;
-      color: white;
-      background-color: #39151C;
-    }
+  .form-control {
+    background-color: #BFBFBF;
+    border: 0px;
+    border-bottom: 2px solid;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
   }
+}
+
+.backlink {
+  background-color: #BFBFBF;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#edit {
+  opacity: 0.9;
+
+  .form-control {
+    background-color: #BFBFBF;
+    border: 0px;
+    border-bottom: 2px solid;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+  }
+}
+
+.form-group {
+  align-items: center;
+  margin-bottom: 40px;
+  label {
+    margin-right: 10px;
+    font-weight: none !important;
+  }
+}
+
+.formheader {
+  letter-spacing: 2px;
+}
+
+.form-login {
+  background: #BFBFBF;
+  padding: 10px 20px;
+  border-radius: 3px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  // box-shadow: 1px 1px 2px rgba(255,255,255,0.2);
+  // margin-bottom: 50px;
+  h2 {
+    font-size: 29px;
+    // font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-right: 10px;
+    color: #333333;
+  }
+  // h2 {
+  //   font-size: 24px;
+  //   font-weight: bold;
+  //   margin-bottom: 25px;
+  //   text-align: center;
+  // }
+  .btn {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    color: white;
+    background-color: #39151C;
+  }
+}
 
