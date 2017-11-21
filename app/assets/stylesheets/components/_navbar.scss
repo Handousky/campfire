@@ -1,7 +1,7 @@
 /* Main navbar */
 .navbar-wagon {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background-color: $dark-red;
+  box-shadow: 0 0px 3px 0 rgba(255,255,255,0.2),0 0px 20px 0 rgba(255,255,255,0.2);
+  background-color: #350D16;
   transition: all 0.3s ease;
   height: 70px;
   padding: 0px 30px;
@@ -31,6 +31,26 @@
   justify-content: space-between;
 }
 
+.btn-create {
+  color: white;
+  /* margin: 4px; */
+  font-weight: none;
+  font-size: 0.8em;
+  padding: 7px 8px;
+  border: 2px solid $orange;
+  border-radius: 5%;
+  background-color: black;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.btn-create:hover {
+  color: $orange;
+  background-color: white;
+  opacity: 1;
+  border: 2px solid white;
+}
+
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
@@ -38,14 +58,14 @@
 }
 
 /* Navbar link */
-.navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
-}
-.navbar-wagon-link:hover {
-  color: #da552f;
-  text-decoration: none;
-}
+// .navbar-wagon-link {
+//   color: #616668;
+//   font-size: 14px;
+// }
+// .navbar-wagon-link:hover {
+//   color: #da552f;
+//   text-decoration: none;
+// }
 
 .navbar-slides h2 {
     font-size: 1em;

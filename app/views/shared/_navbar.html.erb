@@ -2,11 +2,11 @@
   <!-- Logo -->
   <div class="navbar-left">
     <%= link_to stories_path, class: "navbar-wagon-brand" do %>
-      <%= image_tag "logo.png" %>
+      <%= image_tag "HorrorLogo_4.jpg" %>
     <% end %>
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <p class="btn btn-primary btn-category dropdown-toggle" data-toggle="dropdown">Categories</p>
+        <p class="btn btn-category dropdown-toggle" data-toggle="dropdown">Categories</p>
         <span class="dropdown-menu dropdown-menu-left dropdown-categories">
           <div class="row">
             <% Category.all.each do |category| %>
@@ -22,7 +22,7 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
   <%= render 'shared/search' %>
-  <%= link_to "Create a story", new_story_path, class: 'navbar-wagon-link btn btn-danger btn-lg' %></p>
+  <%= link_to "CREATE A STORY", new_story_path, class: 'navbar-wagon-link btn btn-create' %></p>
 
     <% if user_signed_in? %>
 
