@@ -1,10 +1,28 @@
 <div class="container", style="margin-bottom: 100px">
   <h2>
-    All Paths of <%= @story.title %>
+    Map of <%= @story.title %>
     <% if @first_slide != nil %>
       <%= link_to "Read the story", story_slide_path(@story, @first_slide), class: 'btn btn-danger' %>
     <% end %>
   </h2>
+
+  <h4>width: <%= @width %></h4>
+  <h4>height: <%= @height %></h4>
+
+  <table>
+    <% (@min_height..@max_height).each do |x| %>
+      <tr>
+        <% (@min_width..@max_width).each do |y| %>
+          <% slide = @slides.select { |slide| slide.x_axis == x && slide.y_axis == y } %>
+          <% unless slide.empty? %>
+            <td>(<%= slide.x_axis %>, <%= slide.y_axis %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
 
 
   <% @slides.each do |slide| %>

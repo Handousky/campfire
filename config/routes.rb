@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :ratings, only: [:update]
   resources :categories, only: [:show]
+  resources :user, only: [:show]
 
   root to: 'pages#home'
 
