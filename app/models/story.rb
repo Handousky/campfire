@@ -1,4 +1,6 @@
 class Story < ApplicationRecord
+  include PgSearch
+
   has_attachment :photo
   belongs_to :user
   has_many :story_categories, dependent: :destroy
@@ -23,4 +25,16 @@ class Story < ApplicationRecord
   def self.placeholder
     return PLACEHOLDER_IMAGE_PATHS.sample(1)[0]
   end
+
+  pg_search_scope :global_search,
+    against: [ [:title, 'A'], [:description, 'C'] ],
+    associated_against: {
+      user: [ [:nickname, 'B'] ]
+    },
+    using: {
+      tsearch: {
+        prefix: true,
+        any_word: true
+      }
+    }
 end

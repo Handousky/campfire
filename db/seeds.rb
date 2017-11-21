@@ -12,6 +12,7 @@ categories = [
   "Screamer",
   "Spirits"
 ]
+Category.destroy_all
 
 puts "Seeding Categories"
 categories.each { |category| Category.create(name: category) }
