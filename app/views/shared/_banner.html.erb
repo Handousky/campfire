@@ -1,10 +1,10 @@
 <div class="banner-wrapper">
   <% @stories.each do |story| %>
-    <div class="banner-drop tabcontent" id="story_<%= story.id %>">
-      <%= link_to "#story_#{story.id}", class: 'close-x', onclick: "closeTab(event, 'story_#{story.id}')" do %>
+    <div class="banner-drop tabcontent" id="story_<%= local_assigns[:type] %>_<%= story.id %>">
+      <%= link_to "#story_#{story.id}", class: 'close-x', onclick: 'closeTab(event, "story_#{local_assigns[:type]}_#{story.id}")' do %>
         <span class="close-x"><i class="fa fa-close"></i></span>
       <% end %>
-      <div id="side-banner">
+      <div class="side-banner">
         <div class="banner-title">
           <h2><%= story.title %></h2>
         </div>
@@ -18,7 +18,7 @@
         <% if user_signed_in? %>
           <div class="rating">
             <p>Your Rating:
-              <div id="user_star_<%= story.id %>">
+              <div class="user_star_<%= story.id %>">
               </div>
             </p>
           </div>
@@ -44,7 +44,7 @@
     <% if user_signed_in? %>
       <% @stories.each do |story| %>
         <% rating = @ratings.find_by(story: story) %>
-        $('#user_star_<%= story.id %>').raty({
+        $('.user_star_<%= story.id %>').raty({
             score: <%= rating.score %>,
             path: '/assets',
             click: function(score, evt) {

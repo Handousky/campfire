@@ -4,13 +4,13 @@
     <%= render 'shared/card' %>
   <% else %>
     <h4 class="index-title">Most popular stories</h4>
-    <%= render 'shared/card', popular: true %>
+    <%= render 'shared/card', type: "popular" %>
 
     <h4 class="index-title">Most recent stories</h4>
-    <%= render 'shared/card', recent: true %>
+    <%= render 'shared/card', type: "recent" %>
 
     <h4 class="index-title">A - Z stories</h4>
-    <%= render 'shared/card', alpha: true %>
+    <%= render 'shared/card', type: "alpha" %>
   <% end %>
 
   <div id="story-details">

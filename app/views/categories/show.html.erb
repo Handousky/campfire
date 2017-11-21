@@ -1,17 +1,12 @@
 <div style="margin-bottom: 100px">
   <h4 class="index-title">Most popular <%= @category.name %> stories</h4>
-  <%= render 'shared/card', popular: true %>
+  <%= render 'shared/card', type: "popular" %>
 
   <h4 class="index-title">Most recent <%= @category.name %> stories</h4>
-  <%= render 'shared/card', recent: true %>
+  <%= render 'shared/card', type: "recent" %>
 
   <h4 class="index-title">A - Z <%= @category.name %> stories</h4>
-  <%= render 'shared/card', aplha: true %>
-
-  <div id="story-details">
-    <!-- render details partial in here -->
-    <%= render "shared/banner" %>
-  </div>
+  <%= render 'shared/card', type: "aplha" %>
 </div>
 
 
