@@ -13,7 +13,17 @@
       <%= f.input :photo, as: :attachinary %>
     </div>
     <div class="col-xs-4">
-      <p> Music stuff here </p>
+    <label for="selection">Listen:</label>
+    <select id="selection">
+      <option value="">- Select track -</option>
+      <option value="/assets/doorbell.mp3">Flying in clouds</option>
+      <option value="/assets/Sqeaking_door.mp3">Door</option>
+    </select>
+    <br/>
+      <audio id="player" controls="controls">
+        <source id="mp3_src" src="/assets/Sqeaking_door.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
     </div>
   </div>
   <div class="row">
