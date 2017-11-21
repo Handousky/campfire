@@ -1,7 +1,7 @@
-<form id="searchbar" action="#" method="get">
-  <div>
+<%= form_tag(stories_path, method: :get) do %>
+  <div id="searchbar">
       <div class="input-group stylish-input-group search">
-          <input type="text" class="form-control search"  placeholder="Search" >
+          <input type="text" name="query" class="form-control search"  placeholder="Search" >
           <span class="input-group-addon search">
               <button type="submit" class="search">
                   <span class="glyphicon glyphicon-search"></span>
@@ -9,4 +9,4 @@
           </span>
       </div>
   </div>
-</form>
+<% end %>
