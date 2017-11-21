@@ -20,7 +20,7 @@
 
                 <div class="rating">
                   <p>Averate rating</p>
-                  <div id="star_<%= story.id %>"></div>
+                  <div class="star_<%= story.id %>"></div>
                 </div>
 
                 <%= link_to "#story_#{story.id}", class: 'story-link', onclick: "openTab(event, 'story_#{story.id}')" do %>
@@ -36,7 +36,7 @@
 <% content_for(:afterjs) do %>
   <script>
     <% @stories.each do |story| %>
-      $('#star_<%= story.id %>').raty({
+      $('.star_<%= story.id %>').raty({
         readOnly: true,
         score: <%= story.avg_rating %>,
         path: '/assets'
