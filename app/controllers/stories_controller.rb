@@ -9,7 +9,6 @@ class StoriesController < ApplicationController
       @stories = Story.global_search(params[:query])
     else
       @stories = Story.all
-      @stories = @stories.sort{ |a, b| b.avg_rating <=> a.avg_rating }
     end
     if user_signed_in?
       @stories.each do |story|
@@ -17,6 +16,9 @@ class StoriesController < ApplicationController
       end
       @ratings = current_user.ratings.where(story: @stories)
     end
+    @stories_popular = @stories.sort{ |a, b| b.avg_rating <=> a.avg_rating }
+    @stories_recent = @stories.sort{ |a, b| a.updated_at <=> b.updated_at }
+    @stories_alphabetic = @stories.sort{ |a, b| a.title <=> b.title }
   end
 
   def show

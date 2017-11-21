@@ -30,5 +30,11 @@ class Story < ApplicationRecord
     against: [ [:title, 'A'], [:description, 'C'] ],
     associated_against: {
       user: [ [:nickname, 'B'] ]
+    },
+    using: {
+      tsearch: {
+        prefix: true,
+        any_word: true
+      }
     }
 end

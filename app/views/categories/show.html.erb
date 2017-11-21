@@ -1,12 +1,19 @@
-<div>
-  <h4 class="index-title">Popular <%= @category.name %> stories</h4>
-  <%= render 'shared/card' %>
+<div style="margin-bottom: 100px">
+  <h4 class="index-title">Most popular <%= @category.name %> stories</h4>
+  <%= render 'shared/card', popular: true %>
+
+  <h4 class="index-title">Most recent <%= @category.name %> stories</h4>
+  <%= render 'shared/card', recent: true %>
+
+  <h4 class="index-title">A - Z <%= @category.name %> stories</h4>
+  <%= render 'shared/card', aplha: true %>
+
+  <div id="story-details">
+    <!-- render details partial in here -->
+    <%= render "shared/banner" %>
+  </div>
 </div>
 
-<div id="story-details">
-  <!-- render details partial in here -->
-  <%= render "shared/banner" %>
-</div>
 
 <% content_for(:afterjs) do %>
   <script>

@@ -1,27 +1,21 @@
-<div>
+<div style="margin-bottom: 100px">
   <% if params[:query] %>
     <h4 class="index-title">Results for <%= params[:query] %></h4>
     <%= render 'shared/card' %>
   <% else %>
-    <h4 class="index-title">Most popular</h4>
-    <%= render 'shared/card' %>
+    <h4 class="index-title">Most popular stories</h4>
+    <%= render 'shared/card', popular: true %>
+
+    <h4 class="index-title">Most recent stories</h4>
+    <%= render 'shared/card', recent: true %>
+
+    <h4 class="index-title">A - Z stories</h4>
+    <%= render 'shared/card', alpha: true %>
   <% end %>
-</div>
 
-<div id="story-details">
-  <!-- render details partial in here -->
-  <%= render "shared/banner" %>
+  <div id="story-details">
+    <!-- render details partial in here -->
+    <%= render "shared/banner" %>
+  </div>
 </div>
-
-<% content_for(:afterjs) do %>
-  <script>
-    <% @stories.each do |story| %>
-      $('#star_<%= story.id %>').raty({
-        readOnly: true,
-        score: <%= story.avg_rating %>,
-        path: '/assets'
-      });
-    <% end %>
-  </script>
-<% end %>
 
