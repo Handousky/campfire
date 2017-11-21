@@ -6,9 +6,9 @@ class StoriesController < ApplicationController
   def index
 
     if params[:query]
-      @stories = Story.global_search(params[:query])
+      @stories = Story.global_search(params[:query]).where(published: true)
     else
-      @stories = Story.all
+      @stories = Story.where(published: true)
     end
     if user_signed_in?
       @stories.each do |story|

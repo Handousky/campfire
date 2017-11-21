@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @stories = @category.stories
+    @stories = @category.stories.where(published: true)
     if user_signed_in?
       @stories.each do |story|
         Rating.create(story: story, user: current_user, score: 0) unless Rating.find_by(story: story, user: current_user)
