@@ -1,0 +1,32 @@
+#map {
+  overflow-x: scroll;
+  overflow-y: scroll;
+  margin-bottom: 100px;
+}
+
+.map_cell {
+  position: relative;
+  border: 1px solid white;
+  margin: 10px;
+  padding: 40px;
+  min-width: 240px;
+  min-height: 240px;
+  h2{
+    font-size: 1.5em;
+  }
+  .close-x {
+    z-index: 2;
+  }
+}
+
+.empty_cell {
+  width: 240px;
+  height: 240px;
+}
+
+#origin {
+  background-color: #F4F4F4;
+  h2 a {
+    color: black;
+  }
+}
