@@ -5,7 +5,7 @@
   <% end %>
   <h2> <%= @story.title %> <%= link_to "", edit_story_path(@story), class: 'btn btn-sm fa fa-pencil' %></h2>
   <div class="control">
-    <%= link_to "Slides Index", story_slides_path(@story), class: 'btn btn-primary' %>
+    <%= link_to "Story Map", story_slides_path(@story), class: 'btn btn-primary' %>
     <%= link_to "Read the story", story_slide_path(@story, @first_slide), class: 'btn btn-primary' %>
     <%= link_to "/publish/#{@story.id}", method: :post, class: 'btn btn-warning' do %>
       <%= @story.published ? "Private" : "Publish" %>
