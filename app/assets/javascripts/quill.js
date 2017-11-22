@@ -1,4 +1,13 @@
-const toolbar = ["background","bold","color","font","code","italic","link","size","strike","script","underline","image","blockquote","header","indent","list","align","direction"];
+const toolbar =[
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+  [{ 'align': [] }, { 'indent': '-1'}, { 'indent': '+1' }],
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'script': 'sub'}, { 'script': 'super' }, 'blockquote'],      // superscript/subscript
+
+  ['clean']
+];
 
 // let Inline = Quill.import('blots/inline');
 // let Block = Quill.import('blots/block');

@@ -1,6 +1,5 @@
 class SlidesController < ApplicationController
   before_action :set_slide, only: [:show, :edit, :update, :destroy, :block_up, :block_down, :block_left, :block_right]
-  before_action :render_footers, only: [:index]
   skip_before_action :authenticate_user!, only: [:show]
 
   def index
