@@ -5,8 +5,6 @@ class Slide < ApplicationRecord
   validates :x_axis, uniqueness: { scope: [:y_axis, :story] }, presence: true
   validates :y_axis, presence: true
 
-
-
   def get_left
     slide = Slide.find_by(x_axis: (self.x_axis - 1), y_axis: self.y_axis, story: self.story)
     return slide unless slide.nil? || self.block_access_from_left
