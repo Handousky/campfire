@@ -5,6 +5,7 @@
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
+
 $( document ).ready(function() {
   $(function(){
       $(window).scroll(function(e){
@@ -23,5 +24,3 @@ $( document ).ready(function() {
       });
     })
 });
-
-

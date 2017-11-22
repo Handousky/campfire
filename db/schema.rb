@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171120165746) do
+ActiveRecord::Schema.define(version: 20171122154114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20171120165746) do
     t.boolean  "block_access_from_up",    default: false
     t.boolean  "block_access_from_down",  default: false
     t.string   "name"
+    t.string   "sound",                   default: ""
     t.index ["story_id"], name: "index_slides_on_story_id", using: :btree
   end
 

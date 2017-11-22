@@ -10,12 +10,12 @@
 <div class="row">
   <div id="map" class="col-xs-11">
     <table>
-      <% (@min_height..@max_height).each do |y| %>
+      <% @max_height.downto(@min_height) do |y| %>
         <tr class="map-row">
           <% (@min_width..@max_width).each do |x| %>
             <!-- Setting up info about the slide -->
             <%
-            @slide = @slides.select { |slide| slide.x_axis == x && slide.y_axis == -y }.first
+            @slide = @slides.select { |slide| slide.x_axis == x && slide.y_axis == y }.first
             if @slide
               @up_slide = Slide.find_by(x_axis: @slide.x_axis, y_axis: (@slide.y_axis + 1), story: @story) || nil
               @down_slide = Slide.find_by(x_axis: @slide.x_axis, y_axis: (@slide.y_axis - 1), story: @story) || nil
@@ -29,7 +29,13 @@
               <% if @slide == @first_slide %>
                 <td class="map_cell" id="origin">
               <% else %>
-                <td class="map_cell">
+                <% if @up_slide.nil? && @down_slide.nil? && @left_slide.nil? && @right_slide.nil? %>
+                  <td class="map_cell unreachable">
+                <% elsif !(@slide.get_up || @slide.get_down || @slide.get_left || @slide.get_right) %>
+                  <td class="map_cell end">
+                <% else %>
+                  <td class="map_cell">
+                <% end %>
                 <%= link_to story_slide_path(@story, @slide), method: :delete, data: { confirm: 'Are you sure? You won\'t be able to restore it!'} do %>
                   <span class="close-x"><i class="fa fa-close"></i></span>
                 <% end %>
