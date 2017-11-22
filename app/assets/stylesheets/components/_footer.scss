@@ -3,14 +3,14 @@
   right: 0;
   bottom: 0;
   left: 0;
-  box-shadow: 0 1px 5px 0 rgba(255,255,255,0.2),0 1px 30px 0 rgba(255,255,255,0.2);
-  background: #350D16;
+  background: black;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 60px;
   padding: 0px 50px;
   color: white;
+  border-top: 2px solid gray;
 }
 .footer-links {
   display: flex;

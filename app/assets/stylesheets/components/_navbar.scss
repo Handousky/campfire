@@ -1,7 +1,11 @@
 /* Main navbar */
 .navbar-wagon {
-  box-shadow: 0 0px 3px 0 rgba(255,255,255,0.2),0 0px 20px 0 rgba(255,255,255,0.2);
-  background-color: #350D16;
+  position: fixed !important;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
   transition: all 0.3s ease;
   height: 70px;
   padding: 0px 30px;
@@ -9,6 +13,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
+  opacity: 0.9;
 }
 
 /* Logo */
