@@ -1,0 +1,38 @@
+.row-category {
+  margin-bottom: 25px;
+
+  label{
+    color: white;
+  }
+}
+
+.story-new {
+
+  .form-control {
+    background-color: black;
+    border: 0px;
+    border-bottom: 2px solid white;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+  }
+
+  .form-group {
+    align-items: center;
+    margin-bottom: 40px;
+
+    label {
+      color: white;
+      margin-right: 10px;
+      font-weight: none !important;
+    }
+
+    input {
+      color: white;
+    }
+
+    textarea {
+      color: white;
+    }
+  }
+}
