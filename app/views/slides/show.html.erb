@@ -62,9 +62,15 @@
       <% end %>
     </div>
 
+    <div class="row end-control" style="display: none;">
+      <div class="col-xs-12 text-center">
+          <%= link_to "Try again", story_slide_path(@slide.story, @slide.story.slides.find_by(x_axis: 0, y_axis: 0)), class: "btn btn-primary btn-ctrl btn-lg" %>
+          <%= link_to "More from #{@slide.story.user.nickname}", user_path(@slide.story.user), class: "btn btn-success btn-ctrl btn-lg" %>
+          <%= link_to "Index", stories_path, class: "btn btn-warning btn-ctrl btn-lg" %>
+      </div>
+    </div>
   </div>
 </div>
-
 <% content_for(:afterjs) do %>
   <script>
     // Fullscreen function
@@ -137,5 +143,11 @@
       play_sound("<%= j @slide.sound %>");
     <% end %>
 
+
+    <% if !(@slide.get_up || @slide.get_down || @slide.get_left || @slide.get_right) %>
+      $('.end-control').show();
+    <% else %>
+      $('.end-control').hide();
+    <% end %>
   </script>
 <% end %>
