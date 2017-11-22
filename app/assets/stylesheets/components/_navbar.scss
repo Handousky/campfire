@@ -1,14 +1,18 @@
 /* Main navbar */
 .navbar-wagon {
   box-shadow: 0 0px 3px 0 rgba(255,255,255,0.2),0 0px 20px 0 rgba(255,255,255,0.2);
-  background-color: #350D16;
+  background-color: black;
   transition: all 0.3s ease;
   height: 70px;
   padding: 0px 30px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  justify-content: space-between !important;
+  position: fixed;
+  right: 0px;
+  left: 0px;
+  top:0px;
+  z-index: 100;
 }
 
 /* Logo */
@@ -34,18 +38,17 @@
 .btn-create {
   color: white;
   /* margin: 4px; */
-  font-weight: none;
+  font-weight: 500;
   font-size: 0.8em;
-  padding: 7px 8px;
-  border: 2px solid $orange;
+  border: 1px solid $red;
   border-radius: 5%;
-  background-color: black;
+  background-color: $red;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
 }
 
 .btn-create:hover {
-  color: $orange;
+  color: $red;
   background-color: white;
   opacity: 1;
   border: 2px solid white;

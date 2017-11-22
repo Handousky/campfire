@@ -9,12 +9,6 @@
           <h2><%= story.title %></h2>
         </div>
 
-        <div class="banner-category">
-          <% story.categories.each do |category| %>
-            <%= category.name %> <%= '-' unless category == story.categories.last %>
-          <% end %>
-        </div>
-
         <% if user_signed_in? %>
           <div class="rating">
             <p>Your Rating:
@@ -23,6 +17,12 @@
             </p>
           </div>
         <% end %>
+
+        <div class="banner-category">
+          <% story.categories.each do |category| %>
+            <%= category.name %> <%= '-' unless category == story.categories.last %>
+          <% end %>
+        </div>
 
         <div class="banner-description">
           <p><%= story.description %></p>
