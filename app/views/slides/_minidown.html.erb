@@ -1,0 +1,10 @@
+<% if @down_slide %>
+  <%= link_to "/stories/#{@story.id}/block_down/#{@slide.id}", method: :post do %>
+    <% if @slide.block_access_from_down %>
+      <span class="btn btn-success mini fa fa-lock"></span>
+    <% else %>
+      <span class="btn btn-danger mini fa fa-unlock-alt"></span>
+    <% end %>
+  <% end %>
+<% end %>
+

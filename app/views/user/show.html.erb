@@ -1,0 +1,23 @@
+<div style="margin-bottom: 100px">
+  <h4 class="index-title">Most popular stories by <%= @user.nickname %></h4>
+  <%= render 'shared/card', type: "popular" %>
+
+  <h4 class="index-title">Most recent stories by <%= @user.nickname %></h4>
+  <%= render 'shared/card', type: "recent" %>
+
+  <h4 class="index-title">A - Z stories by <%= @user.nickname %></h4>
+  <%= render 'shared/card', type: "aplha" %>
+</div>
+
+
+<% content_for(:afterjs) do %>
+  <script>
+    <% @stories.each do |story| %>
+      $('#star_<%= story.id %>').raty({
+        readOnly: true,
+        score: <%= story.avg_rating %>,
+        path: '/assets'
+      });
+    <% end %>
+  </script>
+<% end %>
