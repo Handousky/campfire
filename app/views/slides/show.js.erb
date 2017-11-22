@@ -39,6 +39,12 @@ $("#left").attr('href','<%= j @slide.get_left.nil? ? "story_slide_path(@story, @
 
 $("#right").attr('href','<%= j @slide.get_right.nil? ? "story_slide_path(@story, @slide)" : story_slide_path(@story, @slide.get_right) %>');
 
+<% if !(@slide.get_up || @slide.get_down || @slide.get_left || @slide.get_right) %>
+  $('.end-control').show();
+<% else %>
+  $('.end-control').hide();
+<% end %>
+
 
 <% if @slide.get_up %>
   $('.up-arrow').css("display", "flex");
