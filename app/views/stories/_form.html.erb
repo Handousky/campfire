@@ -1,21 +1,27 @@
-<%= simple_form_for(@story) do |f| %>
-  <%= f.error_notification %>
-  <%= f.input :title, label: "Story's title", placeholder: "Super Creepy Story" %>
-  <%= f.input :description, label: "Short summary", placeholder: "It's super creepy" %>
-  <%= f.input :photo, as: :attachinary %>
-  <label for="categories">Categories</label>
-  <div class="row">
-    <% Category.all.each do |category| %>
-    <div class="col-xs-3">
-      <span class="checkbox">
-        <label for="story_categories_<%= category.id %>">
-          <input class="check_boxes optional" type="checkbox" value="<%= category.id %>" name="story[categories][]" id="story_categories_<%= category.id %>" <%= 'checked'.html_safe if @categories.include?(category) %>><%= category.name %>
-        </label>
-      </span>
-    </div>
+<div class="row">
+  <div class="story-new col-xs-10 col-xs-offset-1">
+    <%= simple_form_for(@story) do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :title, label: "Title" %>
+      <%= f.input :description, label: "Summary" %>
+      <%= f.input :photo, as: :attachinary %>
+      <label for="categories" style="color: white">Categories</label>
+      <div class="row row-category">
+        <% Category.all.each do |category| %>
+        <div class="col-xs-3">
+          <span class="checkbox">
+            <label for="story_categories_<%= category.id %>">
+              <input class="check_boxes optional" type="checkbox" value="<%= category.id %>" name="story[categories][]" id="story_categories_<%= category.id %>" <%= 'checked'.html_safe if @categories.include?(category) %>><%= category.name %>
+            </label>
+          </span>
+        </div>
+        <% end %>
+      </div>
+      <div class="text-center" style="margin-bottom: 100px">
+        <%= f.button :submit, class: "btn btn-default btn-create" %>
+      </div>
     <% end %>
   </div>
-  <div class="text-center" style="margin-bottom: 100px">
-    <%= f.button :submit, class: "btn btn-default btn-create" %>
-  </div>
-<% end %>
+</div>
+
+<!-- CSS is in _story_new.scss -->
