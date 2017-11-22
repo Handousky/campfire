@@ -11,8 +11,12 @@
     <%= yield :aftercss %>
   </head>
   <body>
-    <%= render 'shared/navbar' if @footers %>
-    <div class="master-wrapper">
+    <% if @footers %>
+      <%= render 'shared/navbar' %>
+      <div class="master-wrapper">
+    <% else %>
+      <div>
+    <% end %>
       <%= render 'shared/flashes' %>
       <%= yield %>
       <%= render 'shared/footer' if @footers %>

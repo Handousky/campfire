@@ -23,5 +23,5 @@ function closeTab(evt, tabName) {
       tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
   document.getElementById(tabName).style.display = "none";
-  tablinks[i].className = tablinks[i].className.replace(" active", "");
+  tablinks[i].className = tablinks[i].className.replace(" active", " none");
 }

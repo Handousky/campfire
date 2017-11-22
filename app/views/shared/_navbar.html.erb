@@ -11,7 +11,7 @@
           <div class="row">
             <% Category.all.each do |category| %>
             <div class="col-xs-6 col-sm-4 col-md-3 category-opt">
-              <%= link_to category.name, category_path(category) %>
+              <%= link_to category.name, category_path(category), class: "category-opt-solo" %>
             </div>
             <% end %>
           </div>
