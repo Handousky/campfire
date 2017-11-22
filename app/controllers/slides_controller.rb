@@ -96,6 +96,6 @@ class SlidesController < ApplicationController
   end
 
   def slides_coords
-    params.require(:slide).permit(:x_axis, :y_axis)
+    params.require(:slide).permit(:x_axis, :y_axis, :name)
   end
 end
