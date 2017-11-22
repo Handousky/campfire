@@ -61,10 +61,6 @@
       $('#narration').val(container.html());
 
       $(slideID).submit();
-
-      console.log("<%= @slide.narration %>");
-      console.log("<%= @slide.photo %>");
-      console.log("<%= @slide.sound %>");
     }
 
     setInterval(autosave, 5*1000);
