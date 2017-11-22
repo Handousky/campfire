@@ -11,11 +11,14 @@
     <% end %>
     <%= link_to "Panic", stories_path, class: "btn btn-warning btn-ctrl" %>
     <%= link_to "Fullscreen", '#', class: "btn btn-success btn-ctrl", id: 'btn-fs' %>
+    <audio id="player" controls="controls", style="display: none;">
+      <source id="mp3_src" src="" type="audio/mpeg">
+    </audio>
     </div>
   </div>
 
   <div class="container slides-container">
-    <h3 id="title"><%= @slide.name %></h3>
+    <h3 id="title"><%= @slide.name unless @slide.narration.nil? %></h3>
     <div id="narration">
       <%= @slide.narration.html_safe unless @slide.narration.nil? %>
 
@@ -120,9 +123,21 @@
       }
     });
 
-    // document.ready(function () {
-    //   var audio = new Audio('<%# asset_path slide.audio %>');
-    //   audio.play();
-    // });
+    // playing sounds
+    function play_sound(slide_sound){
+      var audio = document.getElementById("player");
+      var source = document.getElementById("mp3_src");
+
+      audio.pause();
+
+      <% unless @slide.sound.empty? %>
+        source.src = slide_sound;
+        audio.load();
+        audio.play();
+      <% end %>
+    }
+
+    play_sound("<%= j @slide.sound %>");
+
   </script>
 <% end %>

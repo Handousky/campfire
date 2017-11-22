@@ -48,3 +48,5 @@ $("#right").attr('href','<%= j @slide.get_right.nil? ? "story_slide_path(@story,
 <% if @slide.get_right %>
   $('.right-arrow').css("display", "flex");
 <% end %>
+
+play_sound("<%= j @slide.sound %>");

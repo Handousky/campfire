@@ -92,7 +92,7 @@ class SlidesController < ApplicationController
   end
 
   def slides_params
-    params.require(:slide).permit(:narration, :photo, :json, :name)
+    params.require(:slide).permit(:narration, :photo, :json, :name, :sound)
   end
 
   def slides_coords
