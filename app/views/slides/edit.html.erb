@@ -36,6 +36,7 @@
 
 <% content_for(:afterjs) do %>
   <!-- Initialize Quill editor -->
+  <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
   <script>
     let editor = new Quill('#editor-container', {
       modules: {
