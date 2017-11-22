@@ -10,6 +10,9 @@
   .attachinary-input {
     width: 93px;
     color: black;
+    p {
+      font-size: 0px;
+    }
   }
 }
 
@@ -23,11 +26,11 @@
     padding: 2.9px 10px;
     background-color: black;
     text-transform: uppercase;
-    font-size: 0.5em;
+    font-size: 12px;
     font-weight: 500;
     bottom: 6px;
     left: -3px;
-    border: 1px solid #32B796;
+    border: 1px solid white;
     border-radius: 2px;
     display: flex;
     align-items: center;

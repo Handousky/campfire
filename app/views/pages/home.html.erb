@@ -13,7 +13,7 @@
 
     <div class="homefooter">
       <p class="text-center">You can use your keyboard arrows  <%= image_tag "keyboard-arrows.png" %> to navigate through CAMPFIRE.</p>
-      <p class="text text-center">Interactive Horror Stories</p>
+      <p class="text text-center">INTERACTIVE HORROR STORIES</p>
     </div>
   </div>
 
@@ -39,5 +39,19 @@
 
         });
      });
+
+    // moving with arrows
+    document.addEventListener("keyup", function(event) {
+      event.preventDefault();
+      if (event.keyCode === 37) {
+        document.getElementById("left").click();
+      } else if (event.keyCode === 38) {
+        document.getElementById("up").click();
+      } else if (event.keyCode === 39) {
+        document.getElementById("right").click();
+      } else if (event.keyCode === 40) {
+        document.getElementById("down").click();
+      }
+    });
   </script>
 <% end %>
