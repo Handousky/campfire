@@ -129,15 +129,14 @@
       var source = document.getElementById("mp3_src");
 
       audio.pause();
-
-      <% unless @slide.sound.empty? %>
         source.src = slide_sound;
         audio.load();
         audio.play();
-      <% end %>
     }
 
-    play_sound("<%= j @slide.sound %>");
+    <% if @slide.sound %>
+      play_sound("<%= j @slide.sound %>");
+    <% end %>
 
   </script>
 <% end %>
