@@ -1,3 +1,12 @@
+<%
+sounds_hash = {
+  asset_path("doorbell").to_sym      => 'Doorbell',
+  asset_path("Sqeaking_door").to_sym => 'Creepy Door'
+}
+%>
+
+
+
 <%= simple_form_for([@story, @slide], remote: true) do |f| %>
   <%= f.error_notification %>
   <div class="row">
@@ -13,7 +22,7 @@
       <%= f.input :photo, as: :attachinary %>
     </div>
     <div class="col-xs-5">
-      <%= f.input :sound, as: :select, collection:[asset_path("doorbell"), asset_path("Sqeaking_door")], id: "sound", label: false %>
+      <%= f.input :sound, as: :select, collection: sounds_hash.sort.map{|k,v| [v,k]}, include_blank: "No sound", label: false %>
       <audio id="player" controls="controls" style="display: none;">
         <source id="mp3_src" src="" type="audio/mpeg">
       </audio>
