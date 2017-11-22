@@ -10,19 +10,8 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= yield :aftercss %>
     <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
-    <script>
-      var soundID = "Thunder";
-
-      function loadSound () {
-        createjs.Sound.registerSound("assets/thunder.ogg", soundID);
-      }
-
-      function playSound () {
-        createjs.Sound.play(soundID);
-      }
-    </script>
   </head>
-  <body onload="loadsound();">
+  <body>
 
     <%= render 'shared/navbar' if @footers %>
     <%= render 'shared/flashes' %>
