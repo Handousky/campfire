@@ -7,8 +7,8 @@ class SlidesController < ApplicationController
     @story = Story.find(params[:story_id])
     @slides = @story.slides
     @slides = @slides.sort { |a, b| [a.x_axis, a.y_axis] <=> [b.x_axis, b.y_axis] }
-    @width = @slides.map { |slide| slide.x_axis }.minmax.reduce(:-).abs
-    @height = @slides.map { |slide| slide.y_axis }.minmax.reduce(:-).abs
+    @width = @slides.map { |slide| slide.x_axis }.minmax.reduce(:-).abs+1
+    @height = @slides.map { |slide| slide.y_axis }.minmax.reduce(:-).abs+1
     @min_width = @slides.map { |slide| slide.x_axis }.min
     @max_width = @slides.map { |slide| slide.x_axis }.max
     @min_height = @slides.map { |slide| slide.y_axis }.min
