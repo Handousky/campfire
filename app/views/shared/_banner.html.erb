@@ -9,10 +9,8 @@
           <h2><%= story.title %></h2>
         </div>
 
-        <div class="banner-category">
-          <% story.categories.each do |category| %>
-            <%= category.name %> <%= '-' unless category == story.categories.last %>
-          <% end %>
+        <div class="banner-author">
+          <p>Written by <%= link_to story.user.nickname, user_path(story.user) %></p>
         </div>
 
         <% if user_signed_in? %>
@@ -24,10 +22,16 @@
           </div>
         <% end %>
 
+        <div class="banner-category">
+          <% story.categories.each do |category| %>
+            <%= category.name %> <%= '-' unless category == story.categories.last %>
+          <% end %>
+        </div>
+
         <div class="banner-description">
           <p><%= story.description %></p>
         </div>
-          <%= link_to "Read the story", story_slide_path(story, story.slides.find_by(x_axis: 0, y_axis: 0)), class: "banner-read btn btn-danger" %>
+          <%= link_to "Read the story", story_slide_path(story, story.slides.find_by(x_axis: 0, y_axis: 0)), class: "banner-read btn btn-create" %>
       </div>
       <% unless story.photo.nil? %>
         <div class="banner-img" style="background-image: linear-gradient(90deg,rgba(0,0,0,1), rgba(0,0,0,0) 30%), url('<%= cl_image_path story.photo.path %>')">

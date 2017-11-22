@@ -3,25 +3,30 @@ $('.down-arrow').hide();
 $('.left-arrow').hide();
 $('.right-arrow').hide();
 
+<% if @slide.photo? %>
+$("#fullscreen").css("background-image","linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @slide.photo.path %>')");
+<% else %>
+$("#fullscreen").css("background-image", "none");
+<% end %>
+
 $("#btn-edit").attr('href', '<%= j edit_story_slide_path(@story, @slide) %>')
 
-$('#title').html('<%= j @slide.name %>');
 $("#narration").html('<%= j \
     @slide.narration.html_safe unless @slide.narration.nil? %>\
     \
-    <% if @slide.get_up %>\
+    <% if @slide.get_up && !@slide.get_up.name.empty? %>\
       <p id="upTitle">[ ^ <%= @slide.get_up.name %> ]</p>\
     <% end %>\
     \
-    <% if @slide.get_down %>\
+    <% if @slide.get_down && !@slide.get_down.name.empty? %>\
       <p id="downTitle">[ v <%= @slide.get_down.name %> ]</p>\
     <% end %>\
     \
-    <% if @slide.get_left %>\
+    <% if @slide.get_left && !@slide.get_left.name.empty? %>\
       <p id="leftTitle">[ < <%= @slide.get_left.name %> ]</p>\
     <% end %>\
     \
-    <% if @slide.get_right %>\
+    <% if @slide.get_right && !@slide.get_right.name.empty? %>\
       <p id="rightTitle">[ > <%= @slide.get_right.name %> ]</p>\
     <% end %>\
   ');
@@ -33,6 +38,12 @@ $("#down").attr('href','<%= j @slide.get_down.nil? ? "story_slide_path(@story, @
 $("#left").attr('href','<%= j @slide.get_left.nil? ? "story_slide_path(@story, @slide)" : story_slide_path(@story, @slide.get_left) %>');
 
 $("#right").attr('href','<%= j @slide.get_right.nil? ? "story_slide_path(@story, @slide)" : story_slide_path(@story, @slide.get_right) %>');
+
+<% if !(@slide.get_up || @slide.get_down || @slide.get_left || @slide.get_right) %>
+  $('.end-control').show();
+<% else %>
+  $('.end-control').hide();
+<% end %>
 
 
 <% if @slide.get_up %>

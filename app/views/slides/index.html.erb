@@ -1,11 +1,4 @@
-<div class="container", style="margin-bottom: 100px">
-  <h2>
-    Map of <%= @story.title %>
-    <% if @first_slide != nil %>
-      <%= link_to "Read the story", story_slide_path(@story, @first_slide), class: 'btn btn-danger' %>
-    <% end %>
-  </h2>
-</div>
+<%= render 'navbar_slides' %>
 
 <div class="row">
   <div id="map" class="col-xs-11">

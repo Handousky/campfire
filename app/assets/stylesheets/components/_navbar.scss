@@ -1,4 +1,4 @@
-/* Main navbar */
+  /* Main navbar */
 .navbar-wagon {
   position: fixed !important;
   z-index: 3;
@@ -16,6 +16,7 @@
   opacity: 0.9;
 }
 
+
 /* Logo */
 .navbar-wagon-brand img {
   height: 50px;
@@ -24,9 +25,10 @@
 
 /* User Avatar */
 .navbar-wagon .avatar {
-  height: 7vh;
-  width: 7vh;
+  height: 6vh;
+  width: 6vh;
   border-radius: 50%;
+  border: 1px solid black;
 }
 
 /* Right section */
@@ -34,26 +36,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.btn-create {
-  color: white;
-  /* margin: 4px; */
-  font-weight: none;
-  font-size: 0.8em;
-  padding: 7px 8px;
-  border: 2px solid $orange;
-  border-radius: 5%;
-  background-color: black;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-}
-
-.btn-create:hover {
-  color: $orange;
-  background-color: white;
-  opacity: 1;
-  border: 2px solid white;
 }
 
 /* Basic navbar item */
