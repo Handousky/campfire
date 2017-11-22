@@ -3,6 +3,8 @@ $('.down-arrow').hide();
 $('.left-arrow').hide();
 $('.right-arrow').hide();
 
+$("#btn-edit").attr('href', '<%= j edit_story_slide_path(@story, @slide) %>')
+
 $('#title').html('<%= j @slide.name %>');
 $("#narration").html('<%= j \
     @slide.narration.html_safe unless @slide.narration.nil? %>\
@@ -47,4 +49,8 @@ $("#right").attr('href','<%= j @slide.get_right.nil? ? "story_slide_path(@story,
 
 <% if @slide.get_right %>
   $('.right-arrow').css("display", "flex");
+<% end %>
+
+<% if @slide.sound %>
+  play_sound("<%= j @slide.sound %>");
 <% end %>
