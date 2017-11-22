@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+<div class="content-wrapper", style="margin-bottom: 90px">
   <% if params[:query] %>
     <h4 class="index-title">Results for <%= params[:query] %></h4>
     <%= render 'shared/card' %>
@@ -12,10 +12,5 @@
     <h4 class="index-title">A - Z stories</h4>
     <%= render 'shared/card', type: "alpha" %>
   <% end %>
-
-  <div id="story-details">
-    <!-- render details partial in here -->
-    <%= render "shared/banner" %>
-  </div>
 </div>
 

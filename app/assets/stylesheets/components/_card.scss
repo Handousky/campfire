@@ -9,7 +9,7 @@
   min-width: 100vw;
   display: flex;
   overflow-x: scroll;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding-left: 40px;
   padding-right: 40px;
   &::-webkit-scrollbar{display: none;}

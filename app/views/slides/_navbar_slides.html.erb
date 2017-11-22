@@ -17,7 +17,7 @@
 
     <% if user_signed_in? %>
 
-    <% current_user.photo? ? avatar_url = current_user.photo.path : avatar_url = "http://placehold.it/30x30" %>
+    <% avatar_url = current_user.photo? ? current_user.photo.path : "blacklogo.png" %>
 
       <!-- Links when logged in -->
 
@@ -26,7 +26,11 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-            <%= cl_image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <% if current_user.photo? %>
+              <%= cl_image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <% else %>
+              <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <% end %>
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to dashboard_path do %>

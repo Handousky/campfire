@@ -1,8 +1,5 @@
 .banner-wrapper {
-  position: relative;
-  margin-bottom: 100px;
-  padding-top: 20px;
-  height: 350px;
+  padding-top: 10px;
 }
 
 .close-x {
@@ -72,9 +69,8 @@
 
   .banner-img {
     width: 60%;
-    height: 350px;
+    height: 100%;
     background-size: cover !important;
-    background: linear-gradient(to right, blue, pink);
     position: absolute;
     right: 0;
     z-index: -1;
