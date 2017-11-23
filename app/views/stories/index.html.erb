@@ -14,3 +14,12 @@
   <% end %>
 </div>
 
+<script>
+  document.querySelectorAll('.scroller').forEach((scroller) => {
+    scroller.addEventListener('click', (event) => {
+      const cc = document.getElementById(`container_${event.currentTarget.id}`);
+      console.log(document.querySelector('.story-card').offsetWidth);
+      cc.scrollLeft += document.querySelector('.story-card').offsetWidth;
+    });
+  });
+</script>
