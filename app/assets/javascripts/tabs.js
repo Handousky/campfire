@@ -11,7 +11,7 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "flex";
   evt.currentTarget.className += " active";
 
-  document.querySelector(`#${tabName}`).scrollIntoView({
+  document.querySelector('#' + tabName).scrollIntoView({
     behavior: 'smooth'
   });
 }
