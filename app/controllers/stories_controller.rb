@@ -17,7 +17,7 @@ class StoriesController < ApplicationController
       @ratings = current_user.ratings.where(story: @stories)
     end
     @stories_popular = @stories.sort{ |a, b| b.avg_rating <=> a.avg_rating }.first(20)
-    @stories_recent = @stories.sort{ |a, b| a.updated_at <=> b.updated_at }.first(20)
+    @stories_recent = @stories.sort{ |a, b| b.updated_at <=> a.updated_at }.first(20)
     @stories_alphabetic = @stories.sort{ |a, b| a.title <=> b.title }
   end
 

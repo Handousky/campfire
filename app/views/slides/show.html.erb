@@ -1,5 +1,5 @@
 <% if @slide.photo? %>
-<div id="fullscreen" class="slide-wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @slide.photo.path %>')">
+<div id="fullscreen" class="slide-wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('<%= cl_image_path @slide.photo.path %>')">
 <% else %>
 <div id="fullscreen" class="slide-wrapper">
 <% end %>
@@ -20,22 +20,26 @@
   <div class="container slides-container">
     <div id="narration">
       <%= @slide.narration.html_safe unless @slide.narration.nil? %>
+    </div>
 
-      <% if @slide.get_up && !@slide.get_up.name.empty? %>
-        <p id="upTitle">[ ^ <%= @slide.get_up.name %> ]</p>
-      <% end %>
+    <div class="choices-container">
+      <div class="row">
+          <div class="col-xs-6">
+            <p class="choice text-center" id="upTitle"></p>
+          </div>
 
-      <% if @slide.get_down && !@slide.get_down.name.empty? %>
-        <p id="downTitle">[ v <%= @slide.get_down.name %> ]</p>
-      <% end %>
+          <div class="col-xs-6">
+            <p class="choice text-center" id="downTitle"></p>
+          </div>
 
-      <% if @slide.get_left && !@slide.get_left.name.empty? %>
-        <p id="leftTitle">[ < <%= @slide.get_left.name %> ]</p>
-      <% end %>
+          <div class="col-xs-6">
+            <p class="choice text-center" id="leftTitle"></p>
+          </div>
 
-      <% if @slide.get_right && !@slide.get_right.name.empty? %>
-        <p id="rightTitle">[ > <%= @slide.get_right.name %> ]</p>
-      <% end %>
+          <div class="col-xs-6">
+            <p class="choice text-center" id="rightTitle"></p>
+          </div>
+      </div>
     </div>
 
     <div class="arrow-hidden up-arrow">
@@ -148,6 +152,34 @@
       $('.end-control').show();
     <% else %>
       $('.end-control').hide();
+    <% end %>
+
+    <% if @slide.get_up && !@slide.get_up.name.empty? %>
+      $("#upTitle").show();
+      $("#upTitle").html('<%= j image_tag "keyboard-up.png", size: "25x25" %> <%= @slide.get_up.name %>');
+    <% else %>
+      $("#upTitle").hide();
+    <% end %>
+
+    <% if @slide.get_down && !@slide.get_down.name.empty? %>
+      $("#downTitle").show();
+      $("#downTitle").html('<%= j image_tag "keyboard-down.png", size: "25x25" %> <%= @slide.get_down.name %>');
+    <% else %>
+      $("#downTitle").hide();
+    <% end %>
+
+    <% if @slide.get_left && !@slide.get_left.name.empty? %>
+      $("#leftTitle").show();
+      $("#leftTitle").html('<%= j image_tag "keyboard-left.png", size: "25x25" %> <%= @slide.get_left.name %>');
+    <% else %>
+      $("#leftTitle").hide();
+    <% end %>
+
+    <% if @slide.get_right && !@slide.get_right.name.empty? %>
+      $("#rightTitle").show();
+      $("#rightTitle").html('<%= j image_tag "keyboard-right.png", size: "25x25" %> <%= @slide.get_right.name %>');
+    <% else %>
+      $("#rightTitle").hide();
     <% end %>
   </script>
 <% end %>

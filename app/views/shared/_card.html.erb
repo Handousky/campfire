@@ -7,8 +7,15 @@
 <% end %>
 
 <div class= "master-container">
-  <div class="card-container">
+  <div class="card-container" id="container_<%= local_assigns[:type] %>">
     <% @stories.each do |story| %>
+    <div data-label="<%= local_assigns[:type] %>" class="scroller forward-scroller" style="right: 0">
+      <%= image_tag "arrow-right.png" %>
+    </div>
+    <div data-label="<%= local_assigns[:type] %>" class="scroller backward-scroller" style="left: 0">
+      <%= image_tag "arrow-left.png" %>
+    </div>
+
       <% unless story.photo.nil? %>
         <div class="story-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url('<%= cl_image_path story.photo.path, width: 375, height: 500, gravity: 'center', crop: 'fill' %>')">
       <% else %>
@@ -47,5 +54,6 @@
         path: '/assets'
       });
     <% end %>
+
   </script>
 <% end %>

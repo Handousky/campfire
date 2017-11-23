@@ -1,0 +1,5 @@
+meta_product_name: "Campfire"
+meta_title: "Campfire - Interactive horror stories"
+meta_description: "Experience real fear and become the hero of interactive horror stories"
+meta_image: "campfirebg.jpg"                       # should exist in `app/assets/images/`
+
