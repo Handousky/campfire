@@ -20,22 +20,34 @@
   <div class="container slides-container">
     <div id="narration">
       <%= @slide.narration.html_safe unless @slide.narration.nil? %>
+    </div>
 
-      <% if @slide.get_up && !@slide.get_up.name.empty? %>
-        <p id="upTitle">[ ^ <%= @slide.get_up.name %> ]</p>
-      <% end %>
+    <div class="choices-container">
+      <div class="row">
+        <% if @slide.get_up && !@slide.get_up.name.empty? %>
+          <div class="col-xs-6">
+            <p class="choice" id="upTitle"> <%= image_tag "keyboard-up.png", size: "25x25" %> <%= @slide.get_up.name %> </p>
+          </div>
+        <% end %>
 
-      <% if @slide.get_down && !@slide.get_down.name.empty? %>
-        <p id="downTitle">[ v <%= @slide.get_down.name %> ]</p>
-      <% end %>
+        <% if @slide.get_down && !@slide.get_down.name.empty? %>
+          <div class="col-xs-6">
+            <p class="choice" id="downTitle"> <%= image_tag "keyboard-down.png", size: "25x25" %> <%= @slide.get_down.name %> </p>
+          </div>
+        <% end %>
 
-      <% if @slide.get_left && !@slide.get_left.name.empty? %>
-        <p id="leftTitle">[ < <%= @slide.get_left.name %> ]</p>
-      <% end %>
+        <% if @slide.get_left && !@slide.get_left.name.empty? %>
+          <div class="col-xs-6">
+            <p class="choice" id="leftTitle"> <%= image_tag "keyboard-left.png", size: "25x25" %> <%= @slide.get_left.name %> </p>
+          </div>
+        <% end %>
 
-      <% if @slide.get_right && !@slide.get_right.name.empty? %>
-        <p id="rightTitle">[ > <%= @slide.get_right.name %> ]</p>
-      <% end %>
+        <% if @slide.get_right && !@slide.get_right.name.empty? %>
+          <div class="col-xs-6">
+            <p class="choice" id="rightTitle"> <%= image_tag "keyboard-right.png", size: "25x25" %> <%= @slide.get_right.name %> </p>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <div class="arrow-hidden up-arrow">

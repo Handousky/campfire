@@ -1,4 +1,22 @@
 #narration{
-  max-height: 60vh;
+  max-height: 50vh;
   overflow-y: scroll;
+  &::-webkit-scrollbar{display: none;}
 }
+
+.choices-container {
+  margin-top: 15px;
+
+  p {
+    font-size: 16px;
+    font-weight: lighter;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding-right: 5px;
+  }
+
+  img {
+    margin-right: 5px;
+  }
+}
+
