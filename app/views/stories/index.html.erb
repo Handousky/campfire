@@ -14,3 +14,27 @@
   <% end %>
 </div>
 
+<script>
+  document.querySelectorAll('.forward-scroller').forEach((scroller) => {
+    scroller.addEventListener('click', (event) => {
+      const cc = document.getElementById(`container_${event.currentTarget.dataset.label}`);
+
+
+      cc.scrollBy({
+        left: document.querySelector('.story-card').offsetWidth * 2,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  document.querySelectorAll('.backward-scroller').forEach((scroller) => {
+    scroller.addEventListener('click', (event) => {
+      const cc = document.getElementById(`container_${event.currentTarget.dataset.label}`);
+
+      cc.scrollBy({
+        left: -document.querySelector('.story-card').offsetWidth * 2,
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
