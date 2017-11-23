@@ -1,5 +1,5 @@
 <% if @slide.photo? %>
-<div id="fullscreen" class="slide-wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @slide.photo.path %>')">
+<div id="fullscreen" class="slide-wrapper" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('<%= cl_image_path @slide.photo.path %>')">
 <% else %>
 <div id="fullscreen" class="slide-wrapper">
 <% end %>
