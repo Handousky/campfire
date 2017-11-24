@@ -33,7 +33,7 @@ class StoriesController < ApplicationController
   def update
     if @story.update(story_params)
       update_tags(@story)
-      redirect_to story_path(@story)
+      redirect_to story_slides_path(@story, @story.slides)
     else
       render :new
     end
