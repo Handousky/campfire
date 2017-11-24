@@ -20,7 +20,7 @@
           </h3>
           <p class="category">
             <% story.categories.each do |category| %>
-              <%= category.name %><%= '-' unless category == story.categories.last %>
+              <%= category.name %><%= ' -' unless category == story.categories.last %>
             <% end %>
           </p>
           <p><%= story.description %></p>
