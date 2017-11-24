@@ -1,11 +1,37 @@
 <%
 sounds_hash = {
-  asset_path("doorbell").to_sym      => 'Doorbell',
-  asset_path("Sqeaking_door").to_sym => 'Creepy Door'
+  asset_path("ambiance").to_sym     => 'ambiance',
+  asset_path("ambiance-two").to_sym => 'ambiance-two',
+  asset_path("bats").to_sym      => 'bats',
+  asset_path("begging").to_sym      => 'begging',
+  asset_path("chains").to_sym      => 'chains',
+  asset_path("chainsaw").to_sym      => 'chainsaw',
+  asset_path("clock").to_sym      => 'clock',
+  asset_path("crazy-brain").to_sym      => 'crazy brain',
+  asset_path("cut-blood").to_sym      => 'cut blood',
+  asset_path("demons-laughing").to_sym      => 'demons laughing',
+  asset_path("digital-destruction").to_sym      => 'digital destruction',
+  asset_path("doorbell").to_sym      => 'doorbell',
+  asset_path("enraged-zombies").to_sym      => 'enraged zombies',
+  asset_path("evil-laugh").to_sym      => 'evil laugh',
+  asset_path("foley").to_sym      => 'foley',
+  asset_path("ghost-movement").to_sym      => 'ghost movement',
+  asset_path("heartbeat").to_sym      => 'heartbeat',
+  asset_path("hell").to_sym      => 'hell',
+  asset_path("monster").to_sym      => 'monster',
+  asset_path("opening-casket").to_sym      => 'opening-casket',
+  asset_path("panic").to_sym      => 'panic',
+  asset_path("psycho-scream").to_sym      => 'psycho-scream',
+  asset_path("riser").to_sym      => 'riser',
+  asset_path("seven-days").to_sym      => 'seven-days',
+  asset_path("seven-days").to_sym      => 'sqeaking-door',
+  asset_path("thunder").to_sym      => 'thunder',
+  asset_path("tomnstone").to_sym      => 'tombstone',
+  asset_path("train-hits-guy").to_sym      => 'train hits guy',
+  asset_path("water-drops").to_sym      => 'water drops',
+  asset_path("werewolf").to_sym      => 'werewolf',
 }
 %>
-
-
 
 <%= simple_form_for([@story, @slide], remote: true) do |f| %>
   <%= f.error_notification %>
