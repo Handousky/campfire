@@ -36,6 +36,9 @@ class SlidesController < ApplicationController
 
   def update
     if @slide.update(slides_params)
+      # byebug
+      # @slide.photo = slides_params[:photo]
+      # photo.save!
       set_adjacents(@slide)
       respond_to do |format|
         format.html { render :edit }
@@ -91,6 +94,7 @@ class SlidesController < ApplicationController
   end
 
   def slides_params
+    params[:slide][:photo] = nil if params[:slide][:photo] = ""
     params.require(:slide).permit(:narration, :photo, :json, :name, :sound)
   end
 
