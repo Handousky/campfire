@@ -10,7 +10,7 @@
         </div>
 
         <div class="banner-author">
-          <p>Written by <%= link_to story.user.nickname, user_path(story.user) %></p>
+          <p>Written by <%= link_to story.user.nickname, user_path(story.user), class: 'story-writer' %></p>
         </div>
 
         <% if user_signed_in? %>
