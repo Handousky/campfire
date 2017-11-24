@@ -28,10 +28,35 @@
 
 }
 
+.story-content {
+  z-index: 1;
+}
+
+.story-link-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  &:hover, &:active {
+    .small-arrow {
+      width: 30px;
+    }
+  }
+}
+
 .story-link {
   position: absolute;
   bottom: 10px;
-  left: 125px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.story-writer {
+  &:hover {
+    color: $red;
+  }
 }
 
 .story-head {
