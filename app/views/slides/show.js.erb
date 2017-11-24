@@ -11,25 +11,36 @@ $("#fullscreen").css("background-image", "none");
 
 $("#btn-edit").attr('href', '<%= j edit_story_slide_path(@story, @slide) %>')
 
-$("#narration").html('<%= j \
-    @slide.narration.html_safe unless @slide.narration.nil? %>\
-    \
-    <% if @slide.get_up && !@slide.get_up.name.empty? %>\
-      <p id="upTitle">[ ^ <%= @slide.get_up.name %> ]</p>\
-    <% end %>\
-    \
-    <% if @slide.get_down && !@slide.get_down.name.empty? %>\
-      <p id="downTitle">[ v <%= @slide.get_down.name %> ]</p>\
-    <% end %>\
-    \
-    <% if @slide.get_left && !@slide.get_left.name.empty? %>\
-      <p id="leftTitle">[ < <%= @slide.get_left.name %> ]</p>\
-    <% end %>\
-    \
-    <% if @slide.get_right && !@slide.get_right.name.empty? %>\
-      <p id="rightTitle">[ > <%= @slide.get_right.name %> ]</p>\
-    <% end %>\
-  ');
+$("#narration").html('<%= j @slide.narration.html_safe unless @slide.narration.nil? %>');
+
+<% if @slide.get_up && !@slide.get_up.name.empty? %>
+  $("#upTitle").show();
+  $("#upTitle").html('<%= j image_tag "keyboard-up.png", size: "25x25" %> <%= @slide.get_up.name %>');
+<% else %>
+  $("#upTitle").hide();
+<% end %>
+
+<% if @slide.get_down && !@slide.get_down.name.empty? %>
+  $("#downTitle").show();
+  $("#downTitle").html('<%= j image_tag "keyboard-down.png", size: "25x25" %> <%= @slide.get_down.name %>');
+<% else %>
+  $("#downTitle").hide();
+<% end %>
+
+<% if @slide.get_left && !@slide.get_left.name.empty? %>
+  $("#leftTitle").show();
+  $("#leftTitle").html('<%= j image_tag "keyboard-left.png", size: "25x25" %> <%= @slide.get_left.name %>');
+<% else %>
+  $("#leftTitle").hide();
+<% end %>
+
+<% if @slide.get_right && !@slide.get_right.name.empty? %>
+  $("#rightTitle").show();
+  $("#rightTitle").html('<%= j image_tag "keyboard-right.png", size: "25x25" %> <%= @slide.get_right.name %>');
+<% else %>
+  $("#rightTitle").hide();
+<% end %>
+
 
 $("#up").attr('href','<%= j @slide.get_up.nil? ? "story_slide_path(@story, @slide)" : story_slide_path(@story, @slide.get_up) %>');
 

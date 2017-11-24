@@ -17,9 +17,9 @@
     </div>
 
       <% unless story.photo.nil? %>
-        <div class="story-card" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.2)), url('<%= cl_image_path story.photo.path, width: 375, height: 500, gravity: 'center', crop: 'fill' %>')">
+        <div class="story-card" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.2)), url('<%= cl_image_path story.photo.path, width: 300, height: 200, gravity: 'center', crop: 'fill' %>')">
       <% else %>
-        <div class="story-card" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.2)), url('<%= image_path Story::placeholder, width: 375, height: 500, gravity: 'center', crop: 'fill' %>')">
+        <div class="story-card" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.2)), url('<%= image_path Story::placeholder, width: 300, height: 200, gravity: 'center', crop: 'fill' %>')">
       <% end %>
           <%= link_to '', "#story_#{story.id}", class: 'story-link-wrapper', onclick: "openTab(event, 'story_#{local_assigns[:type]}_#{story.id}')" %>
           <div class="story-content">
