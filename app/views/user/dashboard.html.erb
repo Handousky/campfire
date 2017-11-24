@@ -4,7 +4,7 @@
   <div style="margin-bottom: 100px;">
     <% @stories.each do |story| %>
     <div class="row" style="margin: 20px 0">
-      <div class="col-xs-8">
+      <div class="dashboard-story col-xs-8">
         <h3 style="margin-top: 0; display: flex; justify-content: space-between;">
           <%= story.title %>
           <% if current_user == story.user %>
@@ -18,9 +18,9 @@
             </span>
           <% end %>
         </h3>
-        <p>
+        <p class="category">
           <% story.categories.each do |category| %>
-            <i><%= category.name %></i><%= '-' unless category == story.categories.last %>
+            <%= category.name %><%= '-' unless category == story.categories.last %>
           <% end %>
         </p>
         <p><%= story.description %></p>
