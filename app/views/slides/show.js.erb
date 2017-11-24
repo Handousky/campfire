@@ -4,7 +4,7 @@ $('.left-arrow').hide();
 $('.right-arrow').hide();
 
 <% if @slide.photo? %>
-$("#fullscreen").css("background-image","linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path @slide.photo.path %>')");
+$("#fullscreen").css("background-image","linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('<%= cl_image_path @slide.photo.path %>')");
 <% else %>
 $("#fullscreen").css("background-image", "none");
 <% end %>

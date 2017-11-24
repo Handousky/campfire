@@ -19,7 +19,7 @@ class Story < ApplicationRecord
   ]
 
   def avg_rating
-    self.ratings.empty? ? 0 : self.ratings.map{ |r| r.score }.reduce(:+)
+    self.ratings.empty? ? 0 : (self.ratings.map{ |r| r.score }.reduce(:+)) / self.ratings.length
   end
 
   def self.placeholder
