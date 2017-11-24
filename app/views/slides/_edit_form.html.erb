@@ -43,9 +43,9 @@ sounds_hash = {
       <%= link_to "Test", story_slide_path(@story, @slide), class: 'btn btn-danger btn-md' %>
     </div>
   </div>
-  <div class="row">
+  <div class="row media">
     <div class="col-xs-4 col-xs-offset-2">
-      <%= f.input :photo, as: :attachinary, class: "margin-less" %>
+      <%= f.input :photo, as: :attachinary, input_html: {value: "hello world"}, class: "margin-less" %>
     </div>
     <div class="col-xs-4">
       <%= f.input :sound, as: :select, collection: sounds_hash.sort.map{|k,v| [v,k]}, include_blank: "No sound", label: false, class: "margin-less" %>
