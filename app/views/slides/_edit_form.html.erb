@@ -44,8 +44,10 @@ sounds_hash = {
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
+    <div class="col-xs-4 col-xs-offset-2">
       <%= f.input :photo, as: :attachinary, class: "margin-less" %>
+    </div>
+    <div class="col-xs-4">
       <%= f.input :sound, as: :select, collection: sounds_hash.sort.map{|k,v| [v,k]}, include_blank: "No sound", label: false, class: "margin-less" %>
       <audio id="player" controls="controls" style="display: none;">
         <source id="mp3_src" src="" type="audio/mpeg">
